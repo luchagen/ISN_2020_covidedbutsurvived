@@ -1,0 +1,7 @@
+Les fonctionnalités à mettre en œuvre pour le Sprint 1:
+
+1) faire déplacer le héros
+2) créer un labyrinthe à partir d'un fichier
+3) finir le jeu en prenant une porte de sortie
+4) imposer une limite de temps
+5) implémenter des monstres qui se déplacent de manières aléatoires et qui peuvent tuer le héros.
