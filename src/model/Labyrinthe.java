@@ -45,5 +45,14 @@ public class Labyrinthe {
 			System.out.println("Help not available");
 	}
 
-}
+	}
+	public int[] getSpawn() {
+		return spawn;
+	}
+	public int[] getMonsterspawns(int i) {
+		return spawnMonsters.get(i);
+	}
+	public int getNbrMonsters() {
+		return spawnMonsters.size();
+	}
 }
