@@ -70,6 +70,7 @@ public class PacmanGame implements Game {
 	public boolean isFinished() {
 		// le jeu n'est jamais fini
 		return false;
+		
 	}
 
 }
