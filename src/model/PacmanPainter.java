@@ -17,8 +17,8 @@ public class PacmanPainter implements GamePainter {
 	/**
 	 * la taille des cases
 	 */
-	protected static final int WIDTH = 100;
-	protected static final int HEIGHT = 100;
+	protected static final int WIDTH = 400;
+	protected static final int HEIGHT = 400;
 
 	/**
 	 * appelle constructeur parent
@@ -27,8 +27,14 @@ public class PacmanPainter implements GamePainter {
 	 *            le jeutest a afficher
 	 */
 	PacmanGame game;
-	public PacmanPainter(PacmanGame in_game) {
+	Labyrinthe donjon;
+	int largeur_rect;
+	int hauteur_rect;
+	public PacmanPainter(PacmanGame in_game, Labyrinthe in_donjon) {
 		game=in_game;
+		donjon=in_donjon;
+		largeur_rect=WIDTH/donjon.nb_largeur;
+		hauteur_rect=HEIGHT/donjon.nb_hauteur;
 	}
 
 	/**
@@ -37,8 +43,35 @@ public class PacmanPainter implements GamePainter {
 	@Override
 	public void draw(BufferedImage im) {
 		Graphics2D crayon = (Graphics2D) im.getGraphics();
+		Graphics2D crayon1 = (Graphics2D) im.getGraphics();
 		crayon.setColor(Color.blue);
-		crayon.drawOval(game.heros.X,game.heros.Y,10,10);
+		for(int i=0;i<donjon.nb_largeur;i++) {
+			for (int j=0;j<donjon.nb_hauteur;j++) {
+				switch(donjon.cases[i][j].nature) {
+					case 0:
+						crayon1.setColor(Color.black);
+						break;
+					case 1:
+						crayon1.setColor(Color.green);
+						break;
+					case 2:
+						crayon1.setColor(Color.orange);
+						break;
+					case 3:
+						crayon1.setColor(Color.CYAN);
+						break;
+					case 4:
+						crayon1.setColor(Color.orange);
+						break;
+					default:
+						crayon1.setColor(Color.white);
+						break;
+					
+				}
+				crayon1.fillRect(largeur_rect*i, hauteur_rect*j, largeur_rect , hauteur_rect);
+			}
+		}
+		crayon.fillOval(game.heros.X,game.heros.Y,40,40);
 	}
 
 	@Override

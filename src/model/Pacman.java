@@ -13,17 +13,21 @@ public class Pacman {
 	public void moveUP() {
 		if(Y>0) {
 			Y--;
+			System.out.println("("+X+","+Y+")");
 		}
 	}
 	public void moveDOWN() {
 		if(Y<100) {
 			Y++;
+			System.out.println("("+X+","+Y+")");
 		}
 		
 	}
 	public void moveLEFT() {
 		if(X>0) {
 			X--;
+			System.out.println("("+X+","+Y+")");
+			
 		}
 		
 	}

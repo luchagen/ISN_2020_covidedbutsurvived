@@ -21,8 +21,8 @@ public class PacmanGame implements Game {
 	 * 
 	 */
 	Pacman heros;
-	Monster[] monstres;
-	public PacmanGame(String source, Pacman in_heros, Monster[] in_monstres) {
+	//Monster[] monstres;
+	public PacmanGame(String source, Pacman in_heros) { //Ajouter monstre plus tard
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
@@ -35,7 +35,7 @@ public class PacmanGame implements Game {
 			System.out.println("Help not available");
 		}
 		heros=in_heros;
-		monstres=in_monstres;
+		//monstres=in_monstres;
 	}
 
 	/**
@@ -49,18 +49,22 @@ public class PacmanGame implements Game {
 		switch (commande) {
 		case RIGHT:
 			heros.moveRIGHT();
+			break;
 		case LEFT:
 			heros.moveLEFT();
+			break;
 		case UP:
 			heros.moveUP();
+			break;
 		case DOWN:
 			heros.moveDOWN();
+			break;
 		case IDLE:
 			break;
 		}
-		for(int i=0;i<monstres.length;i++) {
-			monstres[i].randMove();
-		}
+		//for(int i=0;i<monstres.length;i++) {
+			//monstres[i].randMove();
+		//}
 	}
 
 	/**

@@ -9,25 +9,43 @@ public class Labyrinthe {
 	int nb_largeur=10,nb_hauteur=10;
 	int nb_case=nb_largeur*nb_hauteur;
 	int level;
-	Tile[][] cases = new Tile[nb_largeur][nb_hauteur];
-	int[]spawn=new int[2];
-	ArrayList<int[]> spawnMonsters=new ArrayList<int[]>();
+	public Tile[][] cases = new Tile[nb_largeur][nb_hauteur];
+	public int[]spawn=new int[2];
+	public ArrayList<int[]> spawnMonsters=new ArrayList<int[]>();
 	public Labyrinthe(String source) {
 		int nat = 0;
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
 			String ligne;
-			int i = 0,j=0;
-			while (i<nb_largeur) {
-				while(j<nb_hauteur)
-				{
+			for(int i=0;i<nb_largeur;i++) {
+				for(int j=0;j<nb_hauteur;j++) {
+					System.out.println(i+"   "+j);
 					ligne = helpReader.readLine();
 					if(ligne==null)
-						cases[i][j].nature=0;
-					else
+						cases[i][j]=new Wall();
+					else {
 						nat=Integer.parseInt(ligne);
-						cases[i][j].nature=nat;
+						switch(nat) {
+							case 0:
+								cases[i][j]=new Wall();
+								break;
+							case 1:
+								cases[i][j]=new Floor();
+								break;
+							case 2:
+								cases[i][j]=new Door();
+								break;
+							case 3:
+								cases[i][j]=new Spawn();
+								break;
+							case 4:
+								cases[i][j]=new MonsterSpawner();
+								break;
+							default:
+								cases[i][j]=new Wall();
+								break;
+						}
 						if(nat==3) {
 							spawn[0]=i;
 							spawn[1]=j;
@@ -36,13 +54,12 @@ public class Labyrinthe {
 							int[] tab= {i,j};
 							spawnMonsters.add(tab);
 						}
-					j++;
+					}
 				}
-				i++;
 			}
 			helpReader.close();
 		} catch (IOException e) {
-			System.out.println("Help not available");
+			System.out.println("Fichier inexistant");
 	}
 
 }

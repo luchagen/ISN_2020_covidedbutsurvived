@@ -1,7 +1,7 @@
 package model;
 
 public abstract class Tile {
-	int nature;
+	public int nature;
 	boolean canWalkOn;
 	boolean canFinishGame;
 	
