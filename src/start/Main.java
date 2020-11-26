@@ -1,10 +1,11 @@
 package start;
 
-import model.PacmanPainter;
+
 import engine.GameEngineGraphical;
 import model.PacmanController;
 import model.PacmanGame;
 import model.Labyrinthe;
+import model.MainPainter;
 import model.Monster;
 import model.Pacman;
 
@@ -22,7 +23,7 @@ public class Main {
 		
 		//PacmanGame game = new PacmanGame("helpFilePacman.txt",heros,monstres);
 		PacmanGame game = new PacmanGame("helpFilePacman.txt",heros,donjon);
-		PacmanPainter painter = new PacmanPainter(game,donjon);
+		MainPainter painter = new MainPainter(heros,donjon);
 		PacmanController controller = new PacmanController();
 
 		// classe qui lance le moteur de jeu generique
