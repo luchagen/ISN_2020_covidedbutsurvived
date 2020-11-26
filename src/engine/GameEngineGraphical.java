@@ -53,7 +53,7 @@ public class GameEngineGraphical {
 
 		// creation de l'interface graphique
 		this.gui = new GraphicalInterface(this.gamePainter,this.gameController);
-
+		
 		// boucle de game
 		while (!this.game.isFinished()) {
 			// demande controle utilisateur

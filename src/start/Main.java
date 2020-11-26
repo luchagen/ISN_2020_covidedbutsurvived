@@ -6,7 +6,7 @@ import model.PacmanController;
 import model.PacmanGame;
 import model.Labyrinthe;
 import model.MainPainter;
-import model.Monster;
+
 import model.Pacman;
 
 /**
@@ -29,6 +29,7 @@ public class Main {
 		// classe qui lance le moteur de jeu generique
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
 		engine.run();
+		System.out.println();
 	}
 
 }
