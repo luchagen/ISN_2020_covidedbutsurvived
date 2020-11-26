@@ -50,22 +50,38 @@ public class GameEngineGraphical {
 	 * permet de lancer le game
 	 */
 	public void run() throws InterruptedException {
-
+		long startTime = System.nanoTime();;
+		 long endtime=System.nanoTime();
+		 long elapsedtime=(endtime-startTime)/1000000;
+	
+		
 		// creation de l'interface graphique
 		this.gui = new GraphicalInterface(this.gamePainter,this.gameController);
 		
 		// boucle de game
-		while (!this.game.isFinished()) {
+		
+		
+		while (!this.game.isFinished()&& ((elapsedtime) < 7)) {
 			// demande controle utilisateur
 			Cmd c = this.gameController.getCommand();
 			// fait evoluer le game
 			this.game.evolve(c);
 			// affiche le game
 			this.gui.paint();
+			endtime=System.nanoTime();
+			elapsedtime=(endtime-startTime)/1000000000;
+			System.out.print("elapsed time= "+elapsedtime+"sec ");
 			// met en attente
 			Thread.sleep(100);
 		}
-		System.out.print("You won!!");
+		
+			if (this.game.isFinished()==true)
+			{
+		System.out.print("Congrats :You won!!");}
+			else
+		System.out.print("Time is finished :You lost!!");
+		
+		
 	}
 
 }
