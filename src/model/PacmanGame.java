@@ -52,15 +52,19 @@ public class PacmanGame implements Game {
 		System.out.println("Execute "+commande);
 		switch (commande) {
 		case RIGHT:
+			if((heros.X_case<Labyrinthe.nb_largeur-1) && (donjon.cases[heros.X_case+1][heros.Y_case].canWalkOn))
 			heros.moveRIGHT();
 			break;
 		case LEFT:
+			if((heros.X_case>0) && (donjon.cases[heros.X_case-1][heros.Y_case].canWalkOn))
 			heros.moveLEFT();
 			break;
 		case UP:
+			if((heros.Y_case>0) && (donjon.cases[heros.X_case][heros.Y_case-1].canWalkOn))
 			heros.moveUP();
 			break;
 		case DOWN:
+			if((heros.Y_case<Labyrinthe.nb_hauteur-1) && (donjon.cases[heros.X_case][heros.Y_case+1].canWalkOn))
 			heros.moveDOWN();
 			break;
 		case IDLE:

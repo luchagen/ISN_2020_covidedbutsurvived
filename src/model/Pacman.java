@@ -15,36 +15,26 @@ public class Pacman {
 	}
 	
 	public void moveUP() {
-		if(Y>0) {
 			Y=Y-PacmanGame.game_speed;
 			Y_case=Y/Labyrinthe.Tile_length;
 			System.out.println("("+X+","+Y+")");
-		}
 	}
 	public void moveDOWN() {
-		if(Y<PacmanPainter.HEIGHT-Labyrinthe.Tile_length) {
 			Y=Y+PacmanGame.game_speed;
 			Y_case=Y/Labyrinthe.Tile_length;
 			System.out.println("("+X+","+Y+")");
 		}
 		
-	}
+	
 	public void moveLEFT() {
-		if(X>0) {
 			X=X-PacmanGame.game_speed;
 			X_case=X/Labyrinthe.Tile_length;
 			System.out.println("("+X+","+Y+")");
-			
-		}
-		
 	}
+	
 	public void moveRIGHT() {
-		if(X<PacmanPainter.WIDTH-Labyrinthe.Tile_length) {
 			X=X+PacmanGame.game_speed;
 			X_case=X/Labyrinthe.Tile_length;
 			System.out.println("("+X+","+Y+")");
-		}
-		
 	}
-	
 }
