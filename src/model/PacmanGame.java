@@ -20,7 +20,7 @@ public class PacmanGame implements Game {
 	 * constructeur avec fichier source pour le help
 	 * 
 	 */
-	protected static final int game_speed=Labyrinthe.Tile_length/2;
+	protected static final int game_speed=Labyrinthe.Tile_length;
 	Pacman heros;
 	Labyrinthe donjon;
 	//Monster[] monstres;
