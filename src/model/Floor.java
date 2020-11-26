@@ -6,5 +6,6 @@ public class Floor extends Tile{
 		this.nature=1;
 		this.canWalkOn=true;
 		this.canFinishGame=false;
+		this.skin="img/grass.png";
 	}
 }

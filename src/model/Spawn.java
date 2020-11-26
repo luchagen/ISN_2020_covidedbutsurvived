@@ -6,5 +6,6 @@ public class Spawn extends Tile{
 		this.nature=3;
 		this.canWalkOn=true;
 		this.canFinishGame=false;
+		this.skin="img/grass.png";
 	}
 }

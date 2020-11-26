@@ -5,5 +5,6 @@ public class Door extends Tile{
 		this.nature=2;
 		this.canWalkOn=true;
 		this.canFinishGame=true;
+		this.skin="img/bridge.png";
 	}
 }

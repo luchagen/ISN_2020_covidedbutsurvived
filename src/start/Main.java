@@ -1,11 +1,12 @@
 package start;
 
-import model.PacmanPainter;
+
 import engine.GameEngineGraphical;
 import model.PacmanController;
 import model.PacmanGame;
 import model.Labyrinthe;
-import model.Monster;
+import model.MainPainter;
+
 import model.Pacman;
 
 /**
@@ -22,15 +23,19 @@ public class Main {
 		
 		//PacmanGame game = new PacmanGame("helpFilePacman.txt",heros,monstres);
 		PacmanGame game = new PacmanGame("helpFilePacman.txt",heros,donjon);
-		PacmanPainter painter = new PacmanPainter(game,donjon);
+		MainPainter painter = new MainPainter(heros,donjon);
 		PacmanController controller = new PacmanController();
 
 		// classe qui lance le moteur de jeu generique
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
 		
 		engine.run();
+<<<<<<< HEAD
 		}
 		
+=======
+		System.out.println();
+>>>>>>> a2a8b684bd37f7dae5d978541f4171d2bb57c734
 	}
 
 
