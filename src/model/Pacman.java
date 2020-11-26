@@ -2,6 +2,7 @@ package model;
 
 public class Pacman {
 	public int X,Y,X_case,Y_case;
+	public String skin;
 	
 	public Pacman(int X_0,int Y_0) {
 		X=X_0;
@@ -12,6 +13,7 @@ public class Pacman {
 		Y=spawn[1]*Labyrinthe.Tile_length;
 		X_case=spawn[0];
 		Y_case=spawn[1];
+		this.skin= "img/hero.png";
 	}
 	
 	public void moveUP() {
