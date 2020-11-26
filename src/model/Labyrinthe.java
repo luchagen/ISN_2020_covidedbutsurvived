@@ -20,46 +20,46 @@ public class Labyrinthe {
 	public Labyrinthe(String source) {
 		int nat = 0;
 		BufferedReader helpReader;
+		String liste_param[];
+		String param[];
+		int liste_param_int;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
 			String ligne;
-			for(int i=0;i<nb_largeur;i++) {
-				for(int j=0;j<nb_hauteur;j++) {
-					System.out.println(i+"   "+j);
-					ligne = helpReader.readLine();
-					if(ligne==null)
-						cases[i][j]=new Wall();
-					else {
-						nat=Integer.parseInt(ligne);
-						switch(nat) {
-							case 0:
-								cases[i][j]=new Wall();
-								break;
-							case 1:
-								cases[i][j]=new Floor();
-								break;
-							case 2:
-								cases[i][j]=new Door();
-								break;
-							case 3:
-								cases[i][j]=new Spawn();
-								break;
-							case 4:
-								cases[i][j]=new MonsterSpawner();
-								break;
-							default:
-								cases[i][j]=new Wall();
-								break;
-						}
-						if(nat==3) {
-							spawn[0]=i;
-							spawn[1]=j;
-						}
-						else if(nat==4){
-							int[] tab= {i,j};
-							spawnMonsters.add(tab);
-						}
-					}
+			for(int i=0;i<nb_hauteur;i++) {
+				ligne = helpReader.readLine();
+				liste_param = ligne.split("#");
+				for(int j=0;j<liste_param.length;j++) {
+					param=liste_param[j].split("");
+					nat=Integer.parseInt(param[0]);
+					switch(nat) {
+					case 0:
+						cases[j][i]=new Wall(liste_param[j]);
+						break;
+					case 1:
+						cases[j][i]=new Floor(liste_param[j]);
+						break;
+					case 2:
+						cases[j][i]=new Door(liste_param[j]);
+						break;
+					case 3:
+						cases[j][i]=new Spawn(liste_param[j]);
+						break;
+					case 4:
+						cases[j][i]=new MonsterSpawner(liste_param[j]);
+						break;
+					default:
+						cases[j][i]=new Wall(liste_param[j]);
+						break;
+				}
+				if(nat==3) {
+					spawn[0]=j;
+					spawn[1]=i;
+				}
+				else if(nat==4){
+					int[] tab= {j,i};
+					spawnMonsters.add(tab);
+				}
 				}
 			}
 			helpReader.close();

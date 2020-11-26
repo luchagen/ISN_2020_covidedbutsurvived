@@ -1,10 +1,10 @@
 package model;
 
 public class Wall extends Tile {
-	public Wall() {
+	public Wall(String in_source) {
 		this.nature=0;
 		this.canWalkOn=false;
 		this.canFinishGame=false;
-		this.skin="img/small tree.png";
+		this.skin=super.findSource(in_source);
 	}
 }
