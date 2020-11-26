@@ -8,6 +8,7 @@ import engine.GamePainter;
 //Classe inutile pour le moment
 public class LabyrinthePainter implements GamePainter {
 	Labyrinthe donjon;
+	PacmanGame game;
 	public LabyrinthePainter(Labyrinthe in_donjon) {
 		donjon=in_donjon;
 	}

@@ -6,12 +6,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Labyrinthe {
-	int nb_largeur=10,nb_hauteur=10;
-	int nb_case=nb_largeur*nb_hauteur;
-	int level;
+	protected static final int nb_largeur=10;
+	protected static final int nb_hauteur=10;
+	protected static final int nb_case=nb_largeur*nb_hauteur;
+	protected static final int Tile_length =PacmanPainter.WIDTH/nb_largeur;
+	protected static final int level=1;
+	
 	public Tile[][] cases = new Tile[nb_largeur][nb_hauteur];
 	public int[]spawn=new int[2];
 	public ArrayList<int[]> spawnMonsters=new ArrayList<int[]>();
+	
+	
 	public Labyrinthe(String source) {
 		int nat = 0;
 		BufferedReader helpReader;

@@ -21,7 +21,7 @@ public class Main {
 		//Monster[] monstres = new Monster[donjon.spawnMonsters.size()];
 		
 		//PacmanGame game = new PacmanGame("helpFilePacman.txt",heros,monstres);
-		PacmanGame game = new PacmanGame("helpFilePacman.txt",heros);
+		PacmanGame game = new PacmanGame("helpFilePacman.txt",heros,donjon);
 		PacmanPainter painter = new PacmanPainter(game,donjon);
 		PacmanController controller = new PacmanController();
 

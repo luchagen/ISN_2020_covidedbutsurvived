@@ -20,9 +20,12 @@ public class PacmanGame implements Game {
 	 * constructeur avec fichier source pour le help
 	 * 
 	 */
+	protected static final int game_speed=Labyrinthe.Tile_length/2;
 	Pacman heros;
+	Labyrinthe donjon;
 	//Monster[] monstres;
-	public PacmanGame(String source, Pacman in_heros) { //Ajouter monstre plus tard
+	
+	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon) { //Ajouter monstre plus tard
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
@@ -35,6 +38,7 @@ public class PacmanGame implements Game {
 			System.out.println("Help not available");
 		}
 		heros=in_heros;
+		donjon=in_donjon;
 		//monstres=in_monstres;
 	}
 
@@ -72,9 +76,6 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public boolean isFinished() {
-		// le jeu n'est jamais fini
-		return false;
-		
+		return donjon.cases[heros.X_case][heros.Y_case].canFinishGame;
 	}
-
 }
