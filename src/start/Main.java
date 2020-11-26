@@ -14,7 +14,7 @@ import model.Pacman;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-
+		
 		// creation du jeu particulier et de son afficheur
 		Labyrinthe donjon = new Labyrinthe("donjon.txt");
 		Pacman heros = new Pacman(donjon.spawn);
@@ -27,7 +27,10 @@ public class Main {
 
 		// classe qui lance le moteur de jeu generique
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
+		
 		engine.run();
+		}
+		
 	}
 
-}
+

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import engine.Cmd;
 import engine.Game;
-
+import java.util.concurrent.TimeUnit;
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -72,7 +72,7 @@ public class PacmanGame implements Game {
 		}
 		//for(int i=0;i<monstres.length;i++) {
 			//monstres[i].randMove();
-		//}
+	
 	}
 
 	/**
@@ -80,6 +80,8 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public boolean isFinished() {
-		return donjon.cases[heros.X_case][heros.Y_case].canFinishGame;
+		
+		{return donjon.cases[heros.X_case][heros.Y_case].canFinishGame;}
+		
 	}
 }
