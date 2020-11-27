@@ -89,7 +89,17 @@ public class PacmanGame implements Game {
 	@Override
 	public boolean isFinished() {
 		
-		{return donjon.cases[heros.X/Labyrinthe.Tile_length][heros.Y/Labyrinthe.Tile_length].canFinishGame;}
+		{return donjon.cases[((Labyrinthe.Tile_length/2)+ heros.X)/Labyrinthe.Tile_length][((Labyrinthe.Tile_length/2) +heros.Y)/Labyrinthe.Tile_length].canFinishGame;}
 		
+	}
+	/**
+	 * verifier si le jeu est fini
+	 */
+	@Override
+	public boolean isGameOver(long elapsedtime) {
+		if (elapsedtime < donjon.Time_Limit)
+			return false;
+		else
+			return true;
 	}
 }

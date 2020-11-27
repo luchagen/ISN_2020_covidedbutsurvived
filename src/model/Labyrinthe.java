@@ -11,6 +11,7 @@ public class Labyrinthe {
 	protected static final int nb_case=nb_largeur*nb_hauteur;
 	protected static final int Tile_length =PacmanPainter.WIDTH/nb_largeur;
 	protected static final int level=1;
+	public int Time_Limit=10;
 	
 	public Tile[][] cases = new Tile[nb_largeur][nb_hauteur];
 	public int[]spawn=new int[2];
@@ -44,6 +45,8 @@ public class Labyrinthe {
 						break;
 					case 3:
 						cases[j][i]=new Spawn(liste_param[j]);
+						String[] gameparameters = liste_param[j].split("");
+						Time_Limit = 10*Integer.parseInt(gameparameters[gameparameters.length-1]);
 						break;
 					case 4:
 						cases[j][i]=new MonsterSpawner(liste_param[j]);

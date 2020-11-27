@@ -15,16 +15,16 @@ public class Pacman {
 		updateHitbox();
 	}
 	public void updateHitbox() {
-		Xwtwest=(X+10-PacmanGame.game_speed);
+		Xwtwest=(X+15-PacmanGame.game_speed);
 		Xwt=Xwtwest/Labyrinthe.Tile_length;
-		Xet=(X+30+PacmanGame.game_speed)/Labyrinthe.Tile_length;
-		Yntnorth=(Y+10-PacmanGame.game_speed);
+		Xet=(X+25+PacmanGame.game_speed)/Labyrinthe.Tile_length;
+		Yntnorth=(Y+15-PacmanGame.game_speed);
 		Ynt=Yntnorth/Labyrinthe.Tile_length;
-		Yst=(Y+30+PacmanGame.game_speed)/Labyrinthe.Tile_length;
-		Xw=(X+10)/Labyrinthe.Tile_length;
-		Xe=(X+30)/Labyrinthe.Tile_length;
-		Yn=(Y+10)/Labyrinthe.Tile_length;
-		Ys=(Y+30)/Labyrinthe.Tile_length;
+		Yst=(Y+25+PacmanGame.game_speed)/Labyrinthe.Tile_length;
+		Xw=(X+15)/Labyrinthe.Tile_length;
+		Xe=(X+25)/Labyrinthe.Tile_length;
+		Yn=(Y+15)/Labyrinthe.Tile_length;
+		Ys=(Y+25)/Labyrinthe.Tile_length;
 	}
 	public void moveUP() {
 			Y=Y-PacmanGame.game_speed;
