@@ -61,7 +61,7 @@ public class GameEngineGraphical {
 		// boucle de game
 		
 		
-		while (!this.game.isFinished()&& ((elapsedtime) < 70)) {
+		while (!this.game.isFinished()&& ((elapsedtime) < 10)) {
 			// demande controle utilisateur
 			Cmd c = this.gameController.getCommand();
 			// fait evoluer le game
