@@ -61,7 +61,7 @@ public class GameEngineGraphical {
 		// boucle de game
 		
 		
-		while (!this.game.isFinished()&& ((elapsedtime) < 7)) {
+		while (!this.game.isFinished()&& ((elapsedtime) < 70)) {
 			// demande controle utilisateur
 			Cmd c = this.gameController.getCommand();
 			// fait evoluer le game
@@ -72,7 +72,7 @@ public class GameEngineGraphical {
 			elapsedtime=(endtime-startTime)/1000000000;
 			System.out.print("elapsed time= "+elapsedtime+"sec ");
 			// met en attente
-			Thread.sleep(100);
+			Thread.sleep(20);
 		}
 		
 			if (this.game.isFinished()==true)

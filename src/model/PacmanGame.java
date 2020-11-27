@@ -20,7 +20,7 @@ public class PacmanGame implements Game {
 	 * constructeur avec fichier source pour le help
 	 * 
 	 */
-	protected static final int game_speed=Labyrinthe.Tile_length;
+	protected static final int game_speed=10;
 	Pacman heros;
 	Labyrinthe donjon;
 	//Monster[] monstres;
@@ -52,20 +52,28 @@ public class PacmanGame implements Game {
 		System.out.println("Execute "+commande);
 		switch (commande) {
 		case RIGHT:
-			if((heros.X_case<Labyrinthe.nb_largeur-1) && (donjon.cases[heros.X_case+1][heros.Y_case].canWalkOn))
-			heros.moveRIGHT();
+			if((heros.Xet<Labyrinthe.nb_largeur) && (donjon.cases[heros.Xet][heros.Yn].canWalkOn) && (donjon.cases[heros.Xet][heros.Ys].canWalkOn) )
+				heros.moveRIGHT();
+			else
+				heros.collisionRIGHT();
 			break;
 		case LEFT:
-			if((heros.X_case>0) && (donjon.cases[heros.X_case-1][heros.Y_case].canWalkOn))
-			heros.moveLEFT();
+			if(((heros.Xwtwest)>0) && (donjon.cases[heros.Xwt][heros.Yn].canWalkOn) && (donjon.cases[heros.Xwt][heros.Ys].canWalkOn) )
+				heros.moveLEFT();
+			else
+				heros.collisionLEFT();
 			break;
 		case UP:
-			if((heros.Y_case>0) && (donjon.cases[heros.X_case][heros.Y_case-1].canWalkOn))
-			heros.moveUP();
+			if(((heros.Yntnorth)>0) && (donjon.cases[heros.Xw][heros.Ynt].canWalkOn) && (donjon.cases[heros.Xe][heros.Ynt].canWalkOn))
+				heros.moveUP();
+			else
+				heros.collisionUP();
 			break;
 		case DOWN:
-			if((heros.Y_case<Labyrinthe.nb_hauteur-1) && (donjon.cases[heros.X_case][heros.Y_case+1].canWalkOn))
-			heros.moveDOWN();
+			if(((heros.Yst)<Labyrinthe.nb_hauteur) && (donjon.cases[heros.Xw][heros.Yst].canWalkOn) && (donjon.cases[heros.Xe][heros.Yst].canWalkOn))
+				heros.moveDOWN();
+			else
+				heros.collisionDOWN();
 			break;
 		case IDLE:
 			break;
@@ -81,7 +89,7 @@ public class PacmanGame implements Game {
 	@Override
 	public boolean isFinished() {
 		
-		{return donjon.cases[heros.X_case][heros.Y_case].canFinishGame;}
+		{return donjon.cases[heros.X/Labyrinthe.Tile_length][heros.Y/Labyrinthe.Tile_length].canFinishGame;}
 		
 	}
 }
