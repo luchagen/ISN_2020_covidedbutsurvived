@@ -30,14 +30,14 @@ public class Main {
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
 		
 		engine.run();
-<<<<<<< HEAD
+
 
 		}
 		
-=======
+
 		}
 
->>>>>>> da1f4fb4847b53621aecd233339a1e55b737a440
-	}
+
+	
 
 
