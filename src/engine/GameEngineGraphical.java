@@ -62,7 +62,6 @@ public class GameEngineGraphical {
 		
 		
 
-		while (!this.game.isFinished()&& ((elapsedtime) < 9)) {
 
 		while (!this.game.isFinished()&& (!this.game.isGameOver(elapsedtime))) {
 
@@ -86,6 +85,6 @@ public class GameEngineGraphical {
 		System.out.print("Time is finished :You lost!!");
 		
 		
-	}
+
 
 }}
