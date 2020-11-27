@@ -38,7 +38,7 @@ public class Labyrinthe {
 			e.printStackTrace();
 		}
 	}
-	private void setLengthParameters(BufferedReader LabReader) throws IOException {
+	private void setLengthParameters(BufferedReader LabReader) throws IOException { //Initialisation des paramètres liés aux dimensions du labyrinthe
 		String ligne = LabReader.readLine();
 		String[] liste;
 		while(rowRead<lastRowLengthParameters) {
@@ -88,6 +88,9 @@ public class Labyrinthe {
 						break;
 					case 4:
 						this.cases[j][i]=new MonsterSpawner(liste_param[j]);
+						break;
+					case 5:
+						this.cases[j][i]=new Chest(liste_param[j]);
 						break;
 					default:
 						cases[j][i]=new Wall(liste_param[j]);
