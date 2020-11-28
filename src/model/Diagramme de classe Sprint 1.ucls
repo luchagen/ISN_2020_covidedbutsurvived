@@ -190,123 +190,118 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="model.MainPainter" project="ISN_2020_covidedbutsurvived" 
-    file="/ISN_2020_covidedbutsurvived/src/model/MainPainter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="664" y="408"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <realization id="23">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="14"/>  
-  </realization>  
-  <association id="24">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="25" name="heros">        
-        <position height="0" width="0" x="-19" y="264"/>      
+  <association id="22">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="23" name="panel">        
+        <position height="0" width="0" x="-153" y="-86"/>      
       </attribute>      
-      <multiplicity id="26" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-19" y="264"/>      
+      <multiplicity id="24" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-153" y="-86"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="28" name="donjon">        
-        <position height="0" width="0" x="-15" y="145"/>      
-      </attribute>      
-      <multiplicity id="29" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-15" y="145"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="30">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <association id="31">    
+  <generalization id="25">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <association id="26">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="32" name="game">        
-        <position height="0" width="0" x="243" y="-415"/>      
+      <attribute id="27" name="gamePainter">        
+        <position height="0" width="0" x="-42" y="-267"/>      
       </attribute>      
-      <multiplicity id="33" minimum="0" maximum="1">        
-        <position height="0" width="0" x="243" y="-415"/>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-42" y="-267"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="34">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="35" name="cases">        
-        <position height="0" width="0" x="-45" y="257"/>      
-      </attribute>      
-      <multiplicity id="36" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-45" y="257"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="37">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="38" name="donjon">        
-        <position height="0" width="0" x="-15" y="145"/>      
-      </attribute>      
-      <multiplicity id="39" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-15" y="145"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="41" name="gameController">        
-        <position height="0" width="0" x="-10" y="-116"/>      
-      </attribute>      
-      <multiplicity id="42" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-10" y="-116"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="43">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="44" name="gui">        
-        <position height="0" width="0" x="-110" y="-131"/>      
-      </attribute>      
-      <multiplicity id="45" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-110" y="-131"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
+  <generalization id="29">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <association id="30">    
     <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="47" name="commandeEnCours">        
+      <attribute id="31" name="commandeEnCours">        
         <position height="0" width="0" x="99" y="-12"/>      
       </attribute>      
-      <multiplicity id="48" minimum="0" maximum="1">        
+      <multiplicity id="32" minimum="0" maximum="1">        
         <position height="0" width="0" x="99" y="-12"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="49">    
-    <end type="SOURCE" refId="10"/>    
+  <generalization id="33">    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="6"/>  
   </generalization>  
+  <realization id="34">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <association id="35">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="36" name="painter">        
+        <position height="0" width="0" x="-42" y="-267"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-42" y="-267"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="38">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="16"/>  
+  </realization>  
+  <association id="39">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="40" name="cases">        
+        <position height="0" width="0" x="-45" y="257"/>      
+      </attribute>      
+      <multiplicity id="41" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-45" y="257"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="42">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="43" name="donjon">        
+        <position height="0" width="0" x="-15" y="145"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-15" y="145"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="46" name="heros">        
+        <position height="0" width="0" x="-243" y="-8"/>      
+      </attribute>      
+      <multiplicity id="47" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-243" y="-8"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="48">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <realization id="49">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
   <generalization id="50">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="6"/>  
@@ -324,95 +319,51 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="54">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="55" name="herosPainter">        
-        <position height="0" width="0" x="40" y="4"/>      
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="55" name="gameController">        
+        <position height="0" width="0" x="-10" y="-116"/>      
       </attribute>      
       <multiplicity id="56" minimum="0" maximum="1">        
-        <position height="0" width="0" x="40" y="4"/>      
+        <position height="0" width="0" x="-10" y="-116"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="57">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="58" name="painter">        
-        <position height="0" width="0" x="-42" y="-267"/>      
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="58" name="game">        
+        <position height="0" width="0" x="243" y="-415"/>      
       </attribute>      
       <multiplicity id="59" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-42" y="-267"/>      
+        <position height="0" width="0" x="243" y="-415"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="60">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="61" name="heros">        
-        <position height="0" width="0" x="-243" y="-8"/>      
+      <attribute id="61" name="donjon">        
+        <position height="0" width="0" x="-15" y="145"/>      
       </attribute>      
       <multiplicity id="62" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-243" y="-8"/>      
+        <position height="0" width="0" x="-15" y="145"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="63">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="16"/>  
-  </realization>  
-  <association id="64">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="65" name="donjonPainter">        
-        <position height="0" width="0" x="-9" y="97"/>      
-      </attribute>      
-      <multiplicity id="66" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-9" y="97"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="67">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <realization id="68">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="16"/>  
-  </realization>  
-  <generalization id="69">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <association id="70">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="71" name="panel">        
-        <position height="0" width="0" x="-153" y="-86"/>      
-      </attribute>      
-      <multiplicity id="72" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-153" y="-86"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="73">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <association id="74">    
+  <association id="63">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="75" name="gamePainter">        
-        <position height="0" width="0" x="-42" y="-267"/>      
+      <attribute id="64" name="gui">        
+        <position height="0" width="0" x="-110" y="-131"/>      
       </attribute>      
-      <multiplicity id="76" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-42" y="-267"/>      
+      <multiplicity id="65" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-110" y="-131"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

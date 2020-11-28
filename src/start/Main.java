@@ -17,7 +17,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException {
 		
 		// creation du jeu particulier et de son afficheur
-		Labyrinthe donjon = new Labyrinthe("donjon.txt");
+		Labyrinthe donjon = new Labyrinthe("levels/level_1.txt");
 		Pacman heros = new Pacman(donjon.spawn);
 		//Monster[] monstres = new Monster[donjon.spawnMonsters.size()];
 		

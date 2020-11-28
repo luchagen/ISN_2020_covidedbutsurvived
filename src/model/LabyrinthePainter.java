@@ -14,12 +14,16 @@ public class LabyrinthePainter {
 	int largeur_rect, hauteur_rect;
 	public LabyrinthePainter(Labyrinthe in_donjon, int WIDTH, int HEIGHT) {
 		donjon=in_donjon;
-		largeur_rect= WIDTH/Labyrinthe.nb_largeur;
-		hauteur_rect= HEIGHT/Labyrinthe.nb_hauteur;
+		int nb_largeur=donjon.getNb_largeur();
+		int nb_hauteur=donjon.getNb_hauteur();
+		largeur_rect= WIDTH/nb_largeur;
+		hauteur_rect= HEIGHT/nb_hauteur;
 	}
 	public void draw(Graphics2D crayon_lab) {
-		for(int i=0;i<Labyrinthe.nb_largeur;i++) {
-			for (int j=0;j<Labyrinthe.nb_hauteur;j++) {
+		int nb_largeur=donjon.getNb_largeur();
+		int nb_hauteur=donjon.getNb_hauteur();
+		for(int i=0;i<nb_largeur;i++) {
+			for (int j=0;j<nb_hauteur;j++) {
 				Image img;
 				try {
 					img = ImageIO.read(new File(donjon.cases[i][j].skin));
