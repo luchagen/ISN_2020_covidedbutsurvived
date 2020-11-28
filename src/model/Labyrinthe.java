@@ -7,18 +7,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Labyrinthe {
-	protected static int nb_largeur;
-	protected static int nb_hauteur;
-	protected  int nb_case;
-	protected static int Tile_length;
-	protected int level;
-	protected int Time_Limit;
-	protected int rowRead;
-	protected final int lastRowLengthParameters=5;
+	protected static int nb_largeur; // Le nombre de case en largeur du labyrinthe
+	protected static int nb_hauteur; // Le nombre de case en hauteur du labyrinthe
+	protected  int nb_case;			// Le produit des deux attributs précédents
+	protected static int Tile_length; //La taille en pixel d'une case du labyrinthe, problème à corriger
+									// car cela suppose forcément que nb_largeur=nb_hauteur
+									//et donc que chacune des cases est un carré
+	protected int level;			// Le niveau attribué au labyrinthe
+	protected int Time_Limit;       // Le temps limite donné au joueur pour gagné
+	protected int rowRead;			// Définit la ligne lue par chacune des méthodes de cette classe
+	protected final int lastRowLengthParameters=5; // Définit la dernière ligne que où se trouve les paramètres de taille
 	
-	public Tile[][] cases;
-	public int[]spawn=new int[2];
-	public ArrayList<int[]> spawnMonsters=new ArrayList<int[]>();
+	public Tile[][] cases;			// Chacune des cases est représentée par une instance de Tile, elles sont indexées par deux entiers (i,j)
+									//représentant les lignes et colonnes du labyrinthe 
+	public int[]spawn=new int[2];		// Coordonnées (i,j) représentant la case où le joueur doit apparaitre
+	public ArrayList<int[]> spawnMonsters=new ArrayList<int[]>(); //Comme précédemment sauf qu'il s'agit des monstres et il peut y en avoir plusieurs
 	
 	
 	public Labyrinthe(String source) {
@@ -26,9 +29,11 @@ public class Labyrinthe {
 		BufferedReader LabReader;
 		try {
 			LabReader = new BufferedReader(new FileReader(source));
-			this.setLengthParameters(LabReader);
-			cases = new Tile[nb_largeur][nb_hauteur];
-			this.setCases(LabReader);
+			this.setLengthParameters(LabReader); // Lit les paramètres de taille du labyrinthe et définit les attributs correspondants
+			cases = new Tile[nb_largeur][nb_hauteur]; // On peut alors définit plus précisément l'attribut cases
+			this.setCases(LabReader);  //Par la suite, on déchiffre le code fournit pour générer le labyrinthe 
+									  //cela revient à définir quel type de Tile représente la case (i,j)
+		//On lève des exceptions au cas où (obligatoire pour compiler)
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,10 +43,14 @@ public class Labyrinthe {
 			e.printStackTrace();
 		}
 	}
-	private void setLengthParameters(BufferedReader LabReader) throws IOException { //Initialisation des paramètres liés aux dimensions du labyrinthe
+	private void setLengthParameters(BufferedReader LabReader) throws IOException { 
+		//Initialisation des paramètres liés aux dimensions du labyrinthe
+		// Cette méthode lit à partir de la toute première ligne et s'arrête à la lastRowLengthParameters
 		String ligne = LabReader.readLine();
 		String[] liste;
 		while(rowRead<lastRowLengthParameters) {
+		// Tant que nous n'avons pas dépassé la lastRowLengthParameters, on initie les attributs de cette classe
+		// à partir des éléments fournis après le signe "=" dans le fichier source
 			rowRead++;
 			ligne = LabReader.readLine();
 			liste = ligne.split("=");
@@ -55,6 +64,7 @@ public class Labyrinthe {
 				this.setTime_Limit(Integer.parseInt(liste[1]));
 			
 		}
+		// Ces derniers attributs sont calculés en dernier afin d'éviter qu'ils ne valent 0
 		nb_case=nb_largeur*nb_hauteur;
 		Tile_length =PacmanPainter.WIDTH/nb_largeur;
 		LabReader.readLine();
@@ -68,7 +78,6 @@ public class Labyrinthe {
 			String ligne;
 			for(int i=0;i<nb_hauteur;i++) {
 				ligne = LabReader.readLine();
-				System.out.println(ligne);
 				liste_param = ligne.split("#");
 				for(int j=0;j<liste_param.length;j++) {
 					param=liste_param[j].split("");
