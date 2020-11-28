@@ -14,6 +14,7 @@ public class Pacman {
 		this.skin= "img/hero.png";
 		updateHitbox();
 	}
+	// mise à jour de la position des points qui définissent la hitbox du pacman, à mettre à jour après chaque déplacement 
 	public void updateHitbox() {
 		Xwtwest=(X+15-PacmanGame.game_speed);
 		Xwt=Xwtwest/Labyrinthe.Tile_length;
@@ -31,7 +32,9 @@ public class Pacman {
 			updateHitbox();
 			System.out.println("("+X+","+Y+")");
 	}
-	
+	//le pacman entre en collision avec un mur/ bord en allant vers le haut, il "rebondit" (bump)
+	// note: cette mesure est obligatoire (et typique d'un jeu vidéo de ce genre) 
+	// pour ne pas être incapable de longer un mur quand on s'en rapproche trop
 	public void collisionUP() {
 			Y=Y+1;
 			updateHitbox();
@@ -43,7 +46,7 @@ public class Pacman {
 			updateHitbox();
 			System.out.println("("+X+","+Y+")");
 		}
-	
+	//le pacman entre en collision avec un mur/ bord en allant vers le bas, il "rebondit" (bump)
 	public void collisionDOWN() {
 		Y=Y-1;
 		updateHitbox();
@@ -55,7 +58,7 @@ public class Pacman {
 			updateHitbox();
 			System.out.println("("+X+","+Y+")");
 	}
-	
+	//le pacman entre en collision avec un mur/ bord en allant vers la gauche, il "rebondit" (bump)
 	public void collisionLEFT() {
 		X=X+1;
 		updateHitbox();
@@ -67,7 +70,7 @@ public class Pacman {
 			updateHitbox();
 			System.out.println("("+X+","+Y+")");
 	}
-	
+	//le pacman entre en collision avec un mur/ bord en allant vers la droite, il "rebondit" (bump)
 	public void collisionRIGHT() {
 		X=X-1;
 		updateHitbox();
