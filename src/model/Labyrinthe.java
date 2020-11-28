@@ -10,11 +10,10 @@ public class Labyrinthe {
 	protected static int nb_largeur; // Le nombre de case en largeur du labyrinthe
 	protected static int nb_hauteur; // Le nombre de case en hauteur du labyrinthe
 	protected  int nb_case;			// Le produit des deux attributs précédents
-	protected static int Tile_length; //La taille en pixel d'une case du labyrinthe, problème à corriger
-									// car cela suppose forcément que nb_largeur=nb_hauteur
+	protected static int Tile_length; //La taille en pixel d'une case du labyrinthe
 									//et donc que chacune des cases est un carré
 	protected int level;			// Le niveau attribué au labyrinthe
-	protected int Time_Limit;       // Le temps limite donné au joueur pour gagné
+	protected int Time_Limit;       // Le temps limite donné au joueur pour gagner
 	protected int rowRead;			// Définit la ligne lue par chacune des méthodes de cette classe
 	protected final int lastRowLengthParameters=5; // Définit la dernière ligne que où se trouve les paramètres de taille
 	
@@ -49,7 +48,7 @@ public class Labyrinthe {
 		String ligne = LabReader.readLine();
 		String[] liste;
 		while(rowRead<lastRowLengthParameters) {
-		// Tant que nous n'avons pas dépassé la lastRowLengthParameters, on initie les attributs de cette classe
+		// Tant que nous n'avons pas dépasser la lastRowLengthParameters, on initie les attributs de cette classe
 		// à partir des éléments fournis après le signe "=" dans le fichier source
 			rowRead++;
 			ligne = LabReader.readLine();
@@ -120,7 +119,7 @@ public class Labyrinthe {
 			System.out.println("Fichier source inexistant");
 	}
 	}
-
+	// Getters et Setters
 	private void setSpawn(int[] spawn) {
 		this.spawn = spawn;
 	}
