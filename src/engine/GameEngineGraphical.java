@@ -59,13 +59,7 @@ public class GameEngineGraphical {
 		this.gui = new GraphicalInterface(this.gamePainter,this.gameController);
 		
 		// boucle de game
-		
-		
 
-<<<<<<< HEAD
-		/*while (!this.game.isFinished()&& ((elapsedtime) < 9)) {*/
-=======
->>>>>>> 8383728165f690400de2d5003a55f18464c875d7
 
 		while (!this.game.isFinished()&& (!this.game.isGameOver(elapsedtime))) {
 
@@ -88,11 +82,5 @@ public class GameEngineGraphical {
 			else
 		System.out.print("Time is finished :You lost!!");
 		
-		
-<<<<<<< HEAD
-	//}
-=======
-
->>>>>>> 8383728165f690400de2d5003a55f18464c875d7
 
 }}
