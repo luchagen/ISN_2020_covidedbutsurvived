@@ -48,7 +48,7 @@ public class Labyrinthe {
 		String ligne = LabReader.readLine();
 		String[] liste;
 		while(rowRead<lastRowLengthParameters) {
-		// Tant que nous n'avons pas dépasser la lastRowLengthParameters, on initie les attributs de cette classe
+		// Tant que nous n'avons pas dépassé la lastRowLengthParameters, on initialise les attributs de cette classe
 		// à partir des éléments fournis après le signe "=" dans le fichier source
 			rowRead++;
 			ligne = LabReader.readLine();
@@ -65,7 +65,7 @@ public class Labyrinthe {
 		}
 		// Ces derniers attributs sont calculés en dernier afin d'éviter qu'ils ne valent 0
 		nb_case=nb_largeur*nb_hauteur;
-		Tile_length =PacmanPainter.WIDTH/nb_largeur;
+		Tile_length =MainPainter.WIDTH/nb_largeur;
 		LabReader.readLine();
 	}
 	

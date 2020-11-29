@@ -16,16 +16,19 @@ public class Pacman {
 	}
 	// mise à jour de la position des points qui définissent la hitbox du pacman, à mettre à jour après chaque déplacement 
 	public void updateHitbox() {
-		Xwtwest=(X+15-PacmanGame.game_speed);
-		Xwt=Xwtwest/Labyrinthe.Tile_length;
-		Xet=(X+25+PacmanGame.game_speed)/Labyrinthe.Tile_length;
-		Yntnorth=(Y+15-PacmanGame.game_speed);
-		Ynt=Yntnorth/Labyrinthe.Tile_length;
-		Yst=(Y+25+PacmanGame.game_speed)/Labyrinthe.Tile_length;
-		Xw=(X+15)/Labyrinthe.Tile_length;
-		Xe=(X+25)/Labyrinthe.Tile_length;
-		Yn=(Y+15)/Labyrinthe.Tile_length;
-		Ys=(Y+25)/Labyrinthe.Tile_length;
+		int Tile_length = Labyrinthe.Tile_length;
+		int a = (int) (0.355*Tile_length);
+		int b = (int) (0.625*Tile_length);
+		Xwtwest=(X+a-PacmanGame.game_speed);
+		Xwt=Xwtwest/Tile_length;
+		Xet=(X+b+PacmanGame.game_speed)/Tile_length;
+		Yntnorth=(Y+a-PacmanGame.game_speed);
+		Ynt=Yntnorth/Tile_length;
+		Yst=(Y+b+PacmanGame.game_speed)/Tile_length;
+		Xw=(X+a)/Tile_length;
+		Xe=(X+b)/Tile_length;
+		Yn=(Y+a)/Tile_length;
+		Ys=(Y+b)/Tile_length;
 	}
 	public void moveUP() {
 			Y=Y-PacmanGame.game_speed;

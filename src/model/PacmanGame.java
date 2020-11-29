@@ -6,7 +6,6 @@ import java.io.IOException;
 
 import engine.Cmd;
 import engine.Game;
-import java.util.concurrent.TimeUnit;
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -20,7 +19,7 @@ public class PacmanGame implements Game {
 	 * constructeur avec fichier source pour le help
 	 * 
 	 */
-	protected static final int game_speed=10;
+	protected static final int game_speed=(int) (Labyrinthe.Tile_length/4);
 	Pacman heros;
 	Labyrinthe donjon;
 	//Monster[] monstres;

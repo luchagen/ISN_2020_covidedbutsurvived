@@ -11,8 +11,8 @@ public class MainPainter implements GamePainter{
 	/**
 	 * la taille des cases
 	 */
-	protected static final int WIDTH = 400;
-	protected static final int HEIGHT = 400;
+	protected static final int WIDTH = 320;
+	protected static final int HEIGHT = 320;
 
 	/**
 	 * appelle constructeur parent
