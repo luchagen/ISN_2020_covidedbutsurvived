@@ -83,7 +83,7 @@ public class Labyrinthe {
 					nat=Integer.parseInt(param[0]);
 					switch(nat) {
 					case 0:
-						this.cases[j][i]=new Wall(liste_param[j]);
+						this.cases[j][i]=new Wall(liste_param[j]); 
 						break;
 					case 1:
 						this.cases[j][i]=new Floor(liste_param[j]);
