@@ -22,5 +22,7 @@ public interface Game {
 	public boolean isFinished();
 	
 	public boolean isGameOver(long elapsedtime);
+	
+	public boolean isKilled();
 
 }

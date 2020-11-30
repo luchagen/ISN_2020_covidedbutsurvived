@@ -2,12 +2,12 @@ package model;
 
 import java.util.ArrayList;
 
-public class Monster {
-	int X,Y;
-	public Monster(Labyrinthe donjon)
-	{
-		
+public class Monster extends Personnage {
+
+	public Monster(int[] spawn) {
+		super(spawn);
+		this.skin= "img/monster.png";
+		// TODO Auto-generated constructor stub
 	}
-	public void randMove() {
-	}
+
 }

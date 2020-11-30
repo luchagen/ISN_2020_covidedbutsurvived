@@ -1,19 +1,14 @@
 package model;
 
-public class Pacman {
-	public int X,Y,Xwt,Xet,Ynt,Yst,Xw,Xe,Yn,Ys,Xwtwest,Yntnorth;
-	public String skin;
+public class Pacman  extends Personnage{
 	
-	public Pacman(int X_0,int Y_0) {
-		X=X_0;
-		Y=Y_0;
-		}
 	public Pacman(int[] spawn) {
-		X=spawn[0]*Labyrinthe.Tile_length;
-		Y=spawn[1]*Labyrinthe.Tile_length;
+		super(spawn);
 		this.skin= "img/hero.png";
-		updateHitbox();
+		// TODO Auto-generated constructor stub
 	}
+		
+
 	// mise à jour de la position des points qui définissent la hitbox du pacman, à mettre à jour après chaque déplacement 
 	public void updateHitbox() {
 		int Tile_length = Labyrinthe.Tile_length;
@@ -30,6 +25,7 @@ public class Pacman {
 		Yn=(Y+a)/Tile_length;
 		Ys=(Y+b)/Tile_length;
 	}
+	
 	public void moveUP() {
 			Y=Y-PacmanGame.game_speed;
 			updateHitbox();

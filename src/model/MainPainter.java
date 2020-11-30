@@ -22,9 +22,12 @@ public class MainPainter implements GamePainter{
 	 */
 	PacmanPainter herosPainter;
 	LabyrinthePainter donjonPainter;
-	public MainPainter(Pacman in_heros, Labyrinthe in_donjon) {
+	MonsterPainter monsterPainter;
+	
+	public MainPainter(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monsters) {
 		herosPainter= new PacmanPainter(in_heros);
 		donjonPainter = new LabyrinthePainter(in_donjon, WIDTH, HEIGHT);
+		monsterPainter= new MonsterPainter(in_monsters);
 	}
 
 	/**
@@ -34,8 +37,10 @@ public class MainPainter implements GamePainter{
 	public void draw(BufferedImage im) {
 		Graphics2D crayon_pac = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_lab = (Graphics2D) im.getGraphics();
+		Graphics2D crayon_evl = (Graphics2D) im.getGraphics();
 		donjonPainter.draw(crayon_lab);
 		herosPainter.draw(crayon_pac);
+		monsterPainter.draw(crayon_evl);
 	}
 
 	@Override

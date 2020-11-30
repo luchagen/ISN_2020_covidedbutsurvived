@@ -3,6 +3,7 @@ package model;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 
 import engine.Cmd;
 import engine.Game;
@@ -22,9 +23,9 @@ public class PacmanGame implements Game {
 	protected static final int game_speed=(int) (Labyrinthe.Tile_length/4);
 	Pacman heros;
 	Labyrinthe donjon;
-	//Monster[] monstres;
+	Monster[] monstres;
 	
-	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon) { //Ajouter monstre plus tard
+	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) { 
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
@@ -38,7 +39,7 @@ public class PacmanGame implements Game {
 		}
 		heros=in_heros;
 		donjon=in_donjon;
-		//monstres=in_monstres;
+		monstres=in_monstres;
 	}
 
 	/**
@@ -77,9 +78,31 @@ public class PacmanGame implements Game {
 		case IDLE:
 			break;
 		}
-		//for(int i=0;i<monstres.length;i++) {
-			//monstres[i].randMove();
-	
+		//evolve monsters
+		for(int i=0;i<monstres.length;i++) {
+			Random r = new Random();
+	        int n = r.nextInt(4);
+	        int l=Labyrinthe.Tile_length;
+			switch (n) {
+				case 0:
+					if((monstres[i].X<MainPainter.WIDTH-l) && (donjon.cases[monstres[i].X/l+1][monstres[i].Y/l].canWalkOn))
+						monstres[i].X+=l;
+					break;
+				case 2:
+					if((monstres[i].X>=l) && (donjon.cases[monstres[i].X/l-1][monstres[i].Y/l].canWalkOn))
+						monstres[i].X-=l;
+					break;
+				case 1:
+					if((monstres[i].Y>=l) && (donjon.cases[monstres[i].X/l][monstres[i].Y/l-1].canWalkOn))
+						monstres[i].Y-=l;
+					break;
+					
+				case 3:
+					if((monstres[i].Y<MainPainter.WIDTH-l)&& (donjon.cases[monstres[i].X/l][monstres[i].Y/l+1].canWalkOn))
+						monstres[i].Y+=l;
+					break;
+				}
+				}	
 	}
 
 	/**
@@ -101,4 +124,13 @@ public class PacmanGame implements Game {
 		else
 			return true;
 	}
-}
+	
+	public boolean isKilled() {
+		int l=Labyrinthe.Tile_length;
+		for(int i=0;i<monstres.length;i++) {
+			if((monstres[i].X/l==heros.X/l)&&(monstres[i].Y/l==heros.Y/l)) 
+				return true;
+		}
+		return false;
+	}
+	}

@@ -17,11 +17,7 @@ import javax.imageio.ImageIO;
  */
 public class PacmanPainter {
 
-	/**
-	 * la taille des cases
-	 */
-
-	/**
+		/**
 	 * appelle constructeur parent
 	 * 
 	 * @param game
@@ -45,8 +41,6 @@ public class PacmanPainter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 	}
-
-
-
 }
+	
 }

@@ -61,7 +61,7 @@ public class GameEngineGraphical {
 		// boucle de game
 
 
-		while (!this.game.isFinished()&& (!this.game.isGameOver(elapsedtime))) {
+		while (!this.game.isFinished()&& (!this.game.isGameOver(elapsedtime)) && (!this.game.isKilled())) {
 
 			// demande controle utilisateur
 			Cmd c = this.gameController.getCommand();
@@ -79,8 +79,9 @@ public class GameEngineGraphical {
 			if (this.game.isFinished()==true)
 			{
 		System.out.print("Congrats :You won!!");}
-			else
+			else if(this.game.isGameOver(elapsedtime))
 		System.out.print("Time is finished :You lost!!");
-		
-
-}}
+			else
+		System.out.print("Game over :You are coroned!!");
+}
+	}
