@@ -1,0 +1,13 @@
+-finir le spritesystem 
+animations : marche,  attaque , idle pour les monstres et le pacman, si nécessaire pour les pieges
+LUC
+-systeme de points de vie
+system de fond ( attribut point de vie personnage )
+CYRIL
+-pieges 
+3 ou 4 pieges
+tuent le perso ou retirent de la vie 
+AHMED
+-gestion de plusieurs niveaux 
+passage d’un niveau à un autre pendant une game
+GHASSEN
