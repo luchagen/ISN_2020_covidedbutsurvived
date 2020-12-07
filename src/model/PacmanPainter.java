@@ -24,18 +24,20 @@ public class PacmanPainter {
 	 *            le jeutest a afficher
 	 */
 	Pacman heros;
+	SpriteGroup herosprite;
 	public PacmanPainter(Pacman in_heros) {
 		heros=in_heros;
+		herosprite = new SpriteGroup(heros.skin);
 		
 	}
 
 	/**
 	 * methode  redefinie de Afficheur retourne une image du jeu
 	 */
-	public void draw(Graphics2D crayon_pac) {
+	public void draw(Graphics2D crayon_pac,int animationstage) {
 		Image img;
 		try {
-			img = ImageIO.read(new File(heros.skin));
+			img = ImageIO.read(new File(herosprite.currentSpriteGet(animationstage)));
 			crayon_pac.drawImage(img, heros.X, heros.Y, heros.X+Labyrinthe.Tile_length , heros.Y+Labyrinthe.Tile_length, 0, 0, img.getWidth(null), img.getWidth(null), null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

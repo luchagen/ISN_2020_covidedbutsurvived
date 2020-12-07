@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import engine.GamePainter;
 
 public class MainPainter implements GamePainter{
-
+	public int animationstage;
 	/**
 	 * la taille des cases
 	 */
@@ -28,8 +28,23 @@ public class MainPainter implements GamePainter{
 		herosPainter= new PacmanPainter(in_heros);
 		donjonPainter = new LabyrinthePainter(in_donjon, WIDTH, HEIGHT);
 		monsterPainter= new MonsterPainter(in_monsters);
+		animationstage=0;
 	}
 
+	
+	public int animationStage() {
+
+		if (animationstage==64)
+				animationstage=0;
+				
+		else 
+			animationstage += 1;
+		System.out.print(animationstage);
+		return animationstage/2;
+			
+			
+		
+	}
 	/**
 	 * methode  redefinie de Afficheur retourne une image du jeu
 	 */
@@ -39,7 +54,7 @@ public class MainPainter implements GamePainter{
 		Graphics2D crayon_lab = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_evl = (Graphics2D) im.getGraphics();
 		donjonPainter.draw(crayon_lab);
-		herosPainter.draw(crayon_pac);
+		herosPainter.draw(crayon_pac , animationStage());
 		monsterPainter.draw(crayon_evl);
 	}
 

@@ -23,4 +23,5 @@ public interface GamePainter {
 
 	public abstract int getHeight();
 	
+	public abstract int animationStage();
 }

@@ -4,7 +4,7 @@ public class Pacman  extends Personnage{
 	
 	public Pacman(int[] spawn) {
 		super(spawn);
-		this.skin= "img/hero.png";
+		this.skin= "img/hero.txt";
 		// TODO Auto-generated constructor stub
 	}
 		

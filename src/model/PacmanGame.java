@@ -24,6 +24,7 @@ public class PacmanGame implements Game {
 	Pacman heros;
 	Labyrinthe donjon;
 	Monster[] monstres;
+	int gamecounter=0;
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) { 
 		BufferedReader helpReader;
@@ -79,11 +80,13 @@ public class PacmanGame implements Game {
 			break;
 		}
 		//evolve monsters
+		
 		for(int i=0;i<monstres.length;i++) {
-			Random r = new Random();
-	        int n = r.nextInt(4);
-	        int l=Labyrinthe.Tile_length;
-			switch (n) {
+			int l=Labyrinthe.Tile_length;
+			if (gamecounter == 4) {
+				Random r = new Random();
+	        	int n = r.nextInt(4);
+	        	switch (n) {
 				case 0:
 					if((monstres[i].X<MainPainter.WIDTH-l) && (donjon.cases[monstres[i].X/l+1][monstres[i].Y/l].canWalkOn))
 						monstres[i].X+=l;
@@ -102,6 +105,11 @@ public class PacmanGame implements Game {
 						monstres[i].Y+=l;
 					break;
 				}
+	        	gamecounter = 0;
+			}
+			else
+				gamecounter +=1;
+				
 				}	
 	}
 
