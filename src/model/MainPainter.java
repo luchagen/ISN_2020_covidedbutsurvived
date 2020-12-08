@@ -23,11 +23,13 @@ public class MainPainter implements GamePainter{
 	PacmanPainter herosPainter;
 	LabyrinthePainter donjonPainter;
 	MonsterPainter monsterPainter;
+	PacmanController controller;
 	
-	public MainPainter(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monsters) {
+	public MainPainter(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monsters, PacmanController in_controller ) {
 		herosPainter= new PacmanPainter(in_heros);
 		donjonPainter = new LabyrinthePainter(in_donjon, WIDTH, HEIGHT);
 		monsterPainter= new MonsterPainter(in_monsters);
+		controller = in_controller;
 		animationstage=0;
 	}
 
@@ -56,7 +58,7 @@ public class MainPainter implements GamePainter{
 		Graphics2D crayon_lab = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_evl = (Graphics2D) im.getGraphics();
 		donjonPainter.draw(crayon_lab);
-		herosPainter.draw(crayon_pac , animationStage());
+		herosPainter.draw(crayon_pac , animationStage(),controller );
 		monsterPainter.draw(crayon_evl);
 	}
 

@@ -34,10 +34,10 @@ public class PacmanPainter {
 	/**
 	 * methode  redefinie de Afficheur retourne une image du jeu
 	 */
-	public void draw(Graphics2D crayon_pac,int animationstage) {
+	public void draw(Graphics2D crayon_pac,int animationstage, PacmanController controller) {
 		Image img;
 		try {
-			img = ImageIO.read(new File(herosprite.currentSpriteGet(animationstage)));
+			img = ImageIO.read(new File(herosprite.currentSpriteGet(animationstage, controller.getCommand())));
 			crayon_pac.drawImage(img, heros.X, heros.Y, heros.X+Labyrinthe.Tile_length , heros.Y+Labyrinthe.Tile_length, 0, 0, img.getWidth(null), img.getWidth(null), null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
