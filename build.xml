@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="ISN_2020_covidedbutsurvived" >
+ <property name="src.dir" value="src"/>
+ <property name="build.dir" value="build"/>
+ <property name="class.dir" value="${build.dir}/classes"/>
+ <property name="jar.dir" value="${build.dir}/jar"/>
+
+ 
+ 	<target name="run" depends="jar">
+ 		<java classname="start.Main" fork="true">
+ 			<classpath path="${jar.dir}/${ant.project.name}.jar"  />
+ 		</java>
+	</target>
+ 
+ 	<target name="jar" depends="compile">
+ 		<mkdir dir="${jar.dir}"/>
+ 		<jar destfile="${jar.dir}/${ant.project.name}.jar"
+ 			 basedir="${class.dir}">
+ 		</jar>
+ 	</target>
+ 
+ 
+ 	 <target name="compile">
+ 		<mkdir dir="${class.dir}"/>
+ 		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${class.dir}"/>
+ 	 </target>
+ 	
+ </project>
+ 
+ 	
+ 
+
+ 

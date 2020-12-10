@@ -61,7 +61,7 @@ public class GameEngineGraphical {
 		// boucle de game
 
 
-		while (!this.game.isFinished()&& (!this.game.isGameOver(elapsedtime)) && (!this.game.isKilled())) {
+		while (!this.game.isFinished()&& (!this.game.isGameOver(elapsedtime)) && (!this.game.isKilled()) &&(!this.game.nextlevel())) {
 
 			// demande controle utilisateur
 			Cmd c = this.gameController.getCommand();
@@ -80,8 +80,11 @@ public class GameEngineGraphical {
 			{
 		System.out.print("Congrats :You won!!");}
 			else if(this.game.isGameOver(elapsedtime))
-		System.out.print("Time is finished :You lost!!");
+				System.out.print("Time is finished :You lost!!");
+			else if(this.game.nextlevel()) 
+				System.out.print("fistr level is finished=>next");
+				
 			else
-		System.out.print("Game over :You are coroned!!");
+				System.out.print("Game over :You are coroned!!");
 }
 	}

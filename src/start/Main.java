@@ -15,9 +15,15 @@ import model.Pacman;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
+		int j=1;
+		boolean repeat= true;
 		
 		// creation du jeu particulier et de son afficheur
-		Labyrinthe donjon = new Labyrinthe("levels/level_1.txt");
+		while (repeat==true)
+		{String source = "levels/";
+		source+=j;
+		source+=".txt";
+		Labyrinthe donjon = new Labyrinthe(source);
 		Pacman heros = new Pacman(donjon.spawn);
 		Monster[] monstres = new Monster[donjon.spawnMonsters.size()];
 		for(int i=0;i<donjon.spawnMonsters.size();i++) {
@@ -33,6 +39,11 @@ public class Main {
 		GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
 		
 		engine.run();
+		if (game.nextlevel()==true)
+			repeat=true;
+		else
+			repeat=false;
+		j=j+1;}
 
 
 		}

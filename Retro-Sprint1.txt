@@ -1,7 +1,10 @@
 
 
 Rétrospective sur le sprint 1:
-Le travail s'est bien passé en générale.
-Les taches ont été bien partagées.
-La communication était fluide et facile. (Création d'une salle sur teams=> 3 réunions)
-Au début le travail sur une seule branche posait des problèmes au niveau de l'avancement du travail mais après on a trouvé la solution qui consiste à   travailler sur plusieurs branches ce qui nous a permis de bien gérer les modifications faites par chaque membre de l’équipe.
+
+-Le travail s'est bien passé en générale.
+-Les taches ont été bien partagées.
+-La communication était fluide et facile. (Création d'une salle sur teams=> 3 réunions)
+-Au début le travail sur une seule branche posait des problèmes au niveau de l'avancement du travail mais après on a trouvé la solution qui consiste 
+à   travailler sur plusieurs branches ce qui nous a permis de bien gérer les modifications faites par chaque membre de l’équipe.
+-On a plus travaillé la premiere semaine du sprint1 et c'etait deja prevu puisque on savait qu'on aura d'autres contraintes dans la 2éme semaine du sprint1.

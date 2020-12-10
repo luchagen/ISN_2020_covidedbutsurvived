@@ -5,6 +5,7 @@ public class Door extends Tile{
 		this.nature=2;
 		this.canWalkOn=true;
 		this.canFinishGame=false;
+		this.nextlevel=true;
 		this.skin=super.findSource(in_source);
 	}
 }

@@ -5,6 +5,7 @@ public class Chest extends Tile {
 		this.nature=5;
 		this.canWalkOn=true;
 		this.canFinishGame=true;
+		this.nextlevel=false;
 		this.skin=super.findSource(in_source);
 	}
 }

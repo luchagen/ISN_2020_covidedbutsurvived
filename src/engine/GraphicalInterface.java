@@ -25,6 +25,7 @@ public class GraphicalInterface  {
 	 */
 	public GraphicalInterface(GamePainter gamePainter, GameController gameController){
 		JFrame f=new JFrame();
+		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setTitle("Course au trésor");
 		// attacher le panel contenant l'afficheur du game

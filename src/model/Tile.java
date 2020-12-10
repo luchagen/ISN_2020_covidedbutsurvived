@@ -4,6 +4,7 @@ public abstract class Tile {
 	public int nature;
 	boolean canWalkOn;
 	boolean canFinishGame;
+	boolean nextlevel;
 	public String skin;
 	
 	String findSource(String in_source) { 	//Permet d'assimiler une case à une photo
@@ -20,3 +21,9 @@ public abstract class Tile {
 		return source;
 	}
 }
+
+
+
+	
+	
+	

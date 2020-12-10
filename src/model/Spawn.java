@@ -6,6 +6,7 @@ public class Spawn extends Tile{
 		this.nature=3;
 		this.canWalkOn=true;
 		this.canFinishGame=false;
+		this.nextlevel=false;
 		this.skin=super.findSource(in_source);
 	}
 }

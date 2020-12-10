@@ -115,6 +115,14 @@ public class PacmanGame implements Game {
 		
 	}
 	/**
+	 *verifier si on peut passer au prochain niveau
+	 */
+	public boolean nextlevel() {
+		
+		{return donjon.cases[((Labyrinthe.Tile_length/2)+ heros.X)/Labyrinthe.Tile_length][((Labyrinthe.Tile_length/2) +heros.Y)/Labyrinthe.Tile_length].nextlevel;}
+		
+	}
+	/**
 	 * verifier si le jeu est fini
 	 */
 	@Override
