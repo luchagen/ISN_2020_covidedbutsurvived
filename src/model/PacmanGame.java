@@ -133,12 +133,20 @@ public class PacmanGame implements Game {
 			return true;
 	}
 	
-	public boolean isKilled() {
+	public void isBeingTouchedByAMonster() {
 		int l=Labyrinthe.Tile_length;
 		for(int i=0;i<monstres.length;i++) {
-			if((monstres[i].X/l==heros.X/l)&&(monstres[i].Y/l==heros.Y/l)) 
-				return true;
+			if((monstres[i].X/l==heros.X/l)&&(monstres[i].Y/l==heros.Y/l)) { //Changer ça en mettant une méthode qui détecte si les persos partage la même hitbox
+				heros.loseHP();
+				System.out.println("AIE J'AI PRIS UN COUP!");
+			}
 		}
-		return false;
+	}
+	public boolean isKilled() {
+		if(heros.getHP()==0)
+			return true;
+		else
+			return false;
+		
 	}
 	}

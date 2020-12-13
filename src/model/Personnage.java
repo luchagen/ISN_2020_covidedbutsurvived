@@ -3,16 +3,19 @@ package model;
 public class Personnage {
 	public int X,Y,Xwt,Xet,Ynt,Yst,Xw,Xe,Yn,Ys,Xwtwest,Yntnorth;
 	public String skin;
+	protected int HP;
 	
-	public Personnage(int X_0,int Y_0) {
+	public Personnage(int X_0,int Y_0) { //Constructeur inutile ?
 		X=X_0;
 		Y=Y_0;
+		HP=100;
 		}
 	
 	public Personnage(int[] spawn) {
 		X=spawn[0]*Labyrinthe.Tile_length;
 		Y=spawn[1]*Labyrinthe.Tile_length;
 		updateHitbox();
+		HP=100;
 	}
 	
 
@@ -71,5 +74,11 @@ public class Personnage {
 	public void collisionRIGHT() {
 		X=X-1;
 		updateHitbox();
+	}
+	public void loseHP() {
+		HP-=50;
+	}
+	public int getHP() {
+		return HP;
 	}
 }

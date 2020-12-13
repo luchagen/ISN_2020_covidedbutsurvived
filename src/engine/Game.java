@@ -26,5 +26,7 @@ public interface Game {
 	public boolean isKilled();
 	
 	public boolean nextlevel();
+	
+	public void isBeingTouchedByAMonster();
 
 }

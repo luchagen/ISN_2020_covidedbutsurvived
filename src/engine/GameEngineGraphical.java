@@ -67,6 +67,7 @@ public class GameEngineGraphical {
 			Cmd c = this.gameController.getCommand();
 			// fait evoluer le game
 			this.game.evolve(c);
+			this.game.isBeingTouchedByAMonster();
 			// affiche le game
 			this.gui.paint();
 			endtime=System.nanoTime();
@@ -80,11 +81,11 @@ public class GameEngineGraphical {
 			{
 		System.out.print("Congrats :You won!!");}
 			else if(this.game.isGameOver(elapsedtime))
-				System.out.print("Time is finished :You lost!!");
+				System.out.println("Le temps limite a été atteint !");
 			else if(this.game.nextlevel()) 
-				System.out.print("fistr level is finished=>next");
+				System.out.println("Level Completed !");
 				
 			else
-				System.out.print("Game over :You are coroned!!");
+				System.out.println("Game over :You are coroned!!");
 }
 	}
