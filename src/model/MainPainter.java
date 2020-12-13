@@ -59,7 +59,7 @@ public class MainPainter implements GamePainter{
 		Graphics2D crayon_evl = (Graphics2D) im.getGraphics();
 		donjonPainter.draw(crayon_lab);
 		herosPainter.draw(crayon_pac , animationStage(),controller );
-		monsterPainter.draw(crayon_evl);
+		monsterPainter.draw(crayon_evl,animationStage());
 	}
 
 	@Override
