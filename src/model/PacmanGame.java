@@ -3,7 +3,7 @@ package model;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Random;
+
 
 import engine.Cmd;
 import engine.Game;
@@ -24,6 +24,7 @@ public class PacmanGame implements Game {
 	Pacman heros;
 	Labyrinthe donjon;
 	Monster[] monstres;
+	int gamecounter=0;
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) { 
 		BufferedReader helpReader;
@@ -79,30 +80,27 @@ public class PacmanGame implements Game {
 			break;
 		}
 		//evolve monsters
+		
 		for(int i=0;i<monstres.length;i++) {
-			Random r = new Random();
-	        int n = r.nextInt(4);
-	        int l=Labyrinthe.Tile_length;
-			switch (n) {
-				case 0:
-					if((monstres[i].X<MainPainter.WIDTH-l) && (donjon.cases[monstres[i].X/l+1][monstres[i].Y/l].canWalkOn))
-						monstres[i].X+=l;
-					break;
-				case 2:
-					if((monstres[i].X>=l) && (donjon.cases[monstres[i].X/l-1][monstres[i].Y/l].canWalkOn))
-						monstres[i].X-=l;
-					break;
-				case 1:
-					if((monstres[i].Y>=l) && (donjon.cases[monstres[i].X/l][monstres[i].Y/l-1].canWalkOn))
-						monstres[i].Y-=l;
-					break;
-					
-				case 3:
-					if((monstres[i].Y<MainPainter.WIDTH-l)&& (donjon.cases[monstres[i].X/l][monstres[i].Y/l+1].canWalkOn))
-						monstres[i].Y+=l;
-					break;
-				}
-				}	
+			Boolean canmoveright=false;
+			Boolean canmoveleft=false;
+			Boolean canmoveup=false;
+			Boolean canmovedown=false;
+			if(monstres[i].Xet<Labyrinthe.nb_largeur) 
+				if((donjon.cases[monstres[i].Xet][monstres[i].Yn].canWalkOn) && (donjon.cases[monstres[i].Xet][monstres[i].Ys].canWalkOn)) 
+					canmoveright=true;
+			if((monstres[i].Xwtwest)>0) 
+				if((donjon.cases[monstres[i].Xwt][monstres[i].Yn].canWalkOn) && (donjon.cases[monstres[i].Xwt][monstres[i].Ys].canWalkOn) )
+					canmoveleft=true;
+			if((monstres[i].Yntnorth)>0) 
+				if((donjon.cases[monstres[i].Xw][monstres[i].Ynt].canWalkOn) && (donjon.cases[monstres[i].Xe][monstres[i].Ynt].canWalkOn))
+					canmoveup=true;
+			if((monstres[i].Yst)<Labyrinthe.nb_hauteur)
+				if((donjon.cases[monstres[i].Xw][monstres[i].Yst].canWalkOn) && (donjon.cases[monstres[i].Xe][monstres[i].Yst].canWalkOn))
+					canmovedown=true;
+			monstres[i].monsterMove(canmoveleft,canmoveright,canmoveup,canmovedown);
+	        	
+			}	
 	}
 
 	/**
