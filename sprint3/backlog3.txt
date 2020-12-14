@@ -1,0 +1,25 @@
+
+
+
+
+
+
+- affichage des points de vie, start, game over, temps restant CYRIL
+
+- bouclier de protection (masque) CYRIL
+
+- 8 nouveaux levels LUC, CYRIL
+
+- coffres fonctionnels donnent des items
+
+- 2 nouveaux monstres LUC
+
+- meilleure gestion des collisions monstres pacman LUC
+
+- tests (murs, collisions pacman monstres) GHASSEN
+
+- Systeme de combat (arme(s) , attaquer les monstres ) GHASSEN , AHMED
+
+- Bonus points de vie (vaccins) AHMED
+
+- finir pieges (2 de plus) AHMED 
