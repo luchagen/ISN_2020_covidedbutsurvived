@@ -47,7 +47,7 @@ public class Main {
 			j++;
 		}while(repeat && j<nbLevels);
 		
-		System.out.println(" Félicitation vous avez gagné :JEU TERMINE !");
+		System.out.println(" Felicitation vous avez gagne :JEU TERMINE !");
 
 
 		}

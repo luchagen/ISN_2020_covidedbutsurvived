@@ -81,7 +81,7 @@ public class GameEngineGraphical {
 			{
 		System.out.print("Congrats :You won!!");}
 			else if(this.game.isGameOver(elapsedtime))
-				System.out.println("Le temps limite a été atteint !");
+				System.out.println("Le temps limite a ete atteint !");
 			else if(this.game.nextlevel()) 
 				System.out.println("Level Completed !");
 				
