@@ -28,28 +28,28 @@ public class Labyrinthe {
 		BufferedReader LabReader;
 		try {
 			LabReader = new BufferedReader(new FileReader(source));
-			this.setLengthParameters(LabReader); // Lit les paramètres de taille du labyrinthe et définit les attributs correspondants
-			cases = new Tile[nb_largeur][nb_hauteur]; // On peut alors définit plus précisément l'attribut cases
-			this.setCases(LabReader);  //Par la suite, on déchiffre le code fournit pour générer le labyrinthe 
-									  //cela revient à définir quel type de Tile représente la case (i,j)
+			this.setLengthParameters(LabReader); // Lit les parametres de taille du labyrinthe et definit les attributs correspondants
+			cases = new Tile[nb_largeur][nb_hauteur]; // On peut alors definit plus precisément l'attribut cases
+			this.setCases(LabReader);  //Par la suite, on déchiffre le code fournit pour generer le labyrinthe 
+									  //cela revient à definir quel type de Tile represente la case (i,j)
 		//On lève des exceptions au cas où (obligatoire pour compiler)
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			Time_Limit=0; // La partie n'est pas lancée
+			Time_Limit=0; // La partie n'est pas lancee
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	private void setLengthParameters(BufferedReader LabReader) throws IOException { 
-		//Initialisation des paramètres liés aux dimensions du labyrinthe
-		// Cette méthode lit à partir de la toute première ligne et s'arrête à la lastRowLengthParameters
+		//Initialisation des parametres lies aux dimensions du labyrinthe
+		// Cette methode lit a partir de la toute premiere ligne et s'arrete à la lastRowLengthParameters
 		String ligne = LabReader.readLine();
 		String[] liste;
 		while(rowRead<lastRowLengthParameters) {
-		// Tant que nous n'avons pas dépassé la lastRowLengthParameters, on initialise les attributs de cette classe
-		// à partir des éléments fournis après le signe "=" dans le fichier source
+		// Tant que nous n'avons pas depasse la lastRowLengthParameters, on initialise les attributs de cette classe
+		// à partir des elements fournis apres le signe "=" dans le fichier source
 			rowRead++;
 			ligne = LabReader.readLine();
 			liste = ligne.split("=");
@@ -63,13 +63,13 @@ public class Labyrinthe {
 				this.setTime_Limit(Integer.parseInt(liste[1]));
 			
 		}
-		// Ces derniers attributs sont calculés en dernier afin d'éviter qu'ils ne valent 0
+		// Ces derniers attributs sont calcules en dernier afin d'eviter qu'ils ne valent 0
 		nb_case=nb_largeur*nb_hauteur;
 		Tile_length =MainPainter.WIDTH/nb_largeur;
 		LabReader.readLine();
 	}
 	
-	private void setCases(BufferedReader LabReader) { //Créer le labyrinthe en initiant les cases, le spawn ainsi que le spawnMonsters
+	private void setCases(BufferedReader LabReader) { //Creer le labyrinthe en initiant les cases, le spawn ainsi que le spawnMonsters
 		int nat = 0;
 		String liste_param[];
 		String param[];

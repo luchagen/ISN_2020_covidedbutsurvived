@@ -19,7 +19,7 @@ public class Personnage {
 	}
 	
 
-	// mise à jour de la position des points qui définissent la hitbox du pacman, à mettre à jour après chaque déplacement 
+	// mise a jour de la position des points qui definissent la hitbox du pacman, a mettre a jour apres chaque deplacement 
 		public void updateHitbox() {
 			int Tile_length = Labyrinthe.Tile_length;
 			int a = (int) (0.355*Tile_length);

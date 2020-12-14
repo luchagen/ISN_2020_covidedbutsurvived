@@ -4,14 +4,14 @@ public class Pacman  extends Personnage{
 	
 	public Pacman(int[] spawn) {
 		super(spawn);
-		// implémentation du spritesystem : on remplace la mention directe à un sprite par l'utilisation d'un fichier qui indique quels sprites utiliser dans quelles situations
+		// implementation du spritesystem : on remplace la mention directe à un sprite par l'utilisation d'un fichier qui indique quels sprites utiliser dans quelles situations
 		this.skin= "img/hero.txt";
 		
 		// TODO Auto-generated constructor stub
 	}
 		
 
-	// mise à jour de la position des points qui définissent la hitbox du pacman, à mettre à jour après chaque déplacement 
+	// mise a jour de la position des points qui definissent la hitbox du pacman, a mettre à jour apres chaque deplacement 
 	public void updateHitbox() {
 		int Tile_length = Labyrinthe.Tile_length;
 		int a = (int) (0.355*Tile_length);
@@ -34,8 +34,8 @@ public class Pacman  extends Personnage{
 			System.out.println("("+X+","+Y+")");
 	}
 	//le pacman entre en collision avec un mur/ bord en allant vers le haut, il "rebondit" (bump)
-	// note: cette mesure est obligatoire (et typique d'un jeu vidéo de ce genre) 
-	// pour ne pas être incapable de longer un mur quand on s'en rapproche trop
+	// note: cette mesure est obligatoire (et typique d'un jeu video de ce genre) 
+	// pour ne pas etre incapable de longer un mur quand on s'en rapproche trop
 	public void collisionUP() {
 			Y=Y+1;
 			updateHitbox();
