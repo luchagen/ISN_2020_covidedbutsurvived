@@ -34,7 +34,7 @@ public class MainPainter implements GamePainter{
 	}
 
 	/** 
-	 * on calcule l'étape à laquelle les animations doivent être
+	 * on calcule l'etape à laquelle les animations doivent être
 	 */
 	public int animationStage() {
 
