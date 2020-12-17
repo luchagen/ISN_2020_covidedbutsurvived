@@ -35,7 +35,7 @@ public class Main {
 			PacmanGame game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres);
 			
 			PacmanController controller = new PacmanController();
-			MainPainter painter = new MainPainter(heros,donjon,monstres,controller);
+			MainPainter painter = new MainPainter(controller,game);
 			// classe qui lance le moteur de jeu generique
 			GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
 			

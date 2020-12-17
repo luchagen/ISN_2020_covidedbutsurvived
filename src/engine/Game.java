@@ -1,5 +1,9 @@
 package engine;
 
+import model.Labyrinthe;
+import model.Monster;
+import model.Pacman;
+
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -28,5 +32,17 @@ public interface Game {
 	public boolean nextlevel();
 	
 	public void isBeingTouchedByAMonster();
+	
+	public void setElapsedTime(int elapsedTime);
+	
+	public int getElapsedTime();
+
+	public Pacman getHeros();
+
+	public Labyrinthe getDonjon();
+
+	public Monster[] getMonstres();
+
+	public int getGamecounter();
 
 }
