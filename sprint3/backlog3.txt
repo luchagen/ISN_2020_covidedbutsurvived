@@ -10,7 +10,7 @@
 
 - 8 nouveaux levels LUC, CYRIL
 
-- coffres fonctionnels donnent des items
+- coffres fonctionnels donnent des items (boucliers , potions, armes )
 
 - 2 nouveaux monstres LUC
 
@@ -18,8 +18,8 @@
 
 - tests (murs, collisions pacman monstres) GHASSEN
 
-- Systeme de combat (arme(s) , attaquer les monstres ) GHASSEN , AHMED
+- Systeme de combat (arme(s) , attaquer les monstres , corps à corps, à distance )  GHASSEN , AHMED
 
-- Bonus points de vie (vaccins) AHMED
+- Potion points de vie (vaccins) AHMED
 
 - finir pieges (2 de plus) AHMED 

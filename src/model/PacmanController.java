@@ -20,7 +20,7 @@ public class PacmanController implements GameController {
 	private Cmd commandeEnCours;
 	
 	/**
-	 * construction du controleur par defaut le controleur n'a pas de commande
+	 * construction du controleur par defaut le controleur n a pas de commande
 	 */
 	public PacmanController() {
 		this.commandeEnCours = Cmd.IDLE;
@@ -43,7 +43,7 @@ public class PacmanController implements GameController {
 	public void keyPressed(KeyEvent e) {
 
 		switch (e.getKeyChar()) {
-		// si on appuie sur 'q',commande joueur est gauche
+		// si on appuie sur  q ,commande joueur est gauche
 		case 'q':
 		case 'Q':
 			this.commandeEnCours = Cmd.LEFT;
