@@ -12,12 +12,12 @@ import javax.swing.JFrame;
 public class GraphicalInterface  {
 
 	/**
-	 * le Panel pour l'afficheur
+	 * le Panel pour l afficheur
 	 */
 	private DrawingPanel panel;
 	
 	/**
-	 * la construction de l'interface graphique: JFrame avec panel pour le game
+	 * la construction de l interface graphique: JFrame avec panel pour le game
 	 * 
 	 * @param gamePainter l'afficheur a utiliser dans le moteur
 	 * @param gameController l'afficheur a utiliser dans le moteur
@@ -27,8 +27,8 @@ public class GraphicalInterface  {
 		JFrame f=new JFrame();
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setTitle("Course au trésor");
-		// attacher le panel contenant l'afficheur du game
+		f.setTitle("Course au tresor");
+		// attacher le panel contenant l afficheur du game
 		this.panel=new DrawingPanel(gamePainter);
 		f.setContentPane(this.panel);
 		
