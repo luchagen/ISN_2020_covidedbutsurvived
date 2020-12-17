@@ -7,7 +7,7 @@ public abstract class Tile {
 	boolean nextlevel;
 	public String skin;
 	
-	String findSource(String in_source) { 	//Permet d assimiler une case à une photo
+	String findSource(String in_source) { 	//Permet d assimiler une case a une photo
 											// Le fichier source level_i.txt comportait une serie de codes xxx attribuee a chacune des cases
 											// Cette methode decode le code xxx en un repertoire menant un fichier image au format png
 											// exemple: findSource("123") -> "1/2/3.png"
