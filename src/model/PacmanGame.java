@@ -76,6 +76,8 @@ public class PacmanGame implements Game {
 			else
 				heros.collisionDOWN();
 			break;
+		case SHOUT:
+			break;
 		case IDLE:
 			break;
 		}

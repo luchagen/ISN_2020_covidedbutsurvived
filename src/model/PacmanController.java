@@ -60,6 +60,9 @@ public class PacmanController implements GameController {
 		case 'S':
 			this.commandeEnCours = Cmd.DOWN;
 			break;
+		case 'x':
+		case 'X':
+			this.commandeEnCours=Cmd.SHOUT;
 		}
 
 	}

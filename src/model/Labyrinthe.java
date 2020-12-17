@@ -9,18 +9,18 @@ import java.util.ArrayList;
 public class Labyrinthe {
 	protected static int nb_largeur; // Le nombre de case en largeur du labyrinthe
 	protected static int nb_hauteur; // Le nombre de case en hauteur du labyrinthe
-	protected  int nb_case;			// Le produit des deux attributs précédents
+	protected  int nb_case;			// Le produit des deux attributs precedents
 	protected static int Tile_length; //La taille en pixel d'une case du labyrinthe
-									//et donc que chacune des cases est un carré
-	protected int level;			// Le niveau attribué au labyrinthe
-	protected int Time_Limit;       // Le temps limite donné au joueur pour gagner
-	protected int rowRead;			// Définit la ligne lue par chacune des méthodes de cette classe
-	protected final int lastRowLengthParameters=5; // Définit la dernière ligne que où se trouve les paramètres de taille
+									//et donc que chacune des cases est un carre
+	protected int level;			// Le niveau attribue au labyrinthe
+	protected int Time_Limit;       // Le temps limite donne au joueur pour gagner
+	protected int rowRead;			// Definit la ligne lue par chacune des methodes de cette classe
+	protected final int lastRowLengthParameters=5; // Definit la derniere ligne que ou se trouve les parametres de taille
 	
-	public Tile[][] cases;			// Chacune des cases est représentée par une instance de Tile, elles sont indexées par deux entiers (i,j)
-									//représentant les lignes et colonnes du labyrinthe 
-	public int[]spawn=new int[2];		// Coordonnées (i,j) représentant la case où le joueur doit apparaitre
-	public ArrayList<int[]> spawnMonsters=new ArrayList<int[]>(); //Comme précédemment sauf qu'il s'agit des monstres et il peut y en avoir plusieurs
+	public Tile[][] cases;			// Chacune des cases est representee par une instance de Tile, elles sont indexees par deux entiers (i,j)
+									//representant les lignes et colonnes du labyrinthe 
+	public int[]spawn=new int[2];		// Coordonnees (i,j) representant la case ou le joueur doit apparaitre
+	public ArrayList<int[]> spawnMonsters=new ArrayList<int[]>(); //Comme precedemment sauf qu'il s'agit des monstres et il peut y en avoir plusieurs
 	
 	
 	public Labyrinthe(String source) {
@@ -29,10 +29,10 @@ public class Labyrinthe {
 		try {
 			LabReader = new BufferedReader(new FileReader(source));
 			this.setLengthParameters(LabReader); // Lit les parametres de taille du labyrinthe et definit les attributs correspondants
-			cases = new Tile[nb_largeur][nb_hauteur]; // On peut alors definit plus precisément l'attribut cases
-			this.setCases(LabReader);  //Par la suite, on déchiffre le code fournit pour generer le labyrinthe 
-									  //cela revient à definir quel type de Tile represente la case (i,j)
-		//On lève des exceptions au cas où (obligatoire pour compiler)
+			cases = new Tile[nb_largeur][nb_hauteur]; // On peut alors definit plus precisement l'attribut cases
+			this.setCases(LabReader);  //Par la suite, on dechiffre le code fournit pour generer le labyrinthe 
+									  //cela revient a definir quel type de Tile represente la case (i,j)
+		//On leve des exceptions au cas ou (obligatoire pour compiler)
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,12 +44,12 @@ public class Labyrinthe {
 	}
 	private void setLengthParameters(BufferedReader LabReader) throws IOException { 
 		//Initialisation des parametres lies aux dimensions du labyrinthe
-		// Cette methode lit a partir de la toute premiere ligne et s'arrete à la lastRowLengthParameters
+		// Cette methode lit a partir de la toute premiere ligne et s'arrete a la lastRowLengthParameters
 		String ligne = LabReader.readLine();
 		String[] liste;
 		while(rowRead<lastRowLengthParameters) {
 		// Tant que nous n'avons pas depasse la lastRowLengthParameters, on initialise les attributs de cette classe
-		// à partir des elements fournis apres le signe "=" dans le fichier source
+		// a partir des elements fournis apres le signe "=" dans le fichier source
 			rowRead++;
 			ligne = LabReader.readLine();
 			liste = ligne.split("=");
