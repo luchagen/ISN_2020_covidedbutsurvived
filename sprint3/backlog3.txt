@@ -1,25 +1,25 @@
 
 
 
+§priorité : nombre +faible =priorité plus importante
 
 
+- affichage des points de vie, start, game over, temps restant CYRIL §priorité :1
 
-- affichage des points de vie, start, game over, temps restant CYRIL
+- bouclier de protection (masque) CYRIL §priorité :2
 
-- bouclier de protection (masque) CYRIL
+- 8 nouveaux levels implémentant les nouvelles mécaniques de jeu LUC, CYRIL §priorité :4
 
-- 8 nouveaux levels LUC, CYRIL
+- coffres fonctionnels donnent des items (boucliers , potions, armes ) §priorité :3
 
-- coffres fonctionnels donnent des items (boucliers , potions, armes )
+- 2 nouveaux monstres (policier , sentinelle poursuit le joueur en ligne droite à vue; slime , entité à mouvement prédéfini)  LUC §priorité :1 
 
-- 2 nouveaux monstres LUC
+- meilleure gestion des collisions monstres pacman LUC §priorité :5
 
-- meilleure gestion des collisions monstres pacman LUC
+- tests (murs, collisions pacman monstres) GHASSEN §priorité : 1
 
-- tests (murs, collisions pacman monstres) GHASSEN
+- Systeme de combat (arme(s) , attaquer les monstres , corps à corps, à distance )  GHASSEN , AHMED §priorité :2
 
-- Systeme de combat (arme(s) , attaquer les monstres , corps à corps, à distance )  GHASSEN , AHMED
+- Potion points de vie (vaccins) AHMED §priorité :2
 
-- Potion points de vie (vaccins) AHMED
-
-- finir pieges (2 de plus) AHMED 
+- finir pieges (2 de plus, eclair earthquake) AHMED §priorité :1
