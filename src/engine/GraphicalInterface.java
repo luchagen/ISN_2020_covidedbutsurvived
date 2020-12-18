@@ -1,5 +1,10 @@
 package engine;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 
@@ -21,13 +26,16 @@ public class GraphicalInterface  {
 	 * 
 	 * @param gamePainter l'afficheur a utiliser dans le moteur
 	 * @param gameController l'afficheur a utiliser dans le moteur
+	 * @throws IOException 
 	 * 
 	 */
-	public GraphicalInterface(GamePainter gamePainter, GameController gameController){
+	public GraphicalInterface(GamePainter gamePainter, GameController gameController) throws IOException{
 		JFrame f=new JFrame();
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setTitle("Course au tresor");
+		f.setTitle("CovidedButSurvived");
+		Image icon= ImageIO.read(new File("img/icon.png"));
+		f.setIconImage(icon);
 		// attacher le panel contenant l afficheur du game
 		this.panel=new DrawingPanel(gamePainter);
 		f.setContentPane(this.panel);

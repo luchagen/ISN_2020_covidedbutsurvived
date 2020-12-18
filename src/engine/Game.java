@@ -44,5 +44,7 @@ public interface Game {
 	public Monster[] getMonstres();
 
 	public int getGamecounter();
+	
+	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres);
 
 }

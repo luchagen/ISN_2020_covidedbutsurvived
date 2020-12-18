@@ -141,6 +141,11 @@ public class PacmanGame implements Game {
 			}
 		}
 	}
+	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) {
+		this.heros=in_heros;
+		this.donjon=in_donjon;
+		this.monstres=in_monstres;
+	}
 	public boolean isKilled() {
 		if(heros.getHP()==0)
 			return true;

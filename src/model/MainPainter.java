@@ -23,9 +23,9 @@ public class MainPainter implements GamePainter{
 	protected static final int PLAYABLE_ZONE_WIDTH=320;
 	protected static final int PLAYABLE_ZONE_HEIGHT=320;
 	protected static final int HEIGHT_INTERFACE=32;
-	public static final int WIDTH_INTERFACE=PLAYABLE_ZONE_WIDTH;
 	protected static final int HEIGHT = HEIGHT_INTERFACE+PLAYABLE_ZONE_HEIGHT;
-	protected static final int WIDTH = PLAYABLE_ZONE_WIDTH;
+	protected static final int WIDTH = 320;
+	public static final int WIDTH_INTERFACE=WIDTH;
 
 	/**
 	 * appelle constructeur parent
@@ -99,6 +99,7 @@ public class MainPainter implements GamePainter{
 		Image img_bg;
 		int HP=this.heros.getHP();
 		int elapsedTime=this.game.getElapsedTime();
+		int Time_Limit=this.game.getDonjon().getTime_Limit();
 		try {
 			img_bg = ImageIO.read(new File("img/userInterface/bg.png"));
 			int bg_size=img_bg.getWidth(null);
@@ -121,7 +122,7 @@ public class MainPainter implements GamePainter{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    crayon.setFont(new Font("TimesRoman", Font.PLAIN, 40));  // Here
-	    crayon.drawString(String.valueOf(elapsedTime), WIDTH_INTERFACE-50, 30);
+	    crayon.setFont(new Font("Serif", Font.PLAIN, 40));  // Here
+	    crayon.drawString(String.valueOf(Time_Limit-elapsedTime), WIDTH_INTERFACE-60, 30);
 	}
 }
