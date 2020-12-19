@@ -65,7 +65,7 @@ public class Labyrinthe {
 		}
 		// Ces derniers attributs sont calcules en dernier afin d'eviter qu'ils ne valent 0
 		nb_case=nb_largeur*nb_hauteur;
-		Tile_length =MainPainter.WIDTH/nb_largeur;
+		Tile_length =MainPainter.PLAYABLE_ZONE_WIDTH/nb_largeur;
 		LabReader.readLine();
 	}
 	

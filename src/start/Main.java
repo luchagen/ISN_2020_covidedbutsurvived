@@ -1,6 +1,9 @@
 package start;
 
 
+import java.io.IOException;
+
+import engine.Game;
 import engine.GameEngineGraphical;
 import model.PacmanController;
 import model.PacmanGame;
@@ -14,34 +17,39 @@ import model.Pacman;
  */
 public class Main {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		int j=0;
 		int nbLevels=2;
 		boolean repeat;
+		Labyrinthe donjon;
+		Pacman heros;
+		Monster[] monstres;
+		Game game;
+		MainPainter painter;
+		GameEngineGraphical engine;
 		
 		// creation du jeu particulier et de son afficheur
 		do {
 			String source = "levels/";
 			source+=j;
 			source+=".txt";
-			Labyrinthe donjon = new Labyrinthe(source);
-			Pacman heros = new Pacman(donjon.spawn);
-			Monster[] monstres = new Monster[donjon.spawnMonsters.size()];
+			donjon = new Labyrinthe(source);
+			heros = new Pacman(donjon.spawn);
+			monstres = new Monster[donjon.spawnMonsters.size()];
 			for(int i=0;i<donjon.spawnMonsters.size();i++) {
 				monstres[i]=new Monster(donjon.spawnMonsters.get(i));
 			}
-			
 				
-			PacmanGame game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres);
-			
+			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres);
 			PacmanController controller = new PacmanController();
-			MainPainter painter = new MainPainter(heros,donjon,monstres,controller);
+			painter = new MainPainter(controller,game);
 			// classe qui lance le moteur de jeu generique
-			GameEngineGraphical engine = new GameEngineGraphical(game, painter, controller);
+			engine = new GameEngineGraphical(game, painter, controller);
 			
 			engine.run();
 			if (game.nextlevel()==true)
 				repeat=true;
+			
 			else
 				repeat=false;
 			j++;

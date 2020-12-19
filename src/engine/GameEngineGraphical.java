@@ -1,5 +1,7 @@
 package engine;
 
+import java.io.IOException;
+
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -48,8 +50,9 @@ public class GameEngineGraphical {
 
 	/**
 	 * permet de lancer le game
+	 * @throws IOException 
 	 */
-	public void run() throws InterruptedException {
+	public void run() throws InterruptedException, IOException {
 		long startTime = System.nanoTime();;
 		 long endtime=System.nanoTime();
 		 long elapsedtime=(endtime-startTime)/1000000;
@@ -72,6 +75,7 @@ public class GameEngineGraphical {
 			this.gui.paint();
 			endtime=System.nanoTime();
 			elapsedtime=(endtime-startTime)/1000000000;
+			this.game.setElapsedTime((int)elapsedtime); 
 			System.out.print("elapsed time= "+elapsedtime+"sec ");
 			// met en attente
 			Thread.sleep(20);

@@ -21,10 +21,11 @@ public class PacmanGame implements Game {
 	 * 
 	 */
 	protected static final int game_speed=(int) (Labyrinthe.Tile_length/4);
-	Pacman heros;
-	Labyrinthe donjon;
-	Monster[] monstres;
+	private Pacman heros;
+	private Labyrinthe donjon;
+	private Monster[] monstres;
 	int gamecounter=0;
+	private int elapsedTime;
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) { 
 		BufferedReader helpReader;
@@ -136,11 +137,16 @@ public class PacmanGame implements Game {
 	public void isBeingTouchedByAMonster() {
 		int l=Labyrinthe.Tile_length;
 		for(int i=0;i<monstres.length;i++) {
-			if((monstres[i].X/l==heros.X/l)&&(monstres[i].Y/l==heros.Y/l)) { //Changer ça en mettant une methode qui detecte si les persos partage la meme hitbox
+			if((monstres[i].X/l==heros.X/l)&&(monstres[i].Y/l==heros.Y/l)) { //Changer ca en mettant une methode qui detecte si les persos partage la meme hitbox
 				heros.loseHP();
 				System.out.println("AIE J'AI PRIS UN COUP!");
 			}
 		}
+	}
+	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) {
+		this.heros=in_heros;
+		this.donjon=in_donjon;
+		this.monstres=in_monstres;
 	}
 	public boolean isKilled() {
 		if(heros.getHP()==0)
@@ -149,4 +155,31 @@ public class PacmanGame implements Game {
 			return false;
 		
 	}
+	public void setElapsedTime(int elapsedTime) {
+		this.elapsedTime=elapsedTime;
+	}
+	public int getElapsedTime() {
+		return this.elapsedTime;
+	}
+
+	public static int getGameSpeed() {
+		return game_speed;
+	}
+
+	public Pacman getHeros() {
+		return heros;
+	}
+
+	public Labyrinthe getDonjon() {
+		return donjon;
+	}
+
+	public Monster[] getMonstres() {
+		return monstres;
+	}
+
+	public int getGamecounter() {
+		return gamecounter;
+	}
+	
 	}
