@@ -6,6 +6,8 @@ public abstract class Tile {
 	boolean canFinishGame;
 	boolean nextlevel;
 	public String skin;
+	protected String trapType;
+	protected int damage;
 	
 	String findSource(String in_source) { 	//Permet d assimiler une case a une photo
 											// Le fichier source level_i.txt comportait une serie de codes xxx attribuee a chacune des cases
