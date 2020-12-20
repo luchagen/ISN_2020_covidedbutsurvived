@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Labyrinthe {
 	protected static int nb_largeur; // Le nombre de case en largeur du labyrinthe
 	protected static int nb_hauteur; // Le nombre de case en hauteur du labyrinthe
-	protected  int nb_case;			// Le produit des deux attributs precedents
+	protected  static int nb_case;			// Le produit des deux attributs precedents
 	protected static int Tile_length; //La taille en pixel d'une case du labyrinthe
 									//et donc que chacune des cases est un carre
 	protected int level;			// Le niveau attribue au labyrinthe
@@ -65,7 +65,7 @@ public class Labyrinthe {
 		}
 		// Ces derniers attributs sont calcules en dernier afin d'eviter qu'ils ne valent 0
 		nb_case=nb_largeur*nb_hauteur;
-		Tile_length =MainPainter.PLAYABLE_ZONE_WIDTH/nb_largeur;
+		Tile_length =32;
 		LabReader.readLine();
 	}
 	

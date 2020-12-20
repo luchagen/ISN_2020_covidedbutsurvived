@@ -8,14 +8,14 @@ public class Personnage {
 	public Personnage(int X_0,int Y_0) { //Constructeur inutile ?
 		X=X_0;
 		Y=Y_0;
-		HP=100;
+		HP=3;
 		}
 	
 	public Personnage(int[] spawn) {
 		X=spawn[0]*Labyrinthe.Tile_length;
 		Y=spawn[1]*Labyrinthe.Tile_length;
 		updateHitbox();
-		HP=3;
+		HP=5;
 	}
 	
 

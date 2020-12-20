@@ -2,6 +2,7 @@ package model;
 
 
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -15,18 +16,32 @@ import engine.Game;
 import engine.GamePainter;
 
 public class MainPainter implements GamePainter{
-	public int animationstage;
 	/**
-	 * la taille des cases
+	 * Parametres de taille donnant le pourcentage de la zone de jeu
+	 * dans la fenetre, indifferent quelque soit la taille du labyrinthe
+	 * (et donc du nombre de cases) 
+	 */
+	protected static final double PLAYABLE_ZONE_WIDTH_OCCUPATION_PERCENTAGE=0.7;
+	protected static final double PLAYABLE_ZONE_HEIGHT_OCCUPATION_PERCENTAGE=0.7;
+	protected static final double TOP_INTERFACE_HEIGHT_OCCUPATION_PERCENTAGE=0.1;
+	/*
+	 * Parametres a definir avec la taille du labyrinthe, sachant qu'une case doit faire 32x32 pixels !
+	 */
+	protected static int WIDTH;
+	protected static int HEIGHT;
+	protected static int PLAYABLE_ZONE_WIDTH;
+	protected static int PLAYABLE_ZONE_HEIGHT;
+	/*
+	 * Parametres donnant la taille des differentes interfacess (PV+Temps restant/inventaire/boite de dialogue)
 	 */
 	
-	protected static final int PLAYABLE_ZONE_WIDTH=320;
-	protected static final int PLAYABLE_ZONE_HEIGHT=320;
-	protected static final int HEIGHT_INTERFACE=32;
-	protected static final int HEIGHT = HEIGHT_INTERFACE+PLAYABLE_ZONE_HEIGHT;
-	protected static final int WIDTH = 320;
-	public static final int WIDTH_INTERFACE=WIDTH;
+	protected static int TOP_INTERFACE_HEIGHT;
+	protected static int TOP_INTERFACE_WIDTH;
+	protected static int BOTTOM_INTERFACE_HEIGHT;
+	protected static int RIGHT_INTERFACE_WIDTH;
 
+
+	public int animationstage;
 	/**
 	 * appelle constructeur parent
 	 * 
@@ -46,12 +61,14 @@ public class MainPainter implements GamePainter{
 		game=in_game;
 		heros=game.getHeros();
 		Labyrinthe donjon=game.getDonjon();
+		this.defineSizeParameters(donjon);
 		monsters=game.getMonstres();
 		herosPainter= new PacmanPainter(heros);
 		donjonPainter = new LabyrinthePainter(donjon, PLAYABLE_ZONE_WIDTH, PLAYABLE_ZONE_HEIGHT);
 		monsterPainter= new MonsterPainter(monsters);
 		controller = in_controller;
 		animationstage=0;
+
 	}
 
 	/** 
@@ -79,9 +96,9 @@ public class MainPainter implements GamePainter{
 		Graphics2D crayon_lab = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_evl = (Graphics2D) im.getGraphics();
 		this.drawUserInterface(crayon_int);
-		donjonPainter.draw(crayon_lab, HEIGHT_INTERFACE);
-		herosPainter.draw(crayon_pac , animationStage(),controller, HEIGHT_INTERFACE);
-		monsterPainter.draw(crayon_evl,animationStage(), HEIGHT_INTERFACE);
+		donjonPainter.draw(crayon_lab, TOP_INTERFACE_HEIGHT);
+		herosPainter.draw(crayon_pac , animationStage(),controller,TOP_INTERFACE_HEIGHT);
+		monsterPainter.draw(crayon_evl,animationStage(), TOP_INTERFACE_HEIGHT);
 		
 	}
 
@@ -100,29 +117,49 @@ public class MainPainter implements GamePainter{
 		int HP=this.heros.getHP();
 		int elapsedTime=this.game.getElapsedTime();
 		int Time_Limit=this.game.getDonjon().getTime_Limit();
-		try {
-			img_bg = ImageIO.read(new File("img/userInterface/bg.png"));
-			int bg_size=img_bg.getWidth(null);
-			for(int j=0;j<WIDTH_INTERFACE/bg_size;j++) {
-				crayon.drawImage(img_bg, 32*j, 0, 32*(j+1) , 32, 0, 0, img_bg.getWidth(null), img_bg.getWidth(null), null);
-			}
-			
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
+		double sizeHeartParameter=0.6;
+		double diffSizeHeartParameter=(1-sizeHeartParameter)/2;
+		double sizeRectHeartParameter=(1+sizeHeartParameter)/2;
+		int maximumLifePoints=5;
+		Color fond = new Color(153,102,0);
+		crayon.setColor(fond);
+		crayon.fillRect(0, 0, TOP_INTERFACE_WIDTH, TOP_INTERFACE_HEIGHT);
+		Color fond2 = new Color( 246, 158, 32 );
+		crayon.setColor(fond2);
+		crayon.fillRoundRect((int)((1-sizeRectHeartParameter)*TOP_INTERFACE_HEIGHT/2), (int)((1-sizeRectHeartParameter)*TOP_INTERFACE_HEIGHT/2), (int)(diffSizeHeartParameter+sizeHeartParameter*maximumLifePoints+1)*TOP_INTERFACE_HEIGHT+(int)(1-sizeRectHeartParameter)*TOP_INTERFACE_HEIGHT, (int)(sizeRectHeartParameter*TOP_INTERFACE_HEIGHT), 30,30);
 		
 		try {
 			for(int i=0;i<HP;i++) {
 				img_heart = ImageIO.read(new File("img/userInterface/heart.png"));
-				crayon.drawImage(img_heart, 32*i, 0, 32*(i+1) , 32, 0, 0, img_heart.getWidth(null), img_heart.getWidth(null), null);
+				crayon.drawImage(img_heart, (int)((diffSizeHeartParameter+sizeHeartParameter*i)*TOP_INTERFACE_HEIGHT), (int)(diffSizeHeartParameter*TOP_INTERFACE_HEIGHT), (int)((diffSizeHeartParameter+sizeHeartParameter*(i+1))*TOP_INTERFACE_HEIGHT) , (int)((1-diffSizeHeartParameter)*TOP_INTERFACE_HEIGHT), 0, 0, img_heart.getWidth(null), img_heart.getWidth(null), null);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		crayon.setColor(Color.black);
 	    crayon.setFont(new Font("Serif", Font.PLAIN, 40));  // Here
-	    crayon.drawString(String.valueOf(Time_Limit-elapsedTime), WIDTH_INTERFACE-60, 30);
+	    crayon.drawString(String.valueOf(Time_Limit-elapsedTime), TOP_INTERFACE_WIDTH-60 , TOP_INTERFACE_HEIGHT-10);
+	    Color inventoryBG = new Color( 146, 114, 68 );
+	    crayon.setColor(inventoryBG);
+	    crayon.fillRect(TOP_INTERFACE_WIDTH, 0, RIGHT_INTERFACE_WIDTH, HEIGHT-BOTTOM_INTERFACE_HEIGHT);
+	    Color chatBG = new Color( 230, 203, 163 );
+	    crayon.setColor(chatBG);
+	    crayon.fillRect(0,HEIGHT-BOTTOM_INTERFACE_HEIGHT, WIDTH, BOTTOM_INTERFACE_HEIGHT);
+	}
+	private void defineSizeParameters(Labyrinthe donjon) {
+		this.PLAYABLE_ZONE_WIDTH=donjon.getNb_largeur()*32;
+		this.PLAYABLE_ZONE_HEIGHT=donjon.getNb_hauteur()*32;
+		System.out.println(PLAYABLE_ZONE_HEIGHT);
+		this.WIDTH=(int)(this.PLAYABLE_ZONE_WIDTH/PLAYABLE_ZONE_WIDTH_OCCUPATION_PERCENTAGE);
+
+		this.HEIGHT=(int)(this.PLAYABLE_ZONE_HEIGHT/PLAYABLE_ZONE_WIDTH_OCCUPATION_PERCENTAGE);
+		System.out.println(HEIGHT);
+		this.TOP_INTERFACE_HEIGHT=(int)(this.HEIGHT*TOP_INTERFACE_HEIGHT_OCCUPATION_PERCENTAGE);
+		this.BOTTOM_INTERFACE_HEIGHT=this.HEIGHT-this.PLAYABLE_ZONE_HEIGHT-this.TOP_INTERFACE_HEIGHT;
+		this.RIGHT_INTERFACE_WIDTH=this.WIDTH-this.PLAYABLE_ZONE_WIDTH;
+		this.TOP_INTERFACE_WIDTH=this.PLAYABLE_ZONE_WIDTH;
+		
 	}
 }
