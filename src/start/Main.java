@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import engine.Game;
 import engine.GameEngineGraphical;
+import engine.GraphicalInterface;
 import model.PacmanController;
 import model.PacmanGame;
 import model.Labyrinthe;
@@ -27,7 +28,7 @@ public class Main {
 		Game game;
 		MainPainter painter;
 		GameEngineGraphical engine;
-		
+		GraphicalInterface gui;
 		// creation du jeu particulier et de son afficheur
 		do {
 			String source = "levels/";
@@ -43,12 +44,15 @@ public class Main {
 			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres);
 			PacmanController controller = new PacmanController();
 			painter = new MainPainter(controller,game);
-			// classe qui lance le moteur de jeu generique
+			// creation de l'interface graphique
 			engine = new GameEngineGraphical(game, painter, controller);
 			
 			engine.run();
-			if (game.nextlevel()==true)
+			if (game.nextlevel()==true) {
 				repeat=true;
+				if(j!=nbLevels-1)
+					engine.disposeGUI();
+			}
 			
 			else
 				repeat=false;

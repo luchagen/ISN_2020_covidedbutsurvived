@@ -20,7 +20,7 @@ public class GraphicalInterface  {
 	 * le Panel pour l afficheur
 	 */
 	private DrawingPanel panel;
-	
+	private JFrame f;
 	/**
 	 * la construction de l interface graphique: JFrame avec panel pour le game
 	 * 
@@ -30,7 +30,7 @@ public class GraphicalInterface  {
 	 * 
 	 */
 	public GraphicalInterface(GamePainter gamePainter, GameController gameController) throws IOException{
-		JFrame f=new JFrame();
+		f=new JFrame();
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setTitle("CovidedButSurvived");
@@ -54,6 +54,9 @@ public class GraphicalInterface  {
 	 */
 	public void paint() {
 		this.panel.drawGame();	
+	}
+	public void dispose() {
+		f.dispose();
 	}
 	
 }

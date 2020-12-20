@@ -58,8 +58,7 @@ public class GameEngineGraphical {
 		 long elapsedtime=(endtime-startTime)/1000000;
 	
 		
-		// creation de l'interface graphique
-		this.gui = new GraphicalInterface(this.gamePainter,this.gameController);
+		 this.gui = new GraphicalInterface(this.gamePainter,this.gameController);
 		
 		// boucle de game
 
@@ -92,4 +91,7 @@ public class GameEngineGraphical {
 			else
 				System.out.println("Game over :You are coroned!!");
 }
+	public void disposeGUI() {
+		this.gui.dispose();
+	}
 	}
