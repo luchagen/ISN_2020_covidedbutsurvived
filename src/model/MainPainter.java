@@ -98,6 +98,14 @@ public class MainPainter implements GamePainter{
 		donjonPainter.draw(crayon_lab, TOP_INTERFACE_HEIGHT);
 		herosPainter.draw(crayon_pac , animationStage(),controller,TOP_INTERFACE_HEIGHT);
 		monsterPainter.draw(crayon_evl,animationStage(), TOP_INTERFACE_HEIGHT);
+		if(this.heros.getHP()==0) {
+			try {
+				this.drawDeathMessage(crayon_int);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
 
@@ -116,7 +124,7 @@ public class MainPainter implements GamePainter{
 		int HP=this.heros.getHP();
 		int elapsedTime=this.game.getElapsedTime();
 		int Time_Limit=this.game.getDonjon().getTime_Limit();
-		double sizeHeartParameter=0.6;
+		double sizeHeartParameter=0.6; // Valeur a fixer
 		double diffSizeHeartParameter=(1-sizeHeartParameter)/2;
 		double sizeRectHeartParameter=(1+sizeHeartParameter)/2;
 		int maximumLifePoints=5;
@@ -155,10 +163,24 @@ public class MainPainter implements GamePainter{
 
 		this.HEIGHT=(int)(this.PLAYABLE_ZONE_HEIGHT/PLAYABLE_ZONE_WIDTH_OCCUPATION_PERCENTAGE);
 		System.out.println(HEIGHT);
-		this.TOP_INTERFACE_HEIGHT=45;
+		this.TOP_INTERFACE_HEIGHT=45; //Valeur a fixer
 		this.BOTTOM_INTERFACE_HEIGHT=this.HEIGHT-this.PLAYABLE_ZONE_HEIGHT-this.TOP_INTERFACE_HEIGHT;
 		this.RIGHT_INTERFACE_WIDTH=this.WIDTH-this.PLAYABLE_ZONE_WIDTH;
 		this.TOP_INTERFACE_WIDTH=this.PLAYABLE_ZONE_WIDTH;
 		
+	}
+	private void drawDeathMessage(Graphics2D crayon) throws IOException {
+		Image img_deathMessage = ImageIO.read(new File("img/userInterface/deathMessage.png"));
+		double percentageOfPlayableZoneWidth=1;
+		int imgWidth = (int)(percentageOfPlayableZoneWidth*PLAYABLE_ZONE_WIDTH);
+		int imgHeight=(int)(imgWidth*img_deathMessage.getHeight(null)/img_deathMessage.getWidth(null));
+		int x0=(int)((PLAYABLE_ZONE_WIDTH-imgWidth)/2);
+		int y0=(int)((PLAYABLE_ZONE_HEIGHT-imgHeight)/2);
+		int x1=x0+imgWidth;
+		int y1=y0+imgHeight;
+		Color chatBG = new Color( 230, 203, 163 );
+	    crayon.setColor(chatBG);
+		crayon.fillRect(x0, y0, x1-x0, y1-y0);
+		crayon.drawImage(img_deathMessage, x0,y0, x1, y1, 0, 0, img_deathMessage.getWidth(null), img_deathMessage.getHeight(null), null);
 	}
 }
