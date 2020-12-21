@@ -23,7 +23,6 @@ public class MainPainter implements GamePainter{
 	 */
 	protected static final double PLAYABLE_ZONE_WIDTH_OCCUPATION_PERCENTAGE=0.7;
 	protected static final double PLAYABLE_ZONE_HEIGHT_OCCUPATION_PERCENTAGE=0.7;
-	protected static final double TOP_INTERFACE_HEIGHT_OCCUPATION_PERCENTAGE=0.1;
 	/*
 	 * Parametres a definir avec la taille du labyrinthe, sachant qu'une case doit faire 32x32 pixels !
 	 */
@@ -156,7 +155,7 @@ public class MainPainter implements GamePainter{
 
 		this.HEIGHT=(int)(this.PLAYABLE_ZONE_HEIGHT/PLAYABLE_ZONE_WIDTH_OCCUPATION_PERCENTAGE);
 		System.out.println(HEIGHT);
-		this.TOP_INTERFACE_HEIGHT=(int)(this.HEIGHT*TOP_INTERFACE_HEIGHT_OCCUPATION_PERCENTAGE);
+		this.TOP_INTERFACE_HEIGHT=45;
 		this.BOTTOM_INTERFACE_HEIGHT=this.HEIGHT-this.PLAYABLE_ZONE_HEIGHT-this.TOP_INTERFACE_HEIGHT;
 		this.RIGHT_INTERFACE_WIDTH=this.WIDTH-this.PLAYABLE_ZONE_WIDTH;
 		this.TOP_INTERFACE_WIDTH=this.PLAYABLE_ZONE_WIDTH;
