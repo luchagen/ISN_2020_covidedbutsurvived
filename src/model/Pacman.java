@@ -6,6 +6,7 @@ public class Pacman  extends Personnage{
 		super(spawn);
 		// implementation du spritesystem : on remplace la mention directe a un sprite par l'utilisation d un fichier qui indique quels sprites utiliser dans quelles situations
 		this.skin= "img/hero.txt";
+		this.HP=5;
 		
 		// TODO Auto-generated constructor stub
 	}

@@ -1,5 +1,7 @@
 package engine;
 
+import java.util.ArrayList;
+
 import model.Labyrinthe;
 import model.Monster;
 import model.Pacman;
@@ -46,10 +48,10 @@ public interface Game {
 
 	public Labyrinthe getDonjon();
 
-	public Monster[] getMonstres();
+	public ArrayList<Monster> getMonsters();
 
 	public int getGamecounter();
 	
-	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres);
+	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres);
 
 }

@@ -2,10 +2,10 @@ package start;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import engine.Game;
 import engine.GameEngineGraphical;
-import engine.GraphicalInterface;
 import model.PacmanController;
 import model.PacmanGame;
 import model.Labyrinthe;
@@ -24,11 +24,11 @@ public class Main {
 		boolean repeat;
 		Labyrinthe donjon;
 		Pacman heros;
-		Monster[] monstres;
+		ArrayList<Monster> monstres;
 		Game game;
 		MainPainter painter;
 		GameEngineGraphical engine;
-		GraphicalInterface gui;
+		
 		// creation du jeu particulier et de son afficheur
 		do {
 			String source = "levels/";
@@ -36,9 +36,9 @@ public class Main {
 			source+=".txt";
 			donjon = new Labyrinthe(source);
 			heros = new Pacman(donjon.spawn);
-			monstres = new Monster[donjon.spawnMonsters.size()];
+			monstres = new ArrayList<Monster>();
 			for(int i=0;i<donjon.spawnMonsters.size();i++) {
-				monstres[i]=new Monster(donjon.spawnMonsters.get(i));
+				monstres.add(new Monster(donjon.spawnMonsters.get(i)));
 			}
 				
 			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres);

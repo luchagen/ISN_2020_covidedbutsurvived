@@ -16,7 +16,6 @@ public class Personnage {
 		X=spawn[0]*Labyrinthe.Tile_length;
 		Y=spawn[1]*Labyrinthe.Tile_length;
 		updateHitbox();
-		HP=5;
 	}
 	
 

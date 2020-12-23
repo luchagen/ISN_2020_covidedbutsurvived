@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -38,7 +39,7 @@ public class MainPainter implements GamePainter{
 	MonsterPainter monsterPainter;
 	PacmanController controller;
 	Pacman heros;
-	Monster[] monsters;
+	ArrayList<Monster> monsters;
 	Game game;
 	
 	
@@ -46,7 +47,7 @@ public class MainPainter implements GamePainter{
 		game=in_game;
 		heros=game.getHeros();
 		Labyrinthe donjon=game.getDonjon();
-		monsters=game.getMonstres();
+		monsters=game.getMonsters();
 		herosPainter= new PacmanPainter(heros);
 		donjonPainter = new LabyrinthePainter(donjon, PLAYABLE_ZONE_WIDTH, PLAYABLE_ZONE_HEIGHT);
 		monsterPainter= new MonsterPainter(monsters);
