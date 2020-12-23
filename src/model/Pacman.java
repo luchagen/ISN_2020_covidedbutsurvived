@@ -10,24 +10,6 @@ public class Pacman  extends Personnage{
 		// TODO Auto-generated constructor stub
 	}
 		
-
-	// mise a jour de la position des points qui definissent la hitbox du pacman, a mettre  a jour apres chaque deplacement 
-	public void updateHitbox() {
-		int Tile_length = Labyrinthe.Tile_length;
-		int a = (int) (0.355*Tile_length);
-		int b = (int) (0.625*Tile_length);
-		Xwtwest=(X+a-PacmanGame.game_speed);
-		Xwt=Xwtwest/Tile_length;
-		Xet=(X+b+PacmanGame.game_speed)/Tile_length;
-		Yntnorth=(Y+a-PacmanGame.game_speed);
-		Ynt=Yntnorth/Tile_length;
-		Yst=(Y+b+PacmanGame.game_speed)/Tile_length;
-		Xw=(X+a)/Tile_length;
-		Xe=(X+b)/Tile_length;
-		Yn=(Y+a)/Tile_length;
-		Ys=(Y+b)/Tile_length;
-	}
-	
 	public void moveUP() {
 			Y=Y-PacmanGame.game_speed;
 			updateHitbox();

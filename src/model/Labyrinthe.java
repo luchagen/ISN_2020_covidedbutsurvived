@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Labyrinthe {
 	protected static int nb_largeur; // Le nombre de case en largeur du labyrinthe
 	protected static int nb_hauteur; // Le nombre de case en hauteur du labyrinthe
-	protected  int nb_case;			// Le produit des deux attributs precedents
+	protected static int nb_case;			// Le produit des deux attributs precedents
 	protected static int Tile_length; //La taille en pixel d'une case du labyrinthe
 									//et donc que chacune des cases est un carre
 	protected int level;			// Le niveau attribue au labyrinthe
@@ -99,6 +99,9 @@ public class Labyrinthe {
 						break;
 					case 5:
 						this.cases[j][i]=new Chest(liste_param[j]);
+						break;
+					case 6:
+						this.cases[j][i]=new Trap(liste_param[j]);
 						break;
 					default:
 						cases[j][i]=new Wall(liste_param[j]);

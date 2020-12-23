@@ -59,8 +59,9 @@ public class Main {
 			j++;
 		}while(repeat && j<nbLevels);
 		
-		System.out.println(" Felicitation vous avez gagne :JEU TERMINE !");
-
+		if((j==nbLevels)&&repeat) {
+			System.out.print("Felicitations vous avez gagne :JEU TERMINE !");
+		}
 
 		}
 		

@@ -82,8 +82,10 @@ public class PacmanGame implements Game {
 		case IDLE:
 			break;
 		}
-		//evolve monsters
-		
+}
+	
+	@Override
+	public void evolveMonsters() {
 		for(int i=0;i<monstres.length;i++) {
 			Boolean canmoveright=false;
 			Boolean canmoveleft=false;
@@ -105,56 +107,73 @@ public class PacmanGame implements Game {
 	        	
 			}	
 	}
+	
+	/*
+	 * Applying damages
+	 */
+	@Override
+	public void isBeingTouchedByAMonster() {
+		for(int i=0;i<monstres.length;i++) {
+			if((monstres[i].Xmid==heros.Xmid)&&(monstres[i].Ymid==heros.Ymid)) { //Changer ça en mettant une methode qui detecte si les persos partage la meme hitbox
+				heros.loseHP();
+				System.out.println("AIE J'AI PRIS UN COUP!");
+			}
+		}
+	}
+	
+	@Override
+	public void applyTrapDamage() {
+		Tile currentTile=donjon.cases[heros.Xmid][heros.Ymid];
+		
+		if((currentTile.nature==6) && (!currentTile.isTrapOpen)) {
+			currentTile.skin=currentTile.findSource(currentTile.trapSkin);
+			currentTile.isTrapOpen=true;
+			heros.takeDamage(currentTile.damage);
+			System.out.print("Oups! It's a "+currentTile.trapType+" trap!\n");
+			System.out.print("HP remained: "+heros.getHP()+"\n");
+		}
+	}
+	
+	/**
+	 *verifier si on peut passer au prochain niveau
+	 */
+	public boolean nextlevel() {
+		return donjon.cases[heros.Xmid][heros.Ymid].nextlevel;
+	}
 
 	/**
 	 * verifier si le jeu est fini
 	 */
 	@Override
 	public boolean isFinished() {
-		
-		{return donjon.cases[((Labyrinthe.Tile_length/2)+ heros.X)/Labyrinthe.Tile_length][((Labyrinthe.Tile_length/2) +heros.Y)/Labyrinthe.Tile_length].canFinishGame;}
-		
+		return donjon.cases[heros.Xmid][heros.Ymid].canFinishGame;		
 	}
-	/**
-	 *verifier si on peut passer au prochain niveau
-	 */
-	public boolean nextlevel() {
-		
-		{return donjon.cases[((Labyrinthe.Tile_length/2)+ heros.X)/Labyrinthe.Tile_length][((Labyrinthe.Tile_length/2) +heros.Y)/Labyrinthe.Tile_length].nextlevel;}
-		
-	}
-	/**
-	 * verifier si le jeu est fini
-	 */
+
 	@Override
-	public boolean isGameOver(long elapsedtime) {
-		if (elapsedtime < donjon.Time_Limit)
-			return false;
-		else
-			return true;
+	public boolean isTimeOver(long elapsedtime) {
+		return (elapsedtime > donjon.Time_Limit);
 	}
 	
-	public void isBeingTouchedByAMonster() {
-		int l=Labyrinthe.Tile_length;
-		for(int i=0;i<monstres.length;i++) {
-			if((monstres[i].X/l==heros.X/l)&&(monstres[i].Y/l==heros.Y/l)) { //Changer ca en mettant une methode qui detecte si les persos partage la meme hitbox
-				heros.loseHP();
-				System.out.println("AIE J'AI PRIS UN COUP!");
-			}
-		}
+	@Override
+	public boolean isKilled() {
+		return (heros.getHP()<=0);
 	}
+	
+	@Override
+	public boolean isGameOver(long elapsedtime) {
+		return (this.isFinished() || this.isTimeOver(elapsedtime) || this.isKilled());
+	}
+	
+	/*
+	 * getters & setters
+	 */
+
 	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) {
 		this.heros=in_heros;
 		this.donjon=in_donjon;
 		this.monstres=in_monstres;
 	}
-	public boolean isKilled() {
-		if(heros.getHP()==0)
-			return true;
-		else
-			return false;
-		
-	}
+
 	public void setElapsedTime(int elapsedTime) {
 		this.elapsedTime=elapsedTime;
 	}

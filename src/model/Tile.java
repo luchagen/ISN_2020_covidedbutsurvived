@@ -1,13 +1,15 @@
 package model;
 
 public abstract class Tile {
-	public int nature;
-	boolean canWalkOn;
-	boolean canFinishGame;
-	boolean nextlevel;
-	public String skin;
+	protected int nature;
+	protected boolean canWalkOn;
+	protected boolean canFinishGame;
+	protected boolean nextlevel;
+	protected String skin;
 	protected String trapType;
 	protected int damage;
+	protected String trapSkin;
+	protected boolean isTrapOpen;
 	
 	String findSource(String in_source) { 	//Permet d assimiler une case a une photo
 											// Le fichier source level_i.txt comportait une serie de codes xxx attribuee a chacune des cases

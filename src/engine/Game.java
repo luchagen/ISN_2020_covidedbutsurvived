@@ -19,11 +19,14 @@ public interface Game {
 	 *            commande utilisateur
 	 */
 	public void evolve(Cmd userCmd);
+	public void evolveMonsters();
 
 	/**
 	 * @return true si et seulement si le jeu est fini
 	 */
 	public boolean isFinished();
+	
+	public boolean isTimeOver(long elapsedtime);
 	
 	public boolean isGameOver(long elapsedtime);
 	
@@ -32,6 +35,8 @@ public interface Game {
 	public boolean nextlevel();
 	
 	public void isBeingTouchedByAMonster();
+	
+	public void applyTrapDamage();
 	
 	public void setElapsedTime(int elapsedTime);
 	
