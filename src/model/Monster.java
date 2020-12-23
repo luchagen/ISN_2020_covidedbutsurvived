@@ -9,7 +9,7 @@ public class Monster extends Personnage {
 	public Monster(int[] spawn) {
 		super(spawn);
 		this.skin= "img/monster.txt";
-		this.HP=3;
+		this.HP=1;
 		// TODO Auto-generated constructor stub
 	}
 	

@@ -31,3 +31,8 @@ img/hero/move/hero.png
 img/hero/move/hero1.png
 img/hero/move/hero2.png
 img/hero/move/hero3.png
+%STERILIZE
+img/hero/move/hero.png
+img/hero/move/hero1.png
+img/hero/move/hero2.png
+img/hero/move/hero3.png

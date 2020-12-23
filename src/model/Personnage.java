@@ -4,12 +4,12 @@ public class Personnage {
 	protected int X,Y,Xwt,Xet,Ynt,Yst,Xw,Xe,Yn,Ys,Xwtwest,Yntnorth,Xmid,Ymid;
 	protected String skin;
 	protected int HP;
+
 	
 	public Personnage(int X_0,int Y_0) { //Constructeur inutile ?
 		X=X_0;
 		Y=Y_0;
 		updateHitbox();
-		HP=3;
 		}
 	
 	public Personnage(int[] spawn) {

@@ -78,20 +78,28 @@ public class PacmanGame implements Game {
 				heros.collisionDOWN();
 			break;
 		case STERILIZE:
-			pacmanKick();
+			this.pacmanKick();
+			break;
+		case SHOUT:
+			pacmanSHOUT();
 			break;
 		case IDLE:
 			break;
 		}
 }
 	
-	private void pacmanKick() {
-		for(int i=0;i<monsters.size();i++) {
-			if((monsters.get(i).Xmid==heros.Xmid)&&(monsters.get(i).Ymid==heros.Ymid)) { 
-				monsters.get(i).loseHP();
-				if(monsters.get(i).getHP()==0) {
-					monsters.remove(i);
+	private void pacmanSHOUT() {
+		
+	}
+	
+	public void pacmanKick() {
+		for(Monster monster:monsters) {
+			if((monster.Xmid==heros.Xmid)&&(monster.Ymid==heros.Ymid)) { 
+				monster.loseHP();
+				if(monster.getHP()==0) {
+					monsters.remove(monster);
 				}
+				break;
 			}
 		}
 	}
