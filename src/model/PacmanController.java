@@ -63,9 +63,11 @@ public class PacmanController implements GameController {
 		case 'x':
 		case 'X':
 			this.commandeEnCours=Cmd.STERILIZE;
+			break;
 		case 'w':
 		case 'W':
 			this.commandeEnCours=Cmd.SHOUT;
+			break;
 		}
 
 	}
