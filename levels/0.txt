@@ -2,7 +2,7 @@
 level=1
 nb_largeur=10
 nb_hauteur=10
-Time_Limit(s)=100
+Time_Limit(s)=60
 ########## CODE GENERANT LA CARTE ########
 102#301#102#100#004#100#100#100#100#100
 100#00B#003#100#002#100#00B#007#003#100

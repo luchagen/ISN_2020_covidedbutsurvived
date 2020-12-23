@@ -128,7 +128,7 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public boolean isGameOver(long elapsedtime) {
-		if (elapsedtime < donjon.Time_Limit)
+		if (elapsedtime <= donjon.Time_Limit)
 			return false;
 		else
 			return true;

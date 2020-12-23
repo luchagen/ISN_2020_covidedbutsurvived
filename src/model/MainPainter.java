@@ -98,9 +98,18 @@ public class MainPainter implements GamePainter{
 		donjonPainter.draw(crayon_lab, TOP_INTERFACE_HEIGHT);
 		herosPainter.draw(crayon_pac , animationStage(),controller,TOP_INTERFACE_HEIGHT);
 		monsterPainter.draw(crayon_evl,animationStage(), TOP_INTERFACE_HEIGHT);
-		if(this.heros.getHP()==0) {
+		if(this.game.isKilled()) {
 			try {
-				this.drawDeathMessage(crayon_int);
+				this.notificationMessage(crayon_int,"img/userInterface/deathMessage.png");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println(this.game.isGameOver(this.game.getElapsedTime()));
+		if(this.game.isGameOver(this.game.getElapsedTime())) {
+			try {
+				this.notificationMessage(crayon_int,"img/userInterface/defeatMessage.png");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -169,8 +178,8 @@ public class MainPainter implements GamePainter{
 		this.TOP_INTERFACE_WIDTH=this.PLAYABLE_ZONE_WIDTH;
 		
 	}
-	private void drawDeathMessage(Graphics2D crayon) throws IOException {
-		Image img_deathMessage = ImageIO.read(new File("img/userInterface/deathMessage.png"));
+	private void notificationMessage(Graphics2D crayon, String source) throws IOException {
+		Image img_deathMessage = ImageIO.read(new File(source));
 		double percentageOfPlayableZoneWidth=1;
 		int imgWidth = (int)(percentageOfPlayableZoneWidth*PLAYABLE_ZONE_WIDTH);
 		int imgHeight=(int)(imgWidth*img_deathMessage.getHeight(null)/img_deathMessage.getWidth(null));
