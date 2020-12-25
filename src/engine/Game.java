@@ -47,7 +47,7 @@ public interface Game {
 
 	public Pacman getHeros();
 	
-	public Bullet getBullet();
+	public ArrayList<Bullet> getBullets();
 
 	public Labyrinthe getDonjon();
 
@@ -57,4 +57,7 @@ public interface Game {
 	
 	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres);
 
+	public void evolveBullets();
+	
+	public void bulletsKillMonsters();
 }

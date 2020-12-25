@@ -24,9 +24,10 @@ public class PacmanGame implements Game {
 	private Pacman heros;
 	private Labyrinthe donjon;
 	private ArrayList<Monster> monsters;
+	private ArrayList<Bullet> bullets;
 	int gamecounter=0;
 	private int elapsedTime;
-	private Bullet bullet;
+	
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres) { 
 		BufferedReader helpReader;
@@ -43,6 +44,7 @@ public class PacmanGame implements Game {
 		heros=in_heros;
 		donjon=in_donjon;
 		monsters=in_monstres;
+		bullets=new ArrayList<Bullet>();
 	}
 	
 
@@ -83,24 +85,50 @@ public class PacmanGame implements Game {
 			this.pacmanKick();
 			break;
 		case SHOUT:
-			bullet=new Bullet(heros);
-			System.out.println("**************************************"+heros.X);
-			System.out.println("***************************************"+bullet.X);
-			pacmanSHOUT();
-			bullet.evolveBullet();
-			
+			bullets.add(new Bullet(heros));
 			break;
 		case IDLE:
 			break;
 		}
 }
 	
-	private void pacmanSHOUT() {
-		heros.haveweapon=true;
-		
-		
-		
-		
+	public void evolveBullets() {
+		for(Bullet bullet:bullets ) {
+			switch (bullet.direction) {
+			case 'R':
+				if((bullet.Xtile+1<Labyrinthe.nb_largeur) && (donjon.cases[bullet.Xtile+1][bullet.Ytile].canWalkOn))
+					bullet.evolveBullet();
+				else
+					bullet.isTerminal=true;;
+				break;
+			case 'L':
+				if((bullet.Xtile-1>=0) && (donjon.cases[bullet.Xtile-1][bullet.Ytile].canWalkOn))
+					bullet.evolveBullet();
+				else
+					bullet.isTerminal=true;;
+				break;
+			case 'U':
+				if((bullet.Ytile-1>=0) && (donjon.cases[bullet.Xtile][bullet.Ytile-1].canWalkOn))
+					bullet.evolveBullet();
+				else
+					bullet.isTerminal=true;;
+				break;
+			case 'D':
+				if((bullet.Ytile+1<Labyrinthe.nb_hauteur) && (donjon.cases[bullet.Xtile][bullet.Ytile+1].canWalkOn))
+					bullet.evolveBullet();
+				else
+					bullet.isTerminal=true;;
+				break;
+		}
+	}
+
+		int i=0;
+		while(i<bullets.size()) {
+			if(bullets.get(i).isTerminal) {
+				bullets.remove(i);
+			}
+			else i++;
+		}
 	}
 	
 	public void pacmanKick() {
@@ -112,6 +140,28 @@ public class PacmanGame implements Game {
 				}
 				break;
 			}
+		}
+	}
+	
+	public void bulletsKillMonsters() {
+		for (Bullet bullet:bullets) {
+			for (Monster monster:monsters) {
+				if((monster.Xmid==bullet.Xtile)&&(monster.Ymid==bullet.Ytile)) { 
+					monster.loseHP();
+					bullet.isTerminal=true;
+					if(monster.getHP()==0) {
+						monsters.remove(monster);
+					}
+					break;
+				}
+			}
+		}
+		int i=0;
+		while(i<bullets.size()) {
+			if(bullets.get(i).isTerminal) {
+				bullets.remove(i);
+			}
+			else i++;
 		}
 	}
 	
@@ -220,8 +270,8 @@ public class PacmanGame implements Game {
 		return heros;
 	}
 	
-	public Bullet getBullet() {
-		return bullet;
+	public ArrayList<Bullet> getBullets() {
+		return bullets;
 	}
 
 	public Labyrinthe getDonjon() {

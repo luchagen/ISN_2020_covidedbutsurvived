@@ -72,6 +72,8 @@ public class GameEngineGraphical {
 			this.game.applyTrapDamage();
 			this.game.evolveMonsters();
 			this.game.isBeingTouchedByAMonster();
+			this.game.evolveBullets();
+			this.game.bulletsKillMonsters();
 			// affiche le game
 			this.gui.paint();
 			endtime=System.nanoTime();
