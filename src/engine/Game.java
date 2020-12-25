@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import model.Labyrinthe;
 import model.Monster;
 import model.Pacman;
+import model.Bullet;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -45,6 +46,8 @@ public interface Game {
 	public int getElapsedTime();
 
 	public Pacman getHeros();
+	
+	public Bullet getBullet();
 
 	public Labyrinthe getDonjon();
 

@@ -1,8 +1,8 @@
 package model;
 
 public class Bullet {
-	private int X,Y;
-	private String skin;
+	public int X,Y;
+	protected String skin;
 	private char direction;
 	
 	public Bullet(Pacman in_shooter) {
@@ -15,16 +15,16 @@ public class Bullet {
 	public void evolveBullet() {
 		switch(direction) {
 		case 'L':
-			X-=1;
+			X-=80;
 			break;
 		case 'R':
-			X+=1;
+			X+=80;
 			break;
 		case 'U':
-			Y-=1;
+			Y-=80;
 			break;
 		case 'D':
-			Y+=1;
+			Y+=80;
 			break;
 		default:
 			break;

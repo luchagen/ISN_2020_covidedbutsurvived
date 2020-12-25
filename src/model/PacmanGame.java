@@ -26,6 +26,7 @@ public class PacmanGame implements Game {
 	private ArrayList<Monster> monsters;
 	int gamecounter=0;
 	private int elapsedTime;
+	private Bullet bullet;
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres) { 
 		BufferedReader helpReader;
@@ -43,6 +44,7 @@ public class PacmanGame implements Game {
 		donjon=in_donjon;
 		monsters=in_monstres;
 	}
+	
 
 	/**
 	 * faire evoluer le jeu suite a une commande
@@ -81,7 +83,12 @@ public class PacmanGame implements Game {
 			this.pacmanKick();
 			break;
 		case SHOUT:
+			bullet=new Bullet(heros);
+			System.out.println("**************************************"+heros.X);
+			System.out.println("***************************************"+bullet.X);
 			pacmanSHOUT();
+			bullet.evolveBullet();
+			
 			break;
 		case IDLE:
 			break;
@@ -89,6 +96,10 @@ public class PacmanGame implements Game {
 }
 	
 	private void pacmanSHOUT() {
+		heros.haveweapon=true;
+		
+		
+		
 		
 	}
 	
@@ -207,6 +218,10 @@ public class PacmanGame implements Game {
 
 	public Pacman getHeros() {
 		return heros;
+	}
+	
+	public Bullet getBullet() {
+		return bullet;
 	}
 
 	public Labyrinthe getDonjon() {

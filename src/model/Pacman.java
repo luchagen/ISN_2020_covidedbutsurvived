@@ -3,6 +3,8 @@ package model;
 public class Pacman  extends Personnage{
 	protected char lastMove;
 	
+	public boolean haveweapon;
+	
 	public Pacman(int[] spawn) {
 		super(spawn);
 		// implementation du spritesystem : on remplace la mention directe a un sprite par l'utilisation d un fichier qui indique quels sprites utiliser dans quelles situations

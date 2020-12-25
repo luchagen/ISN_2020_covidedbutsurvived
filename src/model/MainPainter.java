@@ -39,6 +39,8 @@ public class MainPainter implements GamePainter{
 	MonsterPainter monsterPainter;
 	PacmanController controller;
 	Pacman heros;
+	BulletPainter bulletpainter;
+	Bullet bullet;
 	ArrayList<Monster> monsters;
 	Game game;
 	
@@ -53,6 +55,8 @@ public class MainPainter implements GamePainter{
 		monsterPainter= new MonsterPainter(monsters);
 		controller = in_controller;
 		animationstage=0;
+			
+		
 	}
 
 	/** 
@@ -79,10 +83,19 @@ public class MainPainter implements GamePainter{
 		Graphics2D crayon_pac = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_lab = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_evl = (Graphics2D) im.getGraphics();
+		
+		
 		this.drawUserInterface(crayon_int);
 		donjonPainter.draw(crayon_lab, HEIGHT_INTERFACE);
 		herosPainter.draw(crayon_pac , animationStage(),controller, HEIGHT_INTERFACE);
 		monsterPainter.draw(crayon_evl,animationStage(), HEIGHT_INTERFACE);
+		if (heros.haveweapon==true) {
+			Graphics2D crayon_bull = (Graphics2D) im.getGraphics();
+			bullet=game.getBullet();
+			bullet.X=heros.Xmid;
+			bullet.Y=heros.Ymid;
+			bulletpainter=new BulletPainter();
+			bulletpainter.draw(crayon_bull, HEIGHT_INTERFACE,bullet);}
 		
 	}
 
