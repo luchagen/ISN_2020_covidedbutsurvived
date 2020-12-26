@@ -27,6 +27,7 @@ img/hero/maskless/move/hero1.png
 img/hero/maskless/move/hero2.png
 img/hero/maskless/move/hero3.png
 %DOWN
+<<<<<<< HEAD
 img/hero/maskless/move/hero.png
 img/hero/maskless/move/hero1.png
 img/hero/maskless/move/hero2.png
@@ -35,3 +36,19 @@ img/hero/maskless/move/hero3.png
 img/hero/maskless/throwbottle/throw.png
 img/hero/maskless/throwbottle/throw1.png
 img/hero/maskless/throwbottle/throw2.png
+=======
+img/hero/move/hero.png
+img/hero/move/hero1.png
+img/hero/move/hero2.png
+img/hero/move/hero3.png
+%STERILIZE
+img/hero/move/hero.png
+img/hero/move/hero1.png
+img/hero/move/hero2.png
+img/hero/move/hero3.png
+%SHOUT
+img/hero/move/hero.png
+img/hero/move/hero1.png
+img/hero/move/hero4.png
+img/hero/move/hero5.png
+>>>>>>> weapon_BATTLE

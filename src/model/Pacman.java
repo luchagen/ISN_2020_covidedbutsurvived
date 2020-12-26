@@ -1,37 +1,25 @@
 package model;
 
 public class Pacman  extends Personnage{
+	protected char lastMove;
+	
+	public boolean haveweapon;
 	
 	public Pacman(int[] spawn) {
 		super(spawn);
 		// implementation du spritesystem : on remplace la mention directe a un sprite par l'utilisation d un fichier qui indique quels sprites utiliser dans quelles situations
 		this.skin= "img/hero.txt";
+		this.HP=5;
+		this.lastMove='R';
 		
 		// TODO Auto-generated constructor stub
 	}
 		
-
-	// mise a jour de la position des points qui definissent la hitbox du pacman, a mettre  a jour apres chaque deplacement 
-	public void updateHitbox() {
-		int Tile_length = Labyrinthe.Tile_length;
-		int a = (int) (0.355*Tile_length);
-		int b = (int) (0.625*Tile_length);
-		Xwtwest=(X+a-PacmanGame.game_speed);
-		Xwt=Xwtwest/Tile_length;
-		Xet=(X+b+PacmanGame.game_speed)/Tile_length;
-		Yntnorth=(Y+a-PacmanGame.game_speed);
-		Ynt=Yntnorth/Tile_length;
-		Yst=(Y+b+PacmanGame.game_speed)/Tile_length;
-		Xw=(X+a)/Tile_length;
-		Xe=(X+b)/Tile_length;
-		Yn=(Y+a)/Tile_length;
-		Ys=(Y+b)/Tile_length;
-	}
-	
 	public void moveUP() {
 			Y=Y-PacmanGame.game_speed;
 			updateHitbox();
 			System.out.println("("+X+","+Y+")");
+			this.lastMove='U';
 	}
 	//le pacman entre en collision avec un mur/ bord en allant vers le haut, il  rebondit  (bump)
 	// note: cette mesure est obligatoire (et typique d un jeu video de ce genre) 
@@ -46,6 +34,7 @@ public class Pacman  extends Personnage{
 			Y=Y+PacmanGame.game_speed;
 			updateHitbox();
 			System.out.println("("+X+","+Y+")");
+			this.lastMove='D';
 		}
 	//le pacman entre en collision avec un mur/ bord en allant vers le bas, il rebondit  (bump)
 	public void collisionDOWN() {
@@ -58,6 +47,7 @@ public class Pacman  extends Personnage{
 			X=X-PacmanGame.game_speed;
 			updateHitbox();
 			System.out.println("("+X+","+Y+")");
+			this.lastMove='L';
 	}
 	//le pacman entre en collision avec un mur  bord en allant vers la gauche, il  rebondit  (bump)
 	public void collisionLEFT() {
@@ -70,6 +60,7 @@ public class Pacman  extends Personnage{
 			X=X+PacmanGame.game_speed;
 			updateHitbox();
 			System.out.println("("+X+","+Y+")");
+			this.lastMove='R';
 	}
 	//le pacman entre en collision avec un mur  bord en allant vers la droite, il  rebondit  (bump)
 	public void collisionRIGHT() {

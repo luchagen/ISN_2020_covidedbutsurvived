@@ -8,6 +8,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -36,9 +37,11 @@ public class MainPainter implements GamePainter{
 	PacmanPainter herosPainter;
 	LabyrinthePainter donjonPainter;
 	MonsterPainter monsterPainter;
+	BulletPainter bulletpainter;
 	PacmanController controller;
 	Pacman heros;
-	Monster[] monsters;
+	ArrayList<Bullet> bullets;
+	ArrayList<Monster> monsters;
 	Game game;
 	
 	
@@ -46,10 +49,12 @@ public class MainPainter implements GamePainter{
 		game=in_game;
 		heros=game.getHeros();
 		Labyrinthe donjon=game.getDonjon();
-		monsters=game.getMonstres();
+		monsters=game.getMonsters();
+		bullets=game.getBullets();
 		herosPainter= new PacmanPainter(heros);
 		donjonPainter = new LabyrinthePainter(donjon, PLAYABLE_ZONE_WIDTH, PLAYABLE_ZONE_HEIGHT);
 		monsterPainter= new MonsterPainter(monsters);
+		bulletpainter=new BulletPainter(bullets);
 		controller = in_controller;
 		animationstage=0;
 	}
@@ -78,11 +83,13 @@ public class MainPainter implements GamePainter{
 		Graphics2D crayon_pac = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_lab = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_evl = (Graphics2D) im.getGraphics();
+		Graphics2D crayon_bul = (Graphics2D) im.getGraphics();
+		
 		this.drawUserInterface(crayon_int);
 		donjonPainter.draw(crayon_lab, HEIGHT_INTERFACE);
 		herosPainter.draw(crayon_pac , animationStage(),controller, HEIGHT_INTERFACE);
 		monsterPainter.draw(crayon_evl,animationStage(), HEIGHT_INTERFACE);
-		
+		bulletpainter.draw(crayon_bul, HEIGHT_INTERFACE);
 	}
 
 	@Override

@@ -5,9 +5,11 @@ import java.util.Random;
 public class Monster extends Personnage {
 	private int longueurdaction=5;
 	private int actionencours=0;
+	
 	public Monster(int[] spawn) {
 		super(spawn);
 		this.skin= "img/monster.txt";
+		this.HP=1;
 		// TODO Auto-generated constructor stub
 	}
 	

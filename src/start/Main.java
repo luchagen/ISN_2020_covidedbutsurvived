@@ -2,16 +2,17 @@ package start;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import engine.Game;
 import engine.GameEngineGraphical;
-import engine.GraphicalInterface;
 import model.PacmanController;
 import model.PacmanGame;
 import model.Labyrinthe;
 import model.MainPainter;
 import model.Monster;
 import model.Pacman;
+import model.Bullet;
 
 /**
  * lancement du moteur avec le jeu
@@ -24,11 +25,12 @@ public class Main {
 		boolean repeat;
 		Labyrinthe donjon;
 		Pacman heros;
-		Monster[] monstres;
+		ArrayList<Monster> monstres;
 		Game game;
 		MainPainter painter;
 		GameEngineGraphical engine;
-		GraphicalInterface gui;
+		//Bullet bullet;
+		
 		// creation du jeu particulier et de son afficheur
 		do {
 			String source = "levels/";
@@ -36,13 +38,14 @@ public class Main {
 			source+=".txt";
 			donjon = new Labyrinthe(source);
 			heros = new Pacman(donjon.spawn);
-			monstres = new Monster[donjon.spawnMonsters.size()];
+			monstres = new ArrayList<Monster>();
 			for(int i=0;i<donjon.spawnMonsters.size();i++) {
-				monstres[i]=new Monster(donjon.spawnMonsters.get(i));
+				monstres.add(new Monster(donjon.spawnMonsters.get(i)));
 			}
-				
+			
 			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres);
 			PacmanController controller = new PacmanController();
+			
 			painter = new MainPainter(controller,game);
 			// creation de l'interface graphique
 			engine = new GameEngineGraphical(game, painter, controller);
@@ -59,8 +62,9 @@ public class Main {
 			j++;
 		}while(repeat && j<nbLevels);
 		
-		System.out.println(" Felicitation vous avez gagne :JEU TERMINE !");
-
+		if((j==nbLevels)&&repeat) {
+			System.out.print("Felicitations vous avez gagne :JEU TERMINE !");
+		}
 
 		}
 		

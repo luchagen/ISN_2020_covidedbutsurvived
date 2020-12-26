@@ -1,8 +1,11 @@
 package engine;
 
+import java.util.ArrayList;
+
 import model.Labyrinthe;
 import model.Monster;
 import model.Pacman;
+import model.Bullet;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -19,11 +22,14 @@ public interface Game {
 	 *            commande utilisateur
 	 */
 	public void evolve(Cmd userCmd);
+	public void evolveMonsters();
 
 	/**
 	 * @return true si et seulement si le jeu est fini
 	 */
 	public boolean isFinished();
+	
+	public boolean isTimeOver(long elapsedtime);
 	
 	public boolean isGameOver(long elapsedtime);
 	
@@ -33,18 +39,25 @@ public interface Game {
 	
 	public void isBeingTouchedByAMonster();
 	
+	public void applyTrapDamage();
+	
 	public void setElapsedTime(int elapsedTime);
 	
 	public int getElapsedTime();
 
 	public Pacman getHeros();
+	
+	public ArrayList<Bullet> getBullets();
 
 	public Labyrinthe getDonjon();
 
-	public Monster[] getMonstres();
+	public ArrayList<Monster> getMonsters();
 
 	public int getGamecounter();
 	
-	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres);
+	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres);
 
+	public void evolveBullets();
+	
+	public void bulletsKillMonsters();
 }

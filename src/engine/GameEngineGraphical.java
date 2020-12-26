@@ -63,13 +63,17 @@ public class GameEngineGraphical {
 		// boucle de game
 
 
-		while (!this.game.isFinished()&& (!this.game.isGameOver(elapsedtime)) && (!this.game.isKilled()) &&(!this.game.nextlevel())) {
+		while (!this.game.isGameOver(elapsedtime) && !this.game.nextlevel()) {
 
 			// demande controle utilisateur
 			Cmd c = this.gameController.getCommand();
 			// fait evoluer le game
 			this.game.evolve(c);
+			this.game.applyTrapDamage();
+			this.game.evolveMonsters();
 			this.game.isBeingTouchedByAMonster();
+			this.game.evolveBullets();
+			this.game.bulletsKillMonsters();
 			// affiche le game
 			this.gui.paint();
 			endtime=System.nanoTime();
@@ -80,17 +84,16 @@ public class GameEngineGraphical {
 			Thread.sleep(20);
 		}
 		
-			if (this.game.isFinished()==true)
-			{
-		System.out.print("Congrats :You won!!");}
-			else if(this.game.isGameOver(elapsedtime))
-				System.out.println("Le temps limite a ete atteint !");
-			else if(this.game.nextlevel()) 
-				System.out.println("Level Completed !");
-				
-			else
-				System.out.println("Game over :You are coroned!!");
+		if (this.game.isFinished()) 
+			System.out.print("Congrats :You won!!");
+		else if(this.game.isTimeOver(elapsedtime))
+			System.out.println("Le temps limite a ete atteint !");
+		else if(this.game.nextlevel()) 
+			System.out.println("Level Completed !");
+		else
+			System.out.println("Game over :HP reached 0!!");
 }
+	
 	public void disposeGUI() {
 		this.gui.dispose();
 	}
