@@ -195,7 +195,7 @@ public class PacmanGame implements Game {
 	@Override
 	public void isBeingTouchedByAMonster() {
 		for(Monster monster:monsters) {
-			if((monster.Xmid==heros.Xmid)&&(monster.Ymid==heros.Ymid)) { //Changer ça en mettant une methode qui detecte si les persos partage la meme hitbox
+			if((monster.Xmid==heros.Xmid)&&(monster.Ymid==heros.Ymid)) { //Changer ca en mettant une methode qui detecte si les persos partage la meme hitbox
 				heros.loseHP();
 				System.out.println("AIE J'AI PRIS UN COUP!");
 			}
