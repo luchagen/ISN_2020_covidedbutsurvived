@@ -27,6 +27,7 @@ public class PacmanGame implements Game {
 	int gamecounter=0;
 	private int elapsedTime;
 	private boolean isTimeElapsed;
+	private boolean isLastLevel;
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) { 
 		BufferedReader helpReader;
@@ -188,5 +189,11 @@ public class PacmanGame implements Game {
 	}
 	public void setIsTimeElapsed(boolean value) {
 		this.isTimeElapsed=value;
+	}
+	public boolean getIsLastLevel() {
+		return this.isLastLevel;
+	}
+	public void setIsLastLevel(boolean value) {
+		this.isLastLevel=value;
 	}
 	}

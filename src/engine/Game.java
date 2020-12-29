@@ -50,5 +50,10 @@ public interface Game {
 	public boolean isTimeElapsed();
 	
 	public void setIsTimeElapsed(boolean value);
+	
+	public boolean getIsLastLevel();
+	
+	public void setIsLastLevel(boolean value);
+	
 
 }

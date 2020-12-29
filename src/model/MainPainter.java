@@ -119,7 +119,14 @@ public class MainPainter implements GamePainter{
 				e.printStackTrace();
 			}
 		}
-		
+		if(this.game.nextlevel() && this.game.getIsLastLevel()) {
+			try {
+				this.notificationMessage(crayon_int,"img/userInterface/victoryMessage2.png");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
@@ -200,9 +207,10 @@ public class MainPainter implements GamePainter{
 		this.HEIGHT=(int)(this.PLAYABLE_ZONE_HEIGHT/PLAYABLE_ZONE_WIDTH_OCCUPATION_PERCENTAGE);
 		System.out.println(HEIGHT);
 		this.TOP_INTERFACE_HEIGHT=45; //Valeur a fixer
-		this.BOTTOM_INTERFACE_HEIGHT=this.HEIGHT-this.PLAYABLE_ZONE_HEIGHT-this.TOP_INTERFACE_HEIGHT;
+		this.BOTTOM_INTERFACE_HEIGHT=100;
 		this.RIGHT_INTERFACE_WIDTH=inventory_column*inventory_tile_size+2*dec;
 		this.WIDTH=PLAYABLE_ZONE_WIDTH+RIGHT_INTERFACE_WIDTH;
+		this.HEIGHT=PLAYABLE_ZONE_HEIGHT+TOP_INTERFACE_HEIGHT+BOTTOM_INTERFACE_HEIGHT;
 		this.TOP_INTERFACE_WIDTH=this.PLAYABLE_ZONE_WIDTH;
 		
 	}

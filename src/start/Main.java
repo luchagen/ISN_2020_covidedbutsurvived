@@ -43,6 +43,10 @@ public class Main {
 			}
 				
 			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres);
+			if(j==nbLevels-1)
+				game.setIsLastLevel(true);
+			else
+				game.setIsLastLevel(false);
 			PacmanController controller = new PacmanController();
 			painter = new MainPainter(controller,game);
 			// creation de l'interface graphique

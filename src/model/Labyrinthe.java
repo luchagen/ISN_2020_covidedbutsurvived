@@ -22,6 +22,7 @@ public class Labyrinthe {
 	public int[]spawn=new int[2];		// Coordonnees (i,j) representant la case ou le joueur doit apparaitre
 	public ArrayList<int[]> spawnMonsters=new ArrayList<int[]>(); //Comme precedemment sauf qu'il s'agit des monstres et il peut y en avoir plusieurs
 	
+	private String textDialog;
 	
 	public Labyrinthe(String source) {
 		rowRead=1;
