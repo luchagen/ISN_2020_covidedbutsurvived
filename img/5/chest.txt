@@ -1,0 +1,4 @@
+%IDLE
+img/5/0/0.png
+%IDLE500
+img/5/0/0.png
