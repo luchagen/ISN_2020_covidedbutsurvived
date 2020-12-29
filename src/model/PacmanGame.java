@@ -26,6 +26,7 @@ public class PacmanGame implements Game {
 	private Monster[] monstres;
 	int gamecounter=0;
 	private int elapsedTime;
+	private boolean isTimeElapsed;
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) { 
 		BufferedReader helpReader;
@@ -42,6 +43,7 @@ public class PacmanGame implements Game {
 		heros=in_heros;
 		donjon=in_donjon;
 		monstres=in_monstres;
+		isTimeElapsed=false;
 	}
 
 	/**
@@ -128,7 +130,7 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public boolean isGameOver(long elapsedtime) {
-		if (elapsedtime <= donjon.Time_Limit)
+		if (elapsedtime < donjon.Time_Limit)
 			return false;
 		else
 			return true;
@@ -181,5 +183,10 @@ public class PacmanGame implements Game {
 	public int getGamecounter() {
 		return gamecounter;
 	}
-	
+	public boolean isTimeElapsed() {
+		return this.isTimeElapsed;
+	}
+	public void setIsTimeElapsed(boolean value) {
+		this.isTimeElapsed=value;
+	}
 	}

@@ -46,5 +46,9 @@ public interface Game {
 	public int getGamecounter();
 	
 	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres);
+	
+	public boolean isTimeElapsed();
+	
+	public void setIsTimeElapsed(boolean value);
 
 }

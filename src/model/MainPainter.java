@@ -39,7 +39,11 @@ public class MainPainter implements GamePainter{
 	protected static int BOTTOM_INTERFACE_HEIGHT;
 	protected static int RIGHT_INTERFACE_WIDTH;
 
-
+	protected static int inventory_column; //Nombre de colonne
+	protected static int inventory_row;   //Nombre de ligne
+	protected static int dec; //Decalage pixel de l'inventaire sur les bords
+	protected static int inventory_tile_size; //taille en pixel d'une case de l'inventaire
+	
 	public int animationstage;
 	/**
 	 * appelle constructeur parent
@@ -106,7 +110,7 @@ public class MainPainter implements GamePainter{
 				e.printStackTrace();
 			}
 		}
-		System.out.println(this.game.isGameOver(this.game.getElapsedTime()));
+
 		if(this.game.isGameOver(this.game.getElapsedTime())) {
 			try {
 				this.notificationMessage(crayon_int,"img/userInterface/defeatMessage.png");
@@ -130,6 +134,7 @@ public class MainPainter implements GamePainter{
 	private void drawUserInterface(Graphics2D crayon) {
 		Image img_heart;
 		Image img_bg;
+		Image img_inventory_icon;
 		int HP=this.heros.getHP();
 		int elapsedTime=this.game.getElapsedTime();
 		int Time_Limit=this.game.getDonjon().getTime_Limit();
@@ -163,18 +168,41 @@ public class MainPainter implements GamePainter{
 	    Color chatBG = new Color( 230, 203, 163 );
 	    crayon.setColor(chatBG);
 	    crayon.fillRect(0,HEIGHT-BOTTOM_INTERFACE_HEIGHT, WIDTH, BOTTOM_INTERFACE_HEIGHT);
+	    
+	    int inventory_origin_x=this.PLAYABLE_ZONE_WIDTH+this.dec;
+	    int inventory_origin_y=this.TOP_INTERFACE_HEIGHT+this.dec;
+	    crayon.setColor(Color.yellow);
+	    for(int i=0;i<this.inventory_column;i++) {
+	    	for(int j=0;j<this.inventory_row;j++) {
+	    		crayon.drawRect(inventory_origin_x+i*this.inventory_tile_size, inventory_origin_y+j*this.inventory_tile_size, this.inventory_tile_size, this.inventory_tile_size);
+	    	}
+	    }
+	    int inventory_icon_size=32;
+	    int inventory_icon_origin_x=inventory_origin_x;
+	    int inventory_icon_origin_y=(int)((TOP_INTERFACE_HEIGHT-inventory_icon_size)/2);
+	    try {
+			img_inventory_icon = ImageIO.read(new File("img/userInterface/inventory_icon.png"));
+			crayon.drawImage(img_inventory_icon, inventory_icon_origin_x, inventory_icon_origin_y, inventory_icon_origin_x+inventory_icon_size , inventory_icon_origin_y+inventory_icon_size, 0, 0, img_inventory_icon.getWidth(null), img_inventory_icon.getHeight(null), null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	private void defineSizeParameters(Labyrinthe donjon) {
 		this.PLAYABLE_ZONE_WIDTH=donjon.getNb_largeur()*32;
 		this.PLAYABLE_ZONE_HEIGHT=donjon.getNb_hauteur()*32;
-		System.out.println(PLAYABLE_ZONE_HEIGHT);
-		this.WIDTH=(int)(this.PLAYABLE_ZONE_WIDTH/PLAYABLE_ZONE_WIDTH_OCCUPATION_PERCENTAGE);
-
+		this.dec=10;
+		this.inventory_tile_size=40;
+			
+		this.inventory_column=3;
+		this.inventory_row=6;
+		
 		this.HEIGHT=(int)(this.PLAYABLE_ZONE_HEIGHT/PLAYABLE_ZONE_WIDTH_OCCUPATION_PERCENTAGE);
 		System.out.println(HEIGHT);
 		this.TOP_INTERFACE_HEIGHT=45; //Valeur a fixer
 		this.BOTTOM_INTERFACE_HEIGHT=this.HEIGHT-this.PLAYABLE_ZONE_HEIGHT-this.TOP_INTERFACE_HEIGHT;
-		this.RIGHT_INTERFACE_WIDTH=this.WIDTH-this.PLAYABLE_ZONE_WIDTH;
+		this.RIGHT_INTERFACE_WIDTH=inventory_column*inventory_tile_size+2*dec;
+		this.WIDTH=PLAYABLE_ZONE_WIDTH+RIGHT_INTERFACE_WIDTH;
 		this.TOP_INTERFACE_WIDTH=this.PLAYABLE_ZONE_WIDTH;
 		
 	}

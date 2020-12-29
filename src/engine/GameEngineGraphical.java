@@ -80,16 +80,17 @@ public class GameEngineGraphical {
 			Thread.sleep(20);
 		}
 		
-			if (this.game.isFinished()==true)
-			{
-		System.out.print("Congrats :You won!!");}
-			else if(this.game.isGameOver(elapsedtime))
-				System.out.println("Le temps limite a ete atteint !");
-			else if(this.game.nextlevel()) 
-				System.out.println("Level Completed !");
-				
-			else
-				System.out.println("Game over :You are coroned!!");
+		if (this.game.isFinished()==true)
+		{
+			System.out.print("Congrats :You won!!");}
+		else if(this.game.isGameOver(elapsedtime))
+			System.out.println("Le temps limite a ete atteint !");
+		else if(this.game.nextlevel()) 
+			System.out.println("Level Completed !");			
+		else
+			System.out.println("Game over :You are coroned!!");
+		this.gui.paint();
+			
 }
 	public void disposeGUI() {
 		this.gui.dispose();
