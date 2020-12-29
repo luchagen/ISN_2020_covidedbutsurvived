@@ -206,9 +206,9 @@ public class PacmanGame implements Game {
 	public void applyTrapDamage() {
 		Tile currentTile=donjon.cases[heros.Xmid][heros.Ymid];
 		
-		if((currentTile.nature==6) && (!currentTile.isTrapOpen)) {
+		if((currentTile.nature==6) && (currentTile.state!=Cmd.ACTIVATED)) {
 			currentTile.skin=currentTile.findSource(currentTile.trapSkin);
-			currentTile.isTrapOpen=true;
+			currentTile.state=Cmd.ACTIVATED;
 			heros.takeDamage(currentTile.damage);
 			System.out.print("Oups! It's a "+currentTile.trapType+" trap!\n");
 			System.out.print("HP remained: "+heros.getHP()+"\n");

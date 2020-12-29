@@ -141,6 +141,32 @@ public class Labyrinthe {
 	public int getTile_length() {
 		return Tile_length;
 	}
+	public boolean isUnique(int i,int j) { // On demande si une case particuliere doit etre traitee comme une case interactible avec son propre sprite dedie ou comme une case purement decorative.
+		switch(cases[j][i].nature) {
+		case 0:
+			return false; //murs non interactibles = a sprites predefinis et non dynamiques
+			
+		case 1:
+			return false;//sols
+			
+		case 2:
+			return true;
+		case 3:
+			return false;
+		case 4:
+			return false;
+		case 5:
+			return false; // chests sera sous peu deprecated sous cette forme
+		
+		case 6:
+			return true;
+			
+		default:
+			return false;
+			
+		}
+		
+	}
 	private void setNb_largeur(int in_nb_largeur) {
 		nb_largeur=in_nb_largeur;
 	}
@@ -153,4 +179,5 @@ public class Labyrinthe {
 	private void setTime_Limit(int in_setTime_Limit) {
 		Time_Limit=in_setTime_Limit;
 	}
+	
 }

@@ -1,14 +1,17 @@
 package model;
 
+import engine.Cmd;
+
 public class Trap extends Tile{
 	public Trap(String in_source) {
 		this.nature=6;
 		this.canFinishGame=false;
 		this.canWalkOn=true;
 		this.nextlevel=false;
-		this.skin=super.findSource("100");
+		this.skin="img/6/trap.txt";
 		this.trapSkin=in_source;
-		this.isTrapOpen=false;
+		this.state=Cmd.IDLE;
+		this.type = in_source;
 		
 		switch(in_source.charAt(1)) {
 		case '0':

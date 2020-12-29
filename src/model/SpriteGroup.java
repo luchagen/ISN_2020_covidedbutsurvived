@@ -44,9 +44,13 @@ public class SpriteGroup {
 		e.printStackTrace();
 		}
 	}
+	public String currentSpriteGet(int animationstage, Cmd commandeencours, String parametre) {
+		//System.out.println(commandeencours.toString()+parametre);
+		return spritelist.get(commandeencours.toString()+parametre).get(animationstage%spritelist.get(commandeencours.toString()+parametre).size());
+	}
 	
 	public String currentSpriteGet(int animationstage, Cmd commandeencours) {
-		return spritelist.get(commandeencours.toString()).get(animationstage%spritelist.get(commandeencours.toString()).size());
+		return currentSpriteGet(animationstage,commandeencours, "");
 	}
 		
 }

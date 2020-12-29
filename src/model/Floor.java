@@ -1,5 +1,7 @@
 package model;
 
+import engine.Cmd;
+
 public class Floor extends Tile{
 	
 	public Floor(String in_source) {
@@ -7,6 +9,8 @@ public class Floor extends Tile{
 		this.canWalkOn=true;
 		this.canFinishGame=false;
 		this.nextlevel=false;
-		this.skin=super.findSource(in_source);
+		this.skin="img/1/floor.txt";
+		this.type = in_source;
+		this.state=Cmd.IDLE;
 	}
 }

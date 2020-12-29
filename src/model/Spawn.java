@@ -1,5 +1,7 @@
 package model;
 
+import engine.Cmd;
+
 public class Spawn extends Tile{
 	
 	public Spawn(String in_source) {
@@ -7,6 +9,8 @@ public class Spawn extends Tile{
 		this.canWalkOn=true;
 		this.canFinishGame=false;
 		this.nextlevel=false;
-		this.skin=super.findSource(in_source);
+		this.skin="img/3/spawner.txt";
+		this.type = in_source;
+		this.state=Cmd.IDLE;
 	}
 }

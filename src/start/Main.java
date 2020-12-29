@@ -21,7 +21,7 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		int j=0;
-		int nbLevels=2;
+		int nbLevels=3;
 		boolean repeat;
 		Labyrinthe donjon;
 		Pacman heros;
