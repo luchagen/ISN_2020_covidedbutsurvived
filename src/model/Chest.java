@@ -12,4 +12,6 @@ public class Chest extends Tile {
 		this.type = in_source;
 		this.state=Cmd.IDLE;
 	}
+	
+	
 }

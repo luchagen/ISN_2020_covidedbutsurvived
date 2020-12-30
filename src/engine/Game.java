@@ -6,6 +6,8 @@ import model.Labyrinthe;
 import model.Monster;
 import model.Pacman;
 import model.Bullet;
+import model.Item;
+
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -38,7 +40,7 @@ public interface Game {
 	public boolean nextlevel();
 	
 	public void isBeingTouchedByAMonster();
-	
+	public void getweapon() ;
 	public void applyTrapDamage();
 	
 	public void setElapsedTime(int elapsedTime);
@@ -46,6 +48,7 @@ public interface Game {
 	public int getElapsedTime();
 
 	public Pacman getHeros();
+	public Item getItem();
 	
 	public ArrayList<Bullet> getBullets();
 

@@ -43,11 +43,14 @@ public class MainPainter implements GamePainter{
 	ArrayList<Bullet> bullets;
 	ArrayList<Monster> monsters;
 	Game game;
+	ItemPainter itempainter;
+	Item item;
 	
 	
 	public MainPainter(PacmanController in_controller, Game in_game) {
 		game=in_game;
 		heros=game.getHeros();
+		item=game.getItem();
 		Labyrinthe donjon=game.getDonjon();
 		monsters=game.getMonsters();
 		bullets=game.getBullets();
@@ -55,8 +58,10 @@ public class MainPainter implements GamePainter{
 		donjonPainter = new LabyrinthePainter(donjon, PLAYABLE_ZONE_WIDTH, PLAYABLE_ZONE_HEIGHT);
 		monsterPainter= new MonsterPainter(monsters);
 		bulletpainter=new BulletPainter(bullets);
+		itempainter=new ItemPainter(item);
 		controller = in_controller;
 		animationstage=0;
+		
 	}
 
 	/** 
@@ -84,12 +89,15 @@ public class MainPainter implements GamePainter{
 		Graphics2D crayon_lab = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_evl = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_bul = (Graphics2D) im.getGraphics();
+		Graphics2D crayon_item = (Graphics2D) im.getGraphics();
 		
 		this.drawUserInterface(crayon_int);
 		donjonPainter.draw(crayon_lab, HEIGHT_INTERFACE,  animationStage());
 		herosPainter.draw(crayon_pac , animationStage(),controller, HEIGHT_INTERFACE);
 		monsterPainter.draw(crayon_evl,animationStage(), HEIGHT_INTERFACE);
 		bulletpainter.draw(crayon_bul, HEIGHT_INTERFACE);
+		
+		itempainter.draw(crayon_item, HEIGHT_INTERFACE,game.getItem().etat);
 	}
 
 	@Override
@@ -126,7 +134,6 @@ public class MainPainter implements GamePainter{
 				crayon.drawImage(img_heart, 32*i, 0, 32*(i+1) , 32, 0, 0, img_heart.getWidth(null), img_heart.getWidth(null), null);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    crayon.setFont(new Font("Serif", Font.PLAIN, 40));  // Here
