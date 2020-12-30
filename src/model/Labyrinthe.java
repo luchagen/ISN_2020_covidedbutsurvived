@@ -19,7 +19,9 @@ public class Labyrinthe {
 	
 	public Tile[][] cases;			// Chacune des cases est representee par une instance de Tile, elles sont indexees par deux entiers (i,j)
 									//representant les lignes et colonnes du labyrinthe 
-	public int[]spawn=new int[2];		// Coordonnees (i,j) representant la case ou le joueur doit apparaitre
+	public int[]spawn=new int[2];
+	public int[]spawn2=new int[2];
+	// Coordonnees (i,j) representant la case ou le joueur doit apparaitre
 	public ArrayList<int[]> spawnMonsters=new ArrayList<int[]>(); //Comme precedemment sauf qu'il s'agit des monstres et il peut y en avoir plusieurs
 	
 	
@@ -103,6 +105,9 @@ public class Labyrinthe {
 					case 6:
 						this.cases[j][i]=new Trap(liste_param[j]);
 						break;
+					case 7:
+						this.cases[j][i]=new Spawn(liste_param[j]);
+						break;
 					default:
 						cases[j][i]=new Wall(liste_param[j]);
 						break;
@@ -115,6 +120,10 @@ public class Labyrinthe {
 					int[] tab= {j,i};
 					spawnMonsters.add(tab);
 				}
+				else if (nat==7) {
+					int[] spawn2 = {j,i};
+					this.setSpawn2(spawn2);
+				}
 				}
 			}
 			LabReader.close();
@@ -125,6 +134,9 @@ public class Labyrinthe {
 	// Getters et Setters
 	private void setSpawn(int[] spawn) {
 		this.spawn = spawn;
+	}
+	private void setSpawn2(int[] spawn) {
+		this.spawn2 = spawn;
 	}
 	public int getNb_largeur() {
 		return nb_largeur;

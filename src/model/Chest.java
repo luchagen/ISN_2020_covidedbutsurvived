@@ -8,4 +8,6 @@ public class Chest extends Tile {
 		this.nextlevel=false;
 		this.skin=super.findSource(in_source);
 	}
+	
+	
 }

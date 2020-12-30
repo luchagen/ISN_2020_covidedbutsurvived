@@ -14,6 +14,7 @@ public class GameEngineGraphical {
 	 * le game a executer
 	 */
 	private Game game;
+	
 
 	/**
 	 * l'afficheur a utiliser pour le rendu
@@ -46,6 +47,7 @@ public class GameEngineGraphical {
 		this.game = game;
 		this.gamePainter = gamePainter;
 		this.gameController = gameController;
+		
 	}
 
 	/**
@@ -71,7 +73,9 @@ public class GameEngineGraphical {
 			this.game.evolve(c);
 			this.game.applyTrapDamage();
 			this.game.evolveMonsters();
-			this.game.isBeingTouchedByAMonster();
+			//this.game.isBeingTouchedByAMonster();
+			this.game.getweapon();
+			
 			this.game.evolveBullets();
 			this.game.bulletsKillMonsters();
 			// affiche le game
