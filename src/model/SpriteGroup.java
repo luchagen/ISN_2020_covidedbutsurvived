@@ -45,9 +45,7 @@ public class SpriteGroup {
 						ligne = SpriteReader.readLine();
 					}
 					else if (currentligne.charAt(0) == '#'){
-						System.out.println(currentligne);
 						if (currentligne.contains("start")) {
-							System.out.println(currentligne.replace("#","" ));
 							currentstage=0;
 						}
 						else
@@ -75,8 +73,7 @@ public class SpriteGroup {
 	}
 	public String currentSpriteGet(int in_animationcounter, Cmd in_commandeencours, String parametre) {
 		System.out.println(in_commandeencours.toString()+parametre);
-		System.out.println(spritelist.get(in_commandeencours.toString()+parametre)[0]);
-		System.out.println(spritelist.get(in_commandeencours.toString()+parametre)[1]);
+		try {
 		if (animationcounter!=in_animationcounter) {
 			animationcounter=in_animationcounter;
 			if (commandeencours!=in_commandeencours) {
@@ -142,6 +139,10 @@ public class SpriteGroup {
 			}
 		}
 		return sprite;
+		}catch (NullPointerException e) {
+			e.printStackTrace();
+			return "img/error.png";
+		}
 	}
 	
 	public String currentSpriteGet(int animationstage, Cmd commandeencours) {

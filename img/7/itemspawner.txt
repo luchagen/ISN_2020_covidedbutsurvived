@@ -1,0 +1,12 @@
+%IDLE
+#start
+#loop
+img/7/0/0.png
+%IDLE700
+#start
+#loop
+img/7/0/0.png
+%IDLE701
+#start
+#loop
+img/7/0/0.png

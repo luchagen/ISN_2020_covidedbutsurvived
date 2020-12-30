@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 
 public class LabyrinthePainter {
 	Labyrinthe donjon;
-	ArrayList<SpriteGroup> sprites = new ArrayList<SpriteGroup>(); // on dessine avec un seul spritegroup toutes les cases du labyrinthe 
+	ArrayList<SpriteGroup> sprites = new ArrayList<SpriteGroup>();
 	int largeur_rect, hauteur_rect;
 	public LabyrinthePainter(Labyrinthe in_donjon, int WIDTH, int HEIGHT) {
 		donjon=in_donjon;
@@ -22,7 +22,7 @@ public class LabyrinthePainter {
 		hauteur_rect= HEIGHT/nb_hauteur;
 		for(int i=0;i<nb_hauteur;i++) {
 			for(int j=0;j<nb_largeur;j++) {
-				sprites.add(new SpriteGroup(donjon.cases[i][j].skin)); //si la case testee doit avoir un sprite dynamique, on lui attribue un spritegroup dedie
+				sprites.add(new SpriteGroup(donjon.cases[i][j].skin)); 
 
 			}
 		}
