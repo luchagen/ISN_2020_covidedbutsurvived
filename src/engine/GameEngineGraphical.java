@@ -73,7 +73,7 @@ public class GameEngineGraphical {
 			this.game.evolve(c);
 			this.game.applyTrapDamage();
 			this.game.evolveMonsters();
-			//this.game.isBeingTouchedByAMonster();
+			this.game.isBeingTouchedByAMonster();
 			this.game.getweapon();
 			
 			this.game.evolveBullets();
