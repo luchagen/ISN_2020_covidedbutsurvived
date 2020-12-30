@@ -25,7 +25,7 @@ public class PacmanGame implements Game {
 	private Labyrinthe donjon;
 	private ArrayList<Monster> monsters;
 	private ArrayList<Bullet> bullets;
-	int gamecounter=0;
+	private int cooldownleftonbullet=0;
 	private int elapsedTime;
 	
 	
@@ -47,7 +47,10 @@ public class PacmanGame implements Game {
 		bullets=new ArrayList<Bullet>();
 	}
 	
-
+	private void coolDown() {
+		if (cooldownleftonbullet!=0)
+			cooldownleftonbullet-=1;
+	}
 	/**
 	 * faire evoluer le jeu suite a une commande
 	 * 
@@ -55,6 +58,7 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public void evolve(Cmd commande) {
+		coolDown();
 		System.out.println("Execute "+commande);
 		switch (commande) {
 		case RIGHT:
@@ -85,9 +89,12 @@ public class PacmanGame implements Game {
 			this.pacmanKick();
 			break;
 		case SHOUT:
-			bullets.add(new Bullet(heros));
+			if (cooldownleftonbullet==0) {
+				bullets.add(new Bullet(heros));
+				cooldownleftonbullet=20;
+			}
 			break;
-		case IDLE:
+		default:
 			break;
 		}
 }
@@ -282,8 +289,6 @@ public class PacmanGame implements Game {
 		return monsters;
 	}
 
-	public int getGamecounter() {
-		return gamecounter;
-	}
 	
 	}
+	

@@ -1,6 +1,12 @@
 %IDLE
-img/2/0/0.png
+#start
+#loop
+img/2/0/1.png
 %IDLE200
+#start
+#loop
 img/2/0/0.png
 %IDLE201
-img/2/0/0.png
+#start
+#loop
+img/2/0/1.png

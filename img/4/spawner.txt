@@ -1,4 +1,8 @@
 %IDLE
+#start
+#loop
 img/4/0/1.png
 %IDLE401
+#start
+#loop
 img/4/0/1.png

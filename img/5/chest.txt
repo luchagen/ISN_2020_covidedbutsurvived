@@ -1,4 +1,8 @@
 %IDLE
+#start
+#loop
 img/5/0/0.png
 %IDLE500
+#start
+#loop
 img/5/0/0.png

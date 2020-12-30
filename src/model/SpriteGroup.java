@@ -10,11 +10,20 @@ import java.util.Hashtable;
 import engine.Cmd;
 
 public class SpriteGroup {
-	private Hashtable<String,ArrayList<String>> spritelist = new Hashtable<String,ArrayList<String>>();
+	private Hashtable<String,ArrayList<String>[]> spritelist = new Hashtable<String,ArrayList<String>[]>();
+	private int animationcounter;
+	private Cmd commandeencours;
+	private int stagepointer;
+	private int animationpointer;
+	private boolean currentanimationfinished;
+	private String sprite = "img/error.png";
 	public SpriteGroup(String spritefile) {
 		BufferedReader SpriteReader;
+		animationcounter=40;
+		commandeencours=null;
 		try {
 			String currentgroup = "NONE";
+			int currentstage= 0;
 			SpriteReader = new BufferedReader( new FileReader(spritefile));
 			String ligne;
 			String grouptitle;
@@ -22,20 +31,36 @@ public class SpriteGroup {
 			while (ligne!=null) {
 					String currentligne= new String(ligne);
 					if (currentligne.charAt(0) == '%') {
+						@SuppressWarnings("unchecked")
+						ArrayList<String>[] group = (ArrayList<String>[])new ArrayList[2];
 						currentgroup = currentligne.replace("%","" );
 						grouptitle = new String(currentgroup);
-						ArrayList<String> group = new ArrayList<String>();
-						spritelist.put(grouptitle, group );
+						ArrayList<String> startgroup = new ArrayList<String>(); //liste des sprites du debut de lanimation
+						ArrayList<String> loopgroup = new ArrayList<String>();// liste des sprites du loop de lanimation
+						
+						group[0] = startgroup;
+						group[1] = loopgroup;
+						
+						spritelist.put(grouptitle, group);
+						ligne = SpriteReader.readLine();
+					}
+					else if (currentligne.charAt(0) == '#'){
+						System.out.println(currentligne);
+						if (currentligne.contains("start")) {
+							System.out.println(currentligne.replace("#","" ));
+							currentstage=0;
+						}
+						else
+							currentstage=1;
 						ligne = SpriteReader.readLine();
 					}
 					else {
-						spritelist.get(currentgroup).add(currentligne);
+						spritelist.get(currentgroup)[currentstage].add(currentligne);
 						ligne = SpriteReader.readLine();
 					}
 						
-						
 			}
-				
+			
 		} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -44,9 +69,79 @@ public class SpriteGroup {
 		e.printStackTrace();
 		}
 	}
-	public String currentSpriteGet(int animationstage, Cmd commandeencours, String parametre) {
-		//System.out.println(commandeencours.toString()+parametre);
-		return spritelist.get(commandeencours.toString()+parametre).get(animationstage%spritelist.get(commandeencours.toString()+parametre).size());
+	
+	private String idlespriteGet(int in_animationcounter, String parametre) {
+		return spritelist.get("IDLE"+parametre)[1].get(in_animationcounter%spritelist.get("IDLE"+parametre)[1].size());
+	}
+	public String currentSpriteGet(int in_animationcounter, Cmd in_commandeencours, String parametre) {
+		System.out.println(in_commandeencours.toString()+parametre);
+		System.out.println(spritelist.get(in_commandeencours.toString()+parametre)[0]);
+		System.out.println(spritelist.get(in_commandeencours.toString()+parametre)[1]);
+		if (animationcounter!=in_animationcounter) {
+			animationcounter=in_animationcounter;
+			if (commandeencours!=in_commandeencours) {
+				commandeencours=in_commandeencours;
+				currentanimationfinished=false;
+				stagepointer=0;
+				animationpointer = 0;
+				if (animationpointer<spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].size())
+					sprite = spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].get(animationpointer);
+				else {
+					stagepointer=1;
+					animationpointer = 0;
+					sprite = spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].get(animationpointer);
+				}
+				}		
+			else {
+				if (stagepointer==0) {
+					if (animationpointer+1<spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].size()) {
+						
+						animationpointer+=1;
+						System.out.println(animationpointer);
+						sprite = spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].get(animationpointer);
+					}
+					else {
+						stagepointer=1;
+						animationpointer = 0;
+						if (animationpointer<spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].size()) {
+							sprite = spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].get(animationpointer);
+						}
+						else {
+							animationpointer = 0;
+							sprite = spritelist.get("IDLE"+parametre)[1].get(0);
+							currentanimationfinished=true;
+							
+						}
+					}
+				}
+				else {
+					
+					if (animationpointer+1<spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].size()) {
+						animationpointer+=1;
+						System.out.println(animationpointer);
+						sprite = spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].get(animationpointer);
+					}
+					else {
+						if (currentanimationfinished==true) {
+							sprite = idlespriteGet(in_animationcounter, parametre);
+						}
+						else {
+							animationpointer = 0;
+							if (animationpointer<spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].size()) {
+								sprite = spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].get(animationpointer);
+							}
+							else {
+								animationpointer = 0;
+								sprite = spritelist.get("IDLE"+parametre)[1].get(0);
+								currentanimationfinished=true;
+								
+							}
+						}
+					}
+				}
+			}
+		}
+		return sprite;
 	}
 	
 	public String currentSpriteGet(int animationstage, Cmd commandeencours) {

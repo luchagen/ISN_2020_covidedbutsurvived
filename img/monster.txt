@@ -1,4 +1,6 @@
 %IDLE
+#start
+#loop
 img/monster/monsteridle1.png
 img/monster/monsteridle1.png
 img/monster/monsteridle1.png
