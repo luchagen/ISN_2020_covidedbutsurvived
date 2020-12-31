@@ -202,4 +202,7 @@ public class PacmanGame implements Game {
 	public Inventory getInventory() {
 		return inventory;
 	}
+	public void setInventory(Inventory newInventory) {
+		this.inventory=newInventory;
+	}
 	}

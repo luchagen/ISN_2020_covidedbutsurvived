@@ -3,8 +3,7 @@ package model;
 public class Personnage {
 	public int X,Y,Xwt,Xet,Ynt,Yst,Xw,Xe,Yn,Ys,Xwtwest,Yntnorth;
 	public String skin;
-	protected int HP;
-	int shield;
+	protected int HP, shield;
 	
 	public Personnage(int X_0,int Y_0) { //Constructeur inutile ?
 		X=X_0;
@@ -84,5 +83,14 @@ public class Personnage {
 	}
 	public int getHP() {
 		return HP;
+	}
+	public int getShield() {
+		return shield;
+	}
+	public void setHP(int value) {
+		this.HP=value;
+	}
+	public void setShield(int value) {
+		this.shield=value;
 	}
 }

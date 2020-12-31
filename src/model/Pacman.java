@@ -75,7 +75,4 @@ public class Pacman  extends Personnage{
 		updateHitbox();
 		System.out.println("*BUMP*");
 	}
-	public int getShield() {
-		return shield;
-	}
 }

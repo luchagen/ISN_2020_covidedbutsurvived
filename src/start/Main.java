@@ -24,9 +24,15 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
 		Root fenetre = new Root();
 		int j=0;
-		int nbLevels=2;
-		boolean repeat;
 		int maxInventoryNb=18;
+		int nbLevels=3;
+		int initialHP=5;
+		int initialShield=2;
+		Inventory initialInventory = new Inventory(maxInventoryNb);
+		int currentHP=initialHP;
+		int currentShield=initialShield;
+		Inventory currentInventory = initialInventory;
+		boolean repeat;
 		Labyrinthe donjon;
 		Pacman heros;
 		Monster[] monstres;
@@ -40,16 +46,19 @@ public class Main {
 			String source = "levels/";
 			source+=j;
 			source+=".txt";
+			
 			donjon = new Labyrinthe(source);
 			heros = new Pacman(donjon.spawn);
 			monstres = new Monster[donjon.spawnMonsters.size()];
-			inventory = new Inventory(maxInventoryNb);
 			
 			for(int i=0;i<donjon.spawnMonsters.size();i++) {
 				monstres[i]=new Monster(donjon.spawnMonsters.get(i));
 			}
 				
-			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres,inventory);
+			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres,currentInventory);
+			heros.setHP(currentHP);
+			heros.setShield(currentShield);
+			game.setInventory(currentInventory);
 			if(j==nbLevels-1)
 				game.setIsLastLevel(true);
 			else
@@ -61,6 +70,9 @@ public class Main {
 			
 			engine.run();
 			if (game.nextlevel()==true) {
+				currentHP=heros.getHP();
+				currentShield=heros.getShield();
+				currentInventory=game.getInventory();
 				repeat=true;
 				if(j!=nbLevels-1)
 					engine.disposeGUI();

@@ -57,5 +57,7 @@ public interface Game {
 	public void setIsLastLevel(boolean value);
 	
 	public Inventory getInventory();
+	
+	public void setInventory(Inventory newInventory);
 
 }
