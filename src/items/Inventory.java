@@ -1,6 +1,5 @@
 package items;
 
-import java.util.ArrayList;
 
 public class Inventory {
 	protected Item[] inventory;
@@ -9,12 +8,17 @@ public class Inventory {
 	public Inventory(int maxNbItem) {
 		this.maxNbItem=maxNbItem;
 		inventory=new Item[maxNbItem];
+		for(int i=0;i<maxNbItem;i++) {
+			inventory[i]=new DefaultItem();
+		}
 	}
+	
 	public void addItem(Item item) {
 		boolean isItemAdded=false;
-		Item comp = NullItem();
-		for(int i=0;i<maxNbItem;i++) {
-			if(inventory[i]= && isItemAdded==false) {
+		Item comp = new DefaultItem();
+		int i =0;
+		while(i<maxNbItem && isItemAdded==false) {
+			if(inventory[i].equals(comp)) {
 				inventory[i]=item;
 				isItemAdded=true;
 			}
@@ -26,8 +30,19 @@ public class Inventory {
 	
 	public void delItem(int ItemNb) {
 		if(ItemNb<maxNbItem) {
-			inventory[ItemNb]=null;
+			inventory[ItemNb]= new DefaultItem();
 		}
+	}
+	public Item[] getItems() {
+		return inventory;
+	}
+	public Item getItem(int index) {
+		if(index<this.maxNbItem)
+			return inventory[index];
+		return new DefaultItem();
+	}
+	public int getMaxNbItem() {
+		return maxNbItem;
 	}
 	
 }

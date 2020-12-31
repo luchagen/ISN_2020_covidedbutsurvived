@@ -26,23 +26,23 @@ public class MainPainter implements GamePainter{
 	/*
 	 * Parametres a definir avec la taille du labyrinthe, sachant qu'une case doit faire 32x32 pixels !
 	 */
-	protected static int WIDTH;
-	protected static int HEIGHT;
-	protected static int PLAYABLE_ZONE_WIDTH;
-	protected static int PLAYABLE_ZONE_HEIGHT;
+	public static int WIDTH;
+	public static int HEIGHT;
+	public static int PLAYABLE_ZONE_WIDTH;
+	public static int PLAYABLE_ZONE_HEIGHT;
 	/*
 	 * Parametres donnant la taille des differentes interfacess (PV+Temps restant/inventaire/boite de dialogue)
 	 */
 	
-	protected static int TOP_INTERFACE_HEIGHT;
-	protected static int TOP_INTERFACE_WIDTH;
-	protected static int BOTTOM_INTERFACE_HEIGHT;
-	protected static int RIGHT_INTERFACE_WIDTH;
+	public static int TOP_INTERFACE_HEIGHT;
+	public static int TOP_INTERFACE_WIDTH;
+	public static int BOTTOM_INTERFACE_HEIGHT;
+	public static int RIGHT_INTERFACE_WIDTH;
 
-	protected static int inventory_column; //Nombre de colonne
-	protected static int inventory_row;   //Nombre de ligne
-	protected static int dec; //Decalage pixel de l'inventaire sur les bords
-	protected static int inventory_tile_size; //taille en pixel d'une case de l'inventaire
+	public static int inventory_column; //Nombre de colonne
+	public static int inventory_row;   //Nombre de ligne
+	public static int dec; //Decalage pixel de l'inventaire sur les bords
+	public static int inventory_tile_size; //taille en pixel d'une case de l'inventaire
 	
 	public int animationstage;
 	/**
