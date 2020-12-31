@@ -25,6 +25,8 @@ public class Labyrinthe {
 	public ArrayList<int[]> spawnMonsters=new ArrayList<int[]>(); //Comme precedemment sauf qu'il s'agit des monstres et il peut y en avoir plusieurs
 	public ArrayList<Integer> typeMonsters=new ArrayList<Integer>(); // nombres representant le type de monstre 
 	public ArrayList<int[]> spawnItems=new ArrayList<int[]>();
+	private String textDialog;
+
 	
 	public Labyrinthe(String source) {
 		rowRead=1;
@@ -68,7 +70,7 @@ public class Labyrinthe {
 		}
 		// Ces derniers attributs sont calcules en dernier afin d'eviter qu'ils ne valent 0
 		nb_case=nb_largeur*nb_hauteur;
-		Tile_length =MainPainter.PLAYABLE_ZONE_WIDTH/nb_largeur;
+		Tile_length =32;
 		LabReader.readLine();
 	}
 	

@@ -1,7 +1,7 @@
 package engine;
 
 import java.util.ArrayList;
-
+import items.Inventory;
 import model.Labyrinthe;
 import model.Monster;
 import model.Pacman;
@@ -56,7 +56,19 @@ public interface Game {
 
 	public ArrayList<Monster> getMonsters();
 	
-	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres);
+	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres);
+	
+	public boolean isTimeElapsed();
+	
+	public void setIsTimeElapsed(boolean value);
+	
+	public boolean getIsLastLevel();
+	
+	public void setIsLastLevel(boolean value);
+	
+	public Inventory getInventory();
+	
+	public void setInventory(Inventory newInventory);
 
 	public void evolveBullets();
 	

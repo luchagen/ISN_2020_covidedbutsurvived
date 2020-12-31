@@ -90,12 +90,14 @@ public class GameEngineGraphical {
 		
 		if (this.game.isFinished()) 
 			System.out.print("Congrats :You won!!");
-		else if(this.game.isTimeOver(elapsedtime))
+		else if(this.game.isGameOver(elapsedtime))
 			System.out.println("Le temps limite a ete atteint !");
 		else if(this.game.nextlevel()) 
 			System.out.println("Level Completed !");
 		else
 			System.out.println("Game over :HP reached 0!!");
+		this.gui.paint();
+		
 }
 	
 	public void disposeGUI() {

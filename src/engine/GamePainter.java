@@ -1,6 +1,7 @@
 package engine;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * @author Horatiu Cirstea, Vincent Thomas
@@ -24,4 +25,5 @@ public interface GamePainter {
 	public abstract int getHeight();
 	
 	public abstract int animationStage();
+
 }

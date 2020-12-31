@@ -34,6 +34,7 @@ public class GraphicalInterface  {
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setTitle("CovidedButSurvived");
+		f.setResizable(false);
 		Image icon= ImageIO.read(new File("img/icon.png"));
 		f.setIconImage(icon);
 		// attacher le panel contenant l afficheur du game

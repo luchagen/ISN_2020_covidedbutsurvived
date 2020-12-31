@@ -10,19 +10,21 @@ public class Personnage {
 	protected String type;
 	protected Cmd State;
 	
-	protected int HP;
+	protected int HP, shield;
 
 	
 	public Personnage(int X_0,int Y_0) { //Constructeur inutile ?
 		X=X_0;
 		Y=Y_0;
 		updateHitbox();
+		HP=3;
 		}
 	
 	public Personnage(int[] spawn) {
 		X=spawn[0]*Labyrinthe.Tile_length;
 		Y=spawn[1]*Labyrinthe.Tile_length;
 		updateHitbox();
+		HP=5;
 	}
 	
 
@@ -90,12 +92,24 @@ public class Personnage {
 		updateHitbox();
 	}
 	public void loseHP() {
-		HP-=1;
+		if(shield>0)
+			shield-=1;
+		else
+			HP-=1;
 	}
 	public void takeDamage(int damage) {
 		HP-=damage;
 	}
 	public int getHP() {
 		return HP;
+	}
+	public int getShield() {
+		return shield;
+	}
+	public void setHP(int value) {
+		this.HP=value;
+	}
+	public void setShield(int value) {
+		this.shield=value;
 	}
 }

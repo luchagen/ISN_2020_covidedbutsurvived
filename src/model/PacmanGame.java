@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import engine.Cmd;
 import engine.Game;
+import items.Inventory;
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -23,11 +24,15 @@ public class PacmanGame implements Game {
 	protected static final int game_speed=(int) (Labyrinthe.Tile_length/4);
 	private Pacman heros;
 	private Labyrinthe donjon;
-	private ArrayList<Monster> monsters;
+	private Monster[] monstres;
 	private ArrayList<Bullet> bullets;
 	private ArrayList<Item> items;
 	private int cooldownleftonbullet=0;
+	private Inventory inventory;
+	int gamecounter=0;
 	private int elapsedTime;
+	private boolean isTimeElapsed;
+	private boolean isLastLevel;
 	
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres, ArrayList<Item> in_items) { 
@@ -44,7 +49,9 @@ public class PacmanGame implements Game {
 		}
 		heros=in_heros;
 		donjon=in_donjon;
-		monsters=in_monstres;
+		monstres=in_monstres;
+		inventory=heros.getInventory();
+		isTimeElapsed=false;
 		bullets=new ArrayList<Bullet>();
 		items=in_items;
 	}
@@ -95,6 +102,12 @@ public class PacmanGame implements Game {
 				bullets.add(new Bullet(heros));
 				cooldownleftonbullet=10;
 			}
+			break;
+		case HEAL:
+			heros.useHeal();
+			break;
+		case SHIELD:
+			heros.useShield();
 			break;
 		default:
 			break;
@@ -307,7 +320,26 @@ public class PacmanGame implements Game {
 	public ArrayList<Monster> getMonsters() {
 		return monsters;
 	}
-
-	
+	public int getGamecounter() {
+		return gamecounter;
+	}
+	public boolean isTimeElapsed() {
+		return this.isTimeElapsed;
+	}
+	public void setIsTimeElapsed(boolean value) {
+		this.isTimeElapsed=value;
+	}
+	public boolean getIsLastLevel() {
+		return this.isLastLevel;
+	}
+	public void setIsLastLevel(boolean value) {
+		this.isLastLevel=value;
+	}
+	public Inventory getInventory() {
+		return inventory;
+	}
+	public void setInventory(Inventory newInventory) {
+		this.inventory=newInventory;
+	}
 	}
 	
