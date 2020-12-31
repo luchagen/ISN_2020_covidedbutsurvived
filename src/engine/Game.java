@@ -48,7 +48,7 @@ public interface Game {
 	public int getElapsedTime();
 
 	public Pacman getHeros();
-	public Item getItem();
+	public ArrayList<Item> getItems();
 	
 	public ArrayList<Bullet> getBullets();
 

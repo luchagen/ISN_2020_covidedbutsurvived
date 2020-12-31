@@ -30,7 +30,7 @@ public class Main {
 		Game game;
 		MainPainter painter;
 		GameEngineGraphical engine;
-		Item item;
+		ArrayList<Item> items;
 		//Bullet bullet;
 		
 		// creation du jeu particulier et de son afficheur
@@ -40,13 +40,16 @@ public class Main {
 			source+=".txt";
 			donjon = new Labyrinthe(source);
 			heros = new Pacman(donjon.spawn);
-			item=new Item(donjon.spawn2);
+			items=new ArrayList<Item>();
+			for(int i=0;i<donjon.spawnItems.size();i++) {
+				items.add(new Item(donjon.spawnItems.get(i)));
+			}
 			monstres = new ArrayList<Monster>();
 			for(int i=0;i<donjon.spawnMonsters.size();i++) {
 				monstres.add(new Monster(donjon.spawnMonsters.get(i)));
 			}
 			
-			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres, item);
+			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres, items);
 			PacmanController controller = new PacmanController();
 			
 			painter = new MainPainter(controller,game);

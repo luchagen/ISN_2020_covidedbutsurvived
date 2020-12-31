@@ -1,8 +1,13 @@
 package model;
 
+import engine.Cmd;
+
 public class Item {
 	protected int X,Y, Xmid,Ymid;
-	 protected int  etat=0;
+	
+	protected String skin;
+	protected String type;
+	protected Cmd state;
 	
 	public Item(int[] spawn) {
 		
@@ -10,6 +15,9 @@ public class Item {
 			Y=spawn[1]*Labyrinthe.Tile_length;
 			Xmid=spawn[0];
 			Ymid=spawn[1];
+			state = Cmd.IDLE;
+			skin="img/Items/items.txt";
+			type="weapon";
 			
 		}
 		

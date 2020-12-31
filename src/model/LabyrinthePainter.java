@@ -22,7 +22,9 @@ public class LabyrinthePainter {
 		hauteur_rect= HEIGHT/nb_hauteur;
 		for(int i=0;i<nb_hauteur;i++) {
 			for(int j=0;j<nb_largeur;j++) {
-				sprites.add(new SpriteGroup(donjon.cases[i][j].skin)); 
+				sprites.add(new SpriteGroup(donjon.cases[i][j].skin));
+				System.out.println(donjon.cases[i][j].type);
+				System.out.println(donjon.cases[i][j].skin);
 
 			}
 		}

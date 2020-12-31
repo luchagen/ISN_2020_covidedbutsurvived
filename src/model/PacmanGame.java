@@ -25,12 +25,12 @@ public class PacmanGame implements Game {
 	private Labyrinthe donjon;
 	private ArrayList<Monster> monsters;
 	private ArrayList<Bullet> bullets;
+	private ArrayList<Item> items;
 	private int cooldownleftonbullet=0;
 	private int elapsedTime;
-	private Item item;
 	
 	
-	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres, Item in_item) { 
+	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres, ArrayList<Item> in_items) { 
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
@@ -46,7 +46,7 @@ public class PacmanGame implements Game {
 		donjon=in_donjon;
 		monsters=in_monstres;
 		bullets=new ArrayList<Bullet>();
-		item=in_item;
+		items=in_items;
 	}
 	
 	private void coolDown() {
@@ -93,7 +93,7 @@ public class PacmanGame implements Game {
 		case SHOUT:
 			if (cooldownleftonbullet==0 && heros.haveweapon==true) {
 				bullets.add(new Bullet(heros));
-				cooldownleftonbullet=20;
+				cooldownleftonbullet=10;
 			}
 			break;
 		default:
@@ -241,12 +241,12 @@ public class PacmanGame implements Game {
 	}
 	
 	public void getweapon() {
-		if((heros.Xmid==item.Xmid)&&(heros.Ymid==item.Ymid))
-		{item.etat=1;
-		heros.haveweapon=true;
+		for(int i=0;i<items.size();i++) {
+			if((heros.Xmid==items.get(i).Xmid)&&(heros.Ymid==items.get(i).Ymid))
+			{items.get(i).state=Cmd.ACTIVATED;
+			heros.haveweapon=true;
+			}
 		}
-		else
-			item.etat=0;
 	}
 
 	@Override
@@ -288,8 +288,8 @@ public class PacmanGame implements Game {
 	public Pacman getHeros() {
 		return heros;
 	}
-	public Item getItem() {
-		return item;
+	public ArrayList<Item> getItems() {
+		return items;
 	}
 	
 	public ArrayList<Bullet> getBullets() {

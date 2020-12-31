@@ -42,23 +42,21 @@ public class MainPainter implements GamePainter{
 	Pacman heros;
 	ArrayList<Bullet> bullets;
 	ArrayList<Monster> monsters;
+	ArrayList<Item> item;
 	Game game;
-	ItemPainter itempainter;
-	Item item;
 	
 	
 	public MainPainter(PacmanController in_controller, Game in_game) {
 		game=in_game;
 		heros=game.getHeros();
-		item=game.getItem();
+		item=game.getItems();
 		Labyrinthe donjon=game.getDonjon();
 		monsters=game.getMonsters();
 		bullets=game.getBullets();
 		herosPainter= new PacmanPainter(heros);
 		donjonPainter = new LabyrinthePainter(donjon, PLAYABLE_ZONE_WIDTH, PLAYABLE_ZONE_HEIGHT);
-		monsterPainter= new MonsterPainter(monsters);
+		monsterPainter= new MonsterPainter(monsters,item);
 		bulletpainter=new BulletPainter(bullets);
-		itempainter=new ItemPainter(item);
 		controller = in_controller;
 		animationstage=0;
 		
@@ -89,7 +87,6 @@ public class MainPainter implements GamePainter{
 		Graphics2D crayon_lab = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_evl = (Graphics2D) im.getGraphics();
 		Graphics2D crayon_bul = (Graphics2D) im.getGraphics();
-		Graphics2D crayon_item = (Graphics2D) im.getGraphics();
 		
 		this.drawUserInterface(crayon_int);
 		donjonPainter.draw(crayon_lab, HEIGHT_INTERFACE,  animationStage());
@@ -97,7 +94,6 @@ public class MainPainter implements GamePainter{
 		monsterPainter.draw(crayon_evl,animationStage(), HEIGHT_INTERFACE);
 		bulletpainter.draw(crayon_bul, HEIGHT_INTERFACE);
 		
-		itempainter.draw(crayon_item, HEIGHT_INTERFACE,game.getItem().etat);
 	}
 
 	@Override
