@@ -5,7 +5,7 @@ import engine.Cmd;
 public class Personnage {
 	protected int X,Y,Xwt,Xet,Ynt,Yst,Xw,Xe,Yn,Ys,Xwtwest,Yntnorth,Xmid,Ymid;
 	
-	//pour l affichage, la différence masque/sans masque  sera a affecter dans type pour le pacman
+	//pour l affichage, la difference masque/sans masque  sera a affecter dans type pour le pacman
 	protected String skin;
 	protected String type;
 	protected Cmd State;
