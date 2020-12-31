@@ -72,7 +72,7 @@ public class SpriteGroup {
 		return spritelist.get("IDLE"+parametre)[1].get(in_animationcounter%spritelist.get("IDLE"+parametre)[1].size());
 	}
 	public String currentSpriteGet(int in_animationcounter, Cmd in_commandeencours, String parametre) {
-		System.out.println(in_commandeencours.toString()+parametre);
+		//System.out.println(in_commandeencours.toString()+parametre);
 		try {
 		if (animationcounter!=in_animationcounter) {
 			animationcounter=in_animationcounter;
@@ -94,7 +94,6 @@ public class SpriteGroup {
 					if (animationpointer+1<spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].size()) {
 						
 						animationpointer+=1;
-						System.out.println(animationpointer);
 						sprite = spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].get(animationpointer);
 					}
 					else {
@@ -115,7 +114,6 @@ public class SpriteGroup {
 					
 					if (animationpointer+1<spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].size()) {
 						animationpointer+=1;
-						System.out.println(animationpointer);
 						sprite = spritelist.get(in_commandeencours.toString()+parametre)[stagepointer].get(animationpointer);
 					}
 					else {
