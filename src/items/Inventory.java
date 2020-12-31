@@ -16,7 +16,6 @@ public class Inventory {
 	public void addItem(Item item) {
 		
 		boolean isItemAdded=false;
-		Item comp = new DefaultItem();
 		int i =0;
 		while(i<maxNbItem && isItemAdded==false) {
 			if(inventory[i].getItemTypeId()==0) {
@@ -46,6 +45,14 @@ public class Inventory {
 	}
 	public int getMaxNbItem() {
 		return maxNbItem;
+	}
+	public int checkItem(int type) {
+		for(int i=0;i<inventory.length;i++) {
+			if(inventory[i].getItemTypeId()==type)
+				return i;
+		}
+		return -1;
+		
 	}
 	
 }

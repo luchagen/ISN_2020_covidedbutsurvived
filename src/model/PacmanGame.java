@@ -31,7 +31,7 @@ public class PacmanGame implements Game {
 	private boolean isTimeElapsed;
 	private boolean isLastLevel;
 	
-	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres, Inventory in_inventory) { 
+	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) { 
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
@@ -46,7 +46,7 @@ public class PacmanGame implements Game {
 		heros=in_heros;
 		donjon=in_donjon;
 		monstres=in_monstres;
-		inventory=in_inventory;
+		inventory=heros.getInventory();
 		isTimeElapsed=false;
 	}
 
@@ -84,6 +84,12 @@ public class PacmanGame implements Game {
 				heros.collisionDOWN();
 			break;
 		case SHOUT:
+			break;
+		case HEAL:
+			heros.useHeal();
+			break;
+		case SHIELD:
+			heros.useShield();
 			break;
 		case IDLE:
 			break;

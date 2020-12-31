@@ -1,11 +1,15 @@
 package model;
 
+import items.Inventory;
+
 public class Pacman  extends Personnage{
-	public Pacman(int[] spawn) {
+	Inventory inventory;
+	public Pacman(int[] spawn, Inventory in_inventory) {
 		super(spawn);
 		// implementation du spritesystem : on remplace la mention directe a un sprite par l'utilisation d un fichier qui indique quels sprites utiliser dans quelles situations
 		this.skin= "img/hero.txt";
 		this.shield=2;
+		inventory=in_inventory;
 	}
 		
 
@@ -74,5 +78,34 @@ public class Pacman  extends Personnage{
 		X=X-1;
 		updateHitbox();
 		System.out.println("*BUMP*");
+	}
+	public Inventory getInventory() {
+		return inventory;
+	}
+	public void useHeal() {
+		int index = inventory.checkItem(1);
+		if(index !=-1) {
+			if(HP<5) {
+				inventory.delItem(index);
+				HP+=1;
+			}
+			else
+				System.out.println("Vie deja pleine !");
+		}
+		else
+			System.out.println("Aucun vaccin present dans l'inventaire !");
+	}
+	public void useShield() {
+		int index = inventory.checkItem(2);
+		if(index !=-1) {
+			if(shield<2) {
+				inventory.delItem(index);
+				shield+=1;
+			}
+			else
+				System.out.println("Bouclier deja plein !");
+		}
+		else
+			System.out.println("Aucun vaccin present dans l'inventaire !");
 	}
 }

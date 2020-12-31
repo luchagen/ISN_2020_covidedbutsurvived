@@ -25,7 +25,7 @@ public class Main {
 		Root fenetre = new Root();
 		int j=0;
 		int maxInventoryNb=18;
-		int nbLevels=2;
+		int nbLevels=3;
 		int initialHP=5;
 		int initialShield=2;
 		Inventory initialInventory = new Inventory(maxInventoryNb);	int currentHP=initialHP;
@@ -38,8 +38,7 @@ public class Main {
 		Game game;
 		MainPainter painter;
 		GameEngineGraphical engine;
-		GraphicalInterface gui;
-		Inventory inventory;
+
 		// creation du jeu particulier et de son afficheur
 		do {
 			String source = "levels/";
@@ -47,14 +46,14 @@ public class Main {
 			source+=".txt";
 			
 			donjon = new Labyrinthe(source);
-			heros = new Pacman(donjon.spawn);
+			heros = new Pacman(donjon.spawn, currentInventory);
 			monstres = new Monster[donjon.spawnMonsters.size()];
 			
 			for(int i=0;i<donjon.spawnMonsters.size();i++) {
 				monstres[i]=new Monster(donjon.spawnMonsters.get(i));
 			}
 				
-			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres,currentInventory);
+			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres);
 			heros.setHP(currentHP);
 			heros.setShield(currentShield);
 			game.setInventory(currentInventory);
