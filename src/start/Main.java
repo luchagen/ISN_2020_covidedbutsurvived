@@ -8,7 +8,6 @@ import engine.GameEngineGraphical;
 import engine.GraphicalInterface;
 import items.Heal;
 import items.Inventory;
-import items.Item;
 import items.Shield;
 import model.PacmanController;
 import model.PacmanGame;
@@ -28,7 +27,6 @@ public class Main {
 		int j=0;
 		int nbLevels=5;
 		int maxInventoryNb=18;
-		int nbLevels=3;
 		int initialHP=5;
 		int initialShield=2;
 		Inventory initialInventory = new Inventory(maxInventoryNb);	int currentHP=initialHP;
@@ -61,9 +59,8 @@ public class Main {
 			for(int i=0;i<donjon.spawnItems.size();i++) {
 				items.add(new Item(donjon.spawnItems.get(i)));
 			}
-			monstres = new Monster[donjon.spawnMonsters.size()];
 			heros = new Pacman(donjon.spawn, currentInventory);
-			monstres = new Monster[donjon.spawnMonsters.size()];
+			monstres = new ArrayList<Monster>();
 			for(int i=0;i<donjon.spawnMonsters.size();i++) {
 				monstres.add(new Monster(donjon.spawnMonsters.get(i),donjon.typeMonsters.get(i)));
 			}

@@ -24,7 +24,7 @@ public class PacmanGame implements Game {
 	protected static final int game_speed=(int) (Labyrinthe.Tile_length/4);
 	private Pacman heros;
 	private Labyrinthe donjon;
-	private Monster[] monstres;
+	private ArrayList<Monster> monstres;
 	private ArrayList<Bullet> bullets;
 	private ArrayList<Item> items;
 	private int cooldownleftonbullet=0;
@@ -155,11 +155,11 @@ public class PacmanGame implements Game {
 	}}
 	
 	public void pacmanKick() {
-		for(Monster monster:monsters) {
+		for(Monster monster:monstres) {
 			if((monster.Xmid==heros.Xmid)&&(monster.Ymid==heros.Ymid)) { 
 				monster.loseHP();
 				if(monster.getHP()==0) {
-					monsters.remove(monster);
+					monstres.remove(monster);
 				}
 				break;
 			}
@@ -168,12 +168,12 @@ public class PacmanGame implements Game {
 	
 	public void bulletsKillMonsters() {
 		for (Bullet bullet:bullets) {
-			for (Monster monster:monsters) {
+			for (Monster monster:monstres) {
 				if((monster.Xmid==bullet.Xtile)&&(monster.Ymid==bullet.Ytile)) { 
 					monster.loseHP();
 					bullet.isTerminal=true;
 					if(monster.getHP()==0) {
-						monsters.remove(monster);
+						monstres.remove(monster);
 					}
 					break;
 				}
@@ -190,7 +190,7 @@ public class PacmanGame implements Game {
 	
 	@Override
 	public void evolveMonsters() {
-		for(Monster monster:monsters) {
+		for(Monster monster:monstres) {
 			Boolean canmoveright=false;
 			Boolean canmoveleft=false;
 			Boolean canmoveup=false;
@@ -221,7 +221,7 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public void isBeingTouchedByAMonster() {
-		for(Monster monster:monsters) {
+		for(Monster monster:monstres) {
 			if((monster.Xmid==heros.Xmid)&&(monster.Ymid==heros.Ymid)) { //Changer ca en mettant une methode qui detecte si les persos partage la meme hitbox
 				heros.loseHP();
 				System.out.println("AIE J'AI PRIS UN COUP!");
@@ -288,7 +288,7 @@ public class PacmanGame implements Game {
 	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres) {
 		this.heros=in_heros;
 		this.donjon=in_donjon;
-		this.monsters=in_monstres;
+		this.monstres=in_monstres;
 	}
 
 	public void setElapsedTime(int elapsedTime) {
@@ -318,7 +318,7 @@ public class PacmanGame implements Game {
 	}
 
 	public ArrayList<Monster> getMonsters() {
-		return monsters;
+		return monstres;
 	}
 	public int getGamecounter() {
 		return gamecounter;

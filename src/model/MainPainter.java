@@ -71,7 +71,7 @@ public class MainPainter implements GamePainter{
 		item=game.getItems();
 		Labyrinthe donjon=game.getDonjon();
 		this.defineSizeParameters(donjon);
-		monsters=game.getMonstres();
+		monsters=game.getMonsters();
 		bullets=game.getBullets();
 		herosPainter= new PacmanPainter(heros);
 		donjonPainter = new LabyrinthePainter(donjon, PLAYABLE_ZONE_WIDTH, PLAYABLE_ZONE_HEIGHT);

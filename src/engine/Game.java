@@ -56,7 +56,7 @@ public interface Game {
 
 	public ArrayList<Monster> getMonsters();
 	
-	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres);
+	public void setNewLevel(Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres);
 	
 	public boolean isTimeElapsed();
 	
