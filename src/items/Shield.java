@@ -5,6 +5,7 @@ public class Shield extends Item{
 	boolean isAPotion=false;
 	boolean isAShield=true;
 	int durability;
+	
 	public Shield() {
 		durability=2;
 	}

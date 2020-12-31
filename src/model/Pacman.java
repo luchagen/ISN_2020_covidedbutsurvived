@@ -1,13 +1,11 @@
 package model;
 
 public class Pacman  extends Personnage{
-	
 	public Pacman(int[] spawn) {
 		super(spawn);
 		// implementation du spritesystem : on remplace la mention directe a un sprite par l'utilisation d un fichier qui indique quels sprites utiliser dans quelles situations
 		this.skin= "img/hero.txt";
-		
-		// TODO Auto-generated constructor stub
+		this.shield=2;
 	}
 		
 
@@ -76,5 +74,8 @@ public class Pacman  extends Personnage{
 		X=X-1;
 		updateHitbox();
 		System.out.println("*BUMP*");
+	}
+	public int getShield() {
+		return shield;
 	}
 }

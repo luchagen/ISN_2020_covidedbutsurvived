@@ -146,24 +146,32 @@ public class MainPainter implements GamePainter{
 		Image img_bg;
 		Image img_inventory_icon;
 		int HP=this.heros.getHP();
+		int shield = this.heros.getShield();
 		int elapsedTime=this.game.getElapsedTime();
 		int Time_Limit=this.game.getDonjon().getTime_Limit();
 		double sizeHeartParameter=0.6; // Valeur a fixer
 		double diffSizeHeartParameter=(1-sizeHeartParameter)/2;
 		double sizeRectHeartParameter=(1+sizeHeartParameter)/2;
 		int maximumLifePoints=5;
+		int origin_mask_x;
+		int origin_mask_y;
 		Color fond = new Color(153,102,0);
 		crayon.setColor(fond);
 		crayon.fillRect(0, 0, TOP_INTERFACE_WIDTH, TOP_INTERFACE_HEIGHT);
 		Color fond2 = new Color( 246, 158, 32 );
 		crayon.setColor(fond2);
-		crayon.fillRoundRect((int)((1-sizeRectHeartParameter)*TOP_INTERFACE_HEIGHT/2), (int)((1-sizeRectHeartParameter)*TOP_INTERFACE_HEIGHT/2), (int)(diffSizeHeartParameter+sizeHeartParameter*maximumLifePoints+1)*TOP_INTERFACE_HEIGHT+(int)(1-sizeRectHeartParameter)*TOP_INTERFACE_HEIGHT, (int)(sizeRectHeartParameter*TOP_INTERFACE_HEIGHT), 30,30);
+		crayon.fillRoundRect((int)((1-sizeRectHeartParameter)*TOP_INTERFACE_HEIGHT/2), (int)((1-sizeRectHeartParameter)*TOP_INTERFACE_HEIGHT/2), (int)(diffSizeHeartParameter+sizeHeartParameter*maximumLifePoints+2)*TOP_INTERFACE_HEIGHT+(int)(1-sizeRectHeartParameter)*TOP_INTERFACE_HEIGHT, (int)(sizeRectHeartParameter*TOP_INTERFACE_HEIGHT), 30,30);
 		
 		try {
-			for(int i=0;i<HP;i++) {
-				img_heart = ImageIO.read(new File("img/userInterface/heart.png"));
-				crayon.drawImage(img_heart, (int)((diffSizeHeartParameter+sizeHeartParameter*i)*TOP_INTERFACE_HEIGHT), (int)(diffSizeHeartParameter*TOP_INTERFACE_HEIGHT), (int)((diffSizeHeartParameter+sizeHeartParameter*(i+1))*TOP_INTERFACE_HEIGHT) , (int)((1-diffSizeHeartParameter)*TOP_INTERFACE_HEIGHT), 0, 0, img_heart.getWidth(null), img_heart.getWidth(null), null);
+			for(int i=0;i<HP+shield;i++) {
+				if(i<HP)
+					img_heart = ImageIO.read(new File("img/userInterface/heart.png"));
+				else 
+					img_heart = ImageIO.read(new File("img/userInterface/heart2.png"));
+				crayon.drawImage(img_heart, (int)((diffSizeHeartParameter+sizeHeartParameter*i)*TOP_INTERFACE_HEIGHT), (int)(diffSizeHeartParameter*TOP_INTERFACE_HEIGHT), (int)((diffSizeHeartParameter+sizeHeartParameter*(i+1))*TOP_INTERFACE_HEIGHT) , (int)((1-diffSizeHeartParameter)*TOP_INTERFACE_HEIGHT), 0, 0, img_heart.getWidth(null), img_heart.getWidth(null), null);	
 			}
+
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

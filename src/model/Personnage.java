@@ -4,6 +4,7 @@ public class Personnage {
 	public int X,Y,Xwt,Xet,Ynt,Yst,Xw,Xe,Yn,Ys,Xwtwest,Yntnorth;
 	public String skin;
 	protected int HP;
+	int shield;
 	
 	public Personnage(int X_0,int Y_0) { //Constructeur inutile ?
 		X=X_0;
@@ -76,7 +77,10 @@ public class Personnage {
 		updateHitbox();
 	}
 	public void loseHP() {
-		HP-=1;
+		if(shield>0)
+			shield-=1;
+		else
+			HP-=1;
 	}
 	public int getHP() {
 		return HP;
