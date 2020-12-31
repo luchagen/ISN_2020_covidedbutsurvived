@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import engine.Cmd;
 import engine.Game;
+import items.Inventory;
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -24,12 +25,13 @@ public class PacmanGame implements Game {
 	private Pacman heros;
 	private Labyrinthe donjon;
 	private Monster[] monstres;
+	private Inventory inventory;
 	int gamecounter=0;
 	private int elapsedTime;
 	private boolean isTimeElapsed;
 	private boolean isLastLevel;
 	
-	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres) { 
+	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, Monster[] in_monstres, Inventory in_inventory) { 
 		BufferedReader helpReader;
 		try {
 			helpReader = new BufferedReader(new FileReader(source));
@@ -44,6 +46,7 @@ public class PacmanGame implements Game {
 		heros=in_heros;
 		donjon=in_donjon;
 		monstres=in_monstres;
+		inventory=in_inventory;
 		isTimeElapsed=false;
 	}
 
@@ -195,5 +198,8 @@ public class PacmanGame implements Game {
 	}
 	public void setIsLastLevel(boolean value) {
 		this.isLastLevel=value;
+	}
+	public Inventory getInventory() {
+		return inventory;
 	}
 	}

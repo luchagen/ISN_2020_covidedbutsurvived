@@ -6,6 +6,9 @@ import java.io.IOException;
 import engine.Game;
 import engine.GameEngineGraphical;
 import engine.GraphicalInterface;
+import items.Heal;
+import items.Inventory;
+import items.Item;
 import model.PacmanController;
 import model.PacmanGame;
 import model.Labyrinthe;
@@ -23,6 +26,7 @@ public class Main {
 		int j=0;
 		int nbLevels=2;
 		boolean repeat;
+		int maxInventoryNb=18;
 		Labyrinthe donjon;
 		Pacman heros;
 		Monster[] monstres;
@@ -30,6 +34,7 @@ public class Main {
 		MainPainter painter;
 		GameEngineGraphical engine;
 		GraphicalInterface gui;
+		Inventory inventory;
 		// creation du jeu particulier et de son afficheur
 		do {
 			String source = "levels/";
@@ -38,11 +43,13 @@ public class Main {
 			donjon = new Labyrinthe(source);
 			heros = new Pacman(donjon.spawn);
 			monstres = new Monster[donjon.spawnMonsters.size()];
+			inventory = new Inventory(maxInventoryNb);
+			
 			for(int i=0;i<donjon.spawnMonsters.size();i++) {
 				monstres[i]=new Monster(donjon.spawnMonsters.get(i));
 			}
 				
-			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres);
+			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres,inventory);
 			if(j==nbLevels-1)
 				game.setIsLastLevel(true);
 			else

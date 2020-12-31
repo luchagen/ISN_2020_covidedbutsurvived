@@ -1,5 +1,6 @@
 package engine;
 
+import items.Inventory;
 import model.Labyrinthe;
 import model.Monster;
 import model.Pacman;
@@ -55,5 +56,6 @@ public interface Game {
 	
 	public void setIsLastLevel(boolean value);
 	
+	public Inventory getInventory();
 
 }

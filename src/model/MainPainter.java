@@ -54,6 +54,7 @@ public class MainPainter implements GamePainter{
 	PacmanPainter herosPainter;
 	LabyrinthePainter donjonPainter;
 	MonsterPainter monsterPainter;
+	InventoryPainter inventoryPainter;
 	PacmanController controller;
 	Pacman heros;
 	Monster[] monsters;
@@ -69,6 +70,7 @@ public class MainPainter implements GamePainter{
 		herosPainter= new PacmanPainter(heros);
 		donjonPainter = new LabyrinthePainter(donjon, PLAYABLE_ZONE_WIDTH, PLAYABLE_ZONE_HEIGHT);
 		monsterPainter= new MonsterPainter(monsters);
+		inventoryPainter = new InventoryPainter(game.getInventory());
 		controller = in_controller;
 		animationstage=0;
 
@@ -102,6 +104,7 @@ public class MainPainter implements GamePainter{
 		donjonPainter.draw(crayon_lab, TOP_INTERFACE_HEIGHT);
 		herosPainter.draw(crayon_pac , animationStage(),controller,TOP_INTERFACE_HEIGHT);
 		monsterPainter.draw(crayon_evl,animationStage(), TOP_INTERFACE_HEIGHT);
+		inventoryPainter.draw(crayon_evl);
 		if(this.game.isKilled()) {
 			try {
 				this.notificationMessage(crayon_int,"img/userInterface/deathMessage.png");

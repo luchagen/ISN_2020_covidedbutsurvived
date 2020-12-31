@@ -14,14 +14,17 @@ public class Inventory {
 	}
 	
 	public void addItem(Item item) {
+		
 		boolean isItemAdded=false;
 		Item comp = new DefaultItem();
 		int i =0;
 		while(i<maxNbItem && isItemAdded==false) {
-			if(inventory[i].equals(comp)) {
+			if(inventory[i].getItemTypeId()==0) {
 				inventory[i]=item;
+				
 				isItemAdded=true;
 			}
+			i++;
 		}
 		if(isItemAdded==false) {
 			System.out.println("Inventaire plein !");
