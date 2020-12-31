@@ -25,11 +25,10 @@ public class Main {
 		Root fenetre = new Root();
 		int j=0;
 		int maxInventoryNb=18;
-		int nbLevels=3;
+		int nbLevels=2;
 		int initialHP=5;
 		int initialShield=2;
-		Inventory initialInventory = new Inventory(maxInventoryNb);
-		int currentHP=initialHP;
+		Inventory initialInventory = new Inventory(maxInventoryNb);	int currentHP=initialHP;
 		int currentShield=initialShield;
 		Inventory currentInventory = initialInventory;
 		boolean repeat;
