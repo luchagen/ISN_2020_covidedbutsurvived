@@ -9,6 +9,7 @@ import engine.GraphicalInterface;
 import items.Heal;
 import items.Inventory;
 import items.Item;
+import items.Shield;
 import model.PacmanController;
 import model.PacmanGame;
 import model.Labyrinthe;
@@ -29,6 +30,12 @@ public class Main {
 		int initialHP=5;
 		int initialShield=2;
 		Inventory initialInventory = new Inventory(maxInventoryNb);	int currentHP=initialHP;
+		for(int l=0;l<9;l++) {
+			initialInventory.addItem(new Heal());
+		}
+		for(int l=0;l<9;l++) {
+			initialInventory.addItem(new Shield());
+		}
 		int currentShield=initialShield;
 		Inventory currentInventory = initialInventory;
 		boolean repeat;

@@ -47,7 +47,7 @@ public class Inventory {
 		return maxNbItem;
 	}
 	public int checkItem(int type) {
-		for(int i=0;i<inventory.length;i++) {
+		for(int i=inventory.length-1;i>=0;i--) {
 			if(inventory[i].getItemTypeId()==type)
 				return i;
 		}
