@@ -38,3 +38,7 @@ img/3/0/8.png
 #start
 #loop
 img/3/0/9.png
+%IDLE700
+#start
+#loop
+img/7/0/0.png
