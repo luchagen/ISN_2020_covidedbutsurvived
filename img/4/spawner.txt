@@ -6,3 +6,7 @@ img/4/0/1.png
 #start
 #loop
 img/4/0/1.png
+%IDLE402
+#start
+#loop
+img/4/0/2.png

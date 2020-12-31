@@ -35,7 +35,7 @@ public void draw(Graphics2D crayon_pac, int animationstage, int HEIGHT_INTERFACE
 	Image img;
 	for(int i=0; i<monstres.size(); i++) {
 		try {
-			img = ImageIO.read(new File(monstersprites.get(i).currentSpriteGet(animationstage,commandeencours)));
+			img = ImageIO.read(new File(monstersprites.get(i).currentSpriteGet(animationstage,monstres.get(i).State,monstres.get(i).type)));
 			crayon_pac.drawImage(img, monstres.get(i).X, monstres.get(i).Y+HEIGHT_INTERFACE, monstres.get(i).X+Labyrinthe.Tile_length , monstres.get(i).Y+Labyrinthe.Tile_length+HEIGHT_INTERFACE, 0, 0, img.getWidth(null), img.getWidth(null), null);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block

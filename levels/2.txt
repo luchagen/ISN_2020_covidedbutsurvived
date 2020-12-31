@@ -1,5 +1,5 @@
 ###### NE PAS MODIFIER LA MIS EN PAGE ######
-level=1
+level=3
 nb_largeur=10
 nb_hauteur=10
 Time_Limit(s)=100

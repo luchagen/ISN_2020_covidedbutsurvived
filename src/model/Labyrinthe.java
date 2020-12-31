@@ -23,6 +23,7 @@ public class Labyrinthe {
 	public int[]spawn2=new int[2];
 	// Coordonnees (i,j) representant la case ou le joueur doit apparaitre
 	public ArrayList<int[]> spawnMonsters=new ArrayList<int[]>(); //Comme precedemment sauf qu'il s'agit des monstres et il peut y en avoir plusieurs
+	public ArrayList<Integer> typeMonsters=new ArrayList<Integer>(); // nombres representant le type de monstre 
 	public ArrayList<int[]> spawnItems=new ArrayList<int[]>();
 	
 	public Labyrinthe(String source) {
@@ -117,8 +118,10 @@ public class Labyrinthe {
 					this.setSpawn(spawn);
 				}
 				else if(nat==4){
+					int type = Integer.parseInt(param[2]);
 					int[] tab= {j,i};
 					spawnMonsters.add(tab);
+					typeMonsters.add(type);
 				}
 				else if (nat==7) {
 					int[] spawn2 = {j,i};
@@ -134,9 +137,6 @@ public class Labyrinthe {
 	// Getters et Setters
 	private void setSpawn(int[] spawn) {
 		this.spawn = spawn;
-	}
-	private void setSpawn2(int[] spawn) {
-		this.spawn2 = spawn;
 	}
 	public int getNb_largeur() {
 		return nb_largeur;

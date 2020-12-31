@@ -12,7 +12,6 @@ import model.Labyrinthe;
 import model.MainPainter;
 import model.Monster;
 import model.Pacman;
-import model.Bullet;
 import model.Item;
 
 /**
@@ -22,7 +21,7 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		int j=0;
-		int nbLevels=3;
+		int nbLevels=4;
 		boolean repeat;
 		Labyrinthe donjon;
 		Pacman heros;
@@ -46,7 +45,7 @@ public class Main {
 			}
 			monstres = new ArrayList<Monster>();
 			for(int i=0;i<donjon.spawnMonsters.size();i++) {
-				monstres.add(new Monster(donjon.spawnMonsters.get(i)));
+				monstres.add(new Monster(donjon.spawnMonsters.get(i),donjon.typeMonsters.get(i)));
 			}
 			
 			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres, items);

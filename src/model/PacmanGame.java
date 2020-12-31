@@ -184,16 +184,20 @@ public class PacmanGame implements Game {
 			Boolean canmovedown=false;
 			if(monster.Xet<Labyrinthe.nb_largeur) 
 				if((donjon.cases[monster.Xet][monster.Yn].canWalkOn) && (donjon.cases[monster.Xet][monster.Ys].canWalkOn)) 
-					canmoveright=true;
+					if(monster.type.equals("covid"))canmoveright=true; //le pacman peut bouger si il ny a pas dobstacle
+					else if(monster.type.equals("police"))if(monster.Ymid==heros.Ymid && monster.Xmid<heros.Xmid)canmoveright=true; //la police bouge si elle voit le heros
 			if((monster.Xwtwest)>0) 
 				if((donjon.cases[monster.Xwt][monster.Yn].canWalkOn) && (donjon.cases[monster.Xwt][monster.Ys].canWalkOn) )
-					canmoveleft=true;
+					if(monster.type.equals("covid"))canmoveleft=true;
+					else if(monster.type.equals("police"))if(monster.Ymid==heros.Ymid && monster.Xmid>heros.Xmid)canmoveleft=true;
 			if((monster.Yntnorth)>0) 
 				if((donjon.cases[monster.Xw][monster.Ynt].canWalkOn) && (donjon.cases[monster.Xe][monster.Ynt].canWalkOn))
-					canmoveup=true;
+					if(monster.type.equals("covid"))canmoveup=true;
+					else if(monster.type.equals("police"))if(monster.Xmid==heros.Xmid && monster.Ymid>heros.Ymid)canmoveup=true;
 			if((monster.Yst)<Labyrinthe.nb_hauteur)
 				if((donjon.cases[monster.Xw][monster.Yst].canWalkOn) && (donjon.cases[monster.Xe][monster.Yst].canWalkOn))
-					canmovedown=true;
+					if(monster.type.equals("covid"))canmovedown=true;
+					else if(monster.type.equals("police"))if(monster.Xmid==heros.Xmid && monster.Ymid<heros.Ymid)canmovedown=true;
 			monster.monsterMove(canmoveleft,canmoveright,canmoveup,canmovedown);
 	        	
 			}	
