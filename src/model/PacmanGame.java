@@ -259,9 +259,9 @@ public class PacmanGame implements Game {
 	
 	public void getweapon() {
 		for(int i=0;i<items.size();i++) {
-			if((heros.Xmid==items.get(i).Xmid)&&(heros.Ymid==items.get(i).Ymid))
-			{items.get(i).state=Cmd.ACTIVATED;
-			heros.haveweapon=true;
+			if((heros.Xmid==items.get(i).Xmid)&&(heros.Ymid==items.get(i).Ymid)){
+				items.get(i).state=Cmd.ACTIVATED;
+				heros.haveweapon=true;
 			}
 		}
 	}

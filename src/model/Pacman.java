@@ -99,6 +99,6 @@ public class Pacman  extends Personnage{
 				System.out.println("Bouclier deja plein !");
 		}
 		else
-			System.out.println("Aucun vaccin present dans l'inventaire !");
+			System.out.println("Aucun masquesd present dans l'inventaire !");
 	}
 }

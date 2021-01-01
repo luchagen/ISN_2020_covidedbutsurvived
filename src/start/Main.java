@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import engine.Game;
 import engine.GameEngineGraphical;
 import engine.GraphicalInterface;
+import items.DistanceWeapon;
 import items.Heal;
 import items.Inventory;
 import items.Shield;
@@ -34,7 +35,7 @@ public class Main {
 			initialInventory.addItem(new Heal());
 		}
 		for(int l=0;l<9;l++) {
-			initialInventory.addItem(new Shield());
+			initialInventory.addItem(new DistanceWeapon());
 		}
 		int currentShield=initialShield;
 		Inventory currentInventory = initialInventory;
