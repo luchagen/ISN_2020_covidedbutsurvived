@@ -31,11 +31,8 @@ public class Main {
 		int initialHP=5;
 		int initialShield=2;
 		Inventory initialInventory = new Inventory(maxInventoryNb);	int currentHP=initialHP;
-		for(int l=0;l<9;l++) {
+		for(int l=0;l<15;l++) {
 			initialInventory.addItem(new Heal());
-		}
-		for(int l=0;l<9;l++) {
-			initialInventory.addItem(new DistanceWeapon());
 		}
 		int currentShield=initialShield;
 		Inventory currentInventory = initialInventory;
@@ -47,14 +44,18 @@ public class Main {
 		MainPainter painter;
 		GameEngineGraphical engine;
 		ArrayList<Item> items;
+		int indexOfWeaponItem;
 		//Bullet bullet;
 		// creation du jeu particulier et de son afficheur
 		do {
 			String source = "levels/";
 			source+=j;
 			source+=".txt";
-			
 			donjon = new Labyrinthe(source);
+			indexOfWeaponItem=currentInventory.findTypeOfItem(3);
+			if(indexOfWeaponItem!=-1) {
+				currentInventory.delItem(indexOfWeaponItem);
+			}
 			heros = new Pacman(donjon.spawn, currentInventory);
 			items=new ArrayList<Item>();
 			for(int i=0;i<donjon.spawnItems.size();i++) {
@@ -81,7 +82,6 @@ public class Main {
 			
 			engine.run();
 			if (game.nextlevel()==true) {
-				currentHP=heros.getHP();
 				currentShield=heros.getShield();
 				currentInventory=game.getInventory();
 				repeat=true;

@@ -101,4 +101,10 @@ public class Pacman  extends Personnage{
 		else
 			System.out.println("Aucun masquesd present dans l'inventaire !");
 	}
+	public boolean getArmedStatus() {
+		return this.haveweapon;
+	}
+	public void setArmedStatus(boolean value) {
+		this.haveweapon=value;
+	}
 }

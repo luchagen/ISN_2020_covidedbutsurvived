@@ -13,7 +13,7 @@ public class Inventory {
 		}
 	}
 	
-	public void addItem(Item item) {
+	public boolean addItem(Item item) {
 		
 		boolean isItemAdded=false;
 		int i =0;
@@ -28,6 +28,7 @@ public class Inventory {
 		if(isItemAdded==false) {
 			System.out.println("Inventaire plein !");
 		}
+		return isItemAdded;
 	}
 	
 	public void delItem(int ItemNb) {
@@ -51,8 +52,21 @@ public class Inventory {
 			if(inventory[i].getItemTypeId()==type)
 				return i;
 		}
+		return -1;	
+	}
+	public boolean isFull() {
+		for(int i=0;i<this.maxNbItem;i++) {
+			if(this.inventory[i].getItemTypeId()==0)
+				return false;
+		}
+		return true;
+	}
+	public int findTypeOfItem(int type) {
+		for(int i=0;i<this.maxNbItem;i++) {
+			if(this.inventory[i].getItemTypeId()==type)
+				return i;
+		}
 		return -1;
-		
 	}
 	
 }
