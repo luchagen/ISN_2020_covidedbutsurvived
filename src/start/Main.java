@@ -29,11 +29,8 @@ public class Main {
 		int nbLevels=5;
 		int maxInventoryNb=18;
 		int initialHP=5;
-		int initialShield=2;
+		int initialShield=0;
 		Inventory initialInventory = new Inventory(maxInventoryNb);	int currentHP=initialHP;
-		for(int l=0;l<15;l++) {
-			initialInventory.addItem(new Heal());
-		}
 		int currentShield=initialShield;
 		Inventory currentInventory = initialInventory;
 		boolean repeat;
