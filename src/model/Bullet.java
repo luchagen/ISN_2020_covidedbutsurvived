@@ -8,14 +8,13 @@ public class Bullet {
 	
 	public Bullet(Pacman in_shooter) {
 		this.X=in_shooter.X;
-		this.Xtile=in_shooter.Xmid;
+		this.Xtile=in_shooter.X/Labyrinthe.Tile_length;
 		this.Y=in_shooter.Y;
-		this.Ytile=in_shooter.Ymid;
+		this.Ytile=in_shooter.Y/Labyrinthe.Tile_length;
 		this.direction=in_shooter.lastMove;
 		this.skin="img/bullet/0/0.png";
 		this.isTerminal=false;
 	}
-	
 	public void evolveBullet() {
 		switch(direction) {
 		case 'L':

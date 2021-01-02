@@ -83,7 +83,7 @@ public class GameEngineGraphical {
 			endtime=System.nanoTime();
 			elapsedtime=(endtime-startTime)/1000000000;
 			this.game.setElapsedTime((int)elapsedtime); 
-			System.out.print("elapsed time= "+elapsedtime+"sec ");
+			//ssSystem.out.println("elapsed time= "+elapsedtime+"sec ");
 			// met en attente
 			Thread.sleep(20);
 		}

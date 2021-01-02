@@ -18,15 +18,21 @@ public class Monster extends Personnage {
 		switch(in_type)  {
 		case 1:
 			this.type="covid";
+			this.length= 32;
+			this.height=32;
 			this.HP=1;
 			break;
 		case 2:
 			this.type="police";
 			this.HP=100;
+			this.length= 19;
+			this.height=28;
 			break;
 		default:
 			this.type="covid";
 			this.HP=1;
+			this.length= 34;
+			this.height=34;
 			break;
 		}
 		
@@ -34,6 +40,7 @@ public class Monster extends Personnage {
 	}
 	
 	public void monsterMove(Boolean canmoveleft , Boolean canmoveright, Boolean canmoveup, Boolean canmovedown) {
+		personnagehitbox.updateHitbox(X, Y,length,height);
 		if (this.type.equals("covid")) {
 			if (longueurdaction!=0) {
 				longueurdaction -=1;
@@ -123,6 +130,7 @@ public class Monster extends Personnage {
 			}
 			else this.State=Cmd.IDLE;
 		}	
+	personnagehitbox.updateHitbox(X, Y,length,height);
 	}
 	
 

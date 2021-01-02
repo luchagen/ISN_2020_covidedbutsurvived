@@ -72,7 +72,7 @@ public class SpriteGroup {
 		return spritelist.get("IDLE"+parametre)[1].get(in_animationcounter%spritelist.get("IDLE"+parametre)[1].size());
 	}
 	public String currentSpriteGet(int in_animationcounter, Cmd in_commandeencours, String parametre) {
-		//System.out.println(in_commandeencours.toString()+parametre);
+		
 		try {
 		if (animationcounter!=in_animationcounter) {
 			animationcounter=in_animationcounter;
@@ -138,6 +138,7 @@ public class SpriteGroup {
 		}
 		return sprite;
 		}catch (NullPointerException e) {
+			System.out.println(in_commandeencours.toString()+parametre);
 			e.printStackTrace();
 			return "img/error.png";
 		}

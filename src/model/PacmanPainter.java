@@ -38,11 +38,10 @@ public class PacmanPainter {
 		Image img;
 		try {
 			img = ImageIO.read(new File(herosprite.currentSpriteGet(animationstage, controller.getCommand())));
-			crayon_pac.drawImage(img, heros.X, heros.Y+HEIGHT_INTERFACE, heros.X+Labyrinthe.Tile_length , heros.Y+Labyrinthe.Tile_length+HEIGHT_INTERFACE, 0, 0, img.getWidth(null), img.getWidth(null), null);
+			crayon_pac.drawImage(img, heros.X-Labyrinthe.Tile_length/2, heros.Y-Labyrinthe.Tile_length/2+HEIGHT_INTERFACE, heros.X+Labyrinthe.Tile_length/2 , heros.Y+Labyrinthe.Tile_length/2+HEIGHT_INTERFACE, 0, 0, img.getWidth(null), img.getWidth(null), null);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 	}
 }
-	
 }

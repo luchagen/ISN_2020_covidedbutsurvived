@@ -92,7 +92,6 @@ public class MainPainter implements GamePainter{
 				animationstage=0;
 		else 
 			animationstage += 1;
-		System.out.print(animationstage);
 		return animationstage/2;
 			
 			

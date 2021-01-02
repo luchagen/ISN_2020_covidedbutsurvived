@@ -23,8 +23,6 @@ public class LabyrinthePainter {
 		for(int i=0;i<nb_hauteur;i++) {
 			for(int j=0;j<nb_largeur;j++) {
 				sprites.add(new SpriteGroup(donjon.cases[i][j].skin));
-				System.out.println(donjon.cases[i][j].type);
-				System.out.println(donjon.cases[i][j].skin);
 
 			}
 		}
