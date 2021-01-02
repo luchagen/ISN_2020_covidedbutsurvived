@@ -39,7 +39,7 @@ public interface Game {
 	
 	public boolean nextlevel();
 	
-	public void isBeingTouchedByAMonster();
+	public void isBeingTouchedByAMonster(long elapsed_time);
 	public void getweapon() ;
 	public void applyTrapDamage();
 	

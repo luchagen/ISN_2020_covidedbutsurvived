@@ -36,6 +36,7 @@ public class PacmanGame implements Game {
 	private int elapsedTime;
 	private boolean isTimeElapsed;
 	private boolean isLastLevel;
+	private long last_time;
 	
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres, ArrayList<Item> in_items) { 
@@ -223,13 +224,18 @@ public class PacmanGame implements Game {
 	 * Applying damages
 	 */
 	@Override
-	public void isBeingTouchedByAMonster() {
-		for(Monster monster:monstres) {
-			if((monster.Xmid==heros.Xmid)&&(monster.Ymid==heros.Ymid)) { //Changer ca en mettant une methode qui detecte si les persos partage la meme hitbox
-				heros.loseHP();
-				System.out.println("AIE J'AI PRIS UN COUP!");
+	public void isBeingTouchedByAMonster(long elapsed_time) {
+		
+		if (elapsed_time-last_time>4) {
+			System.out.println("******************************wa9t= "+(elapsed_time - last_time));
+			for(Monster monster:monstres) {
+				if((monster.Xmid==heros.Xmid)&&(monster.Ymid==heros.Ymid)) { //Changer ca en mettant une methode qui detecte si les persos partage la meme hitbox
+					heros.loseHP();
+					System.out.println("AIE J'AI PRIS UN COUP!");
+					last_time=elapsed_time;
+				}
 			}
-		}
+			}
 	}
 	
 	@Override
