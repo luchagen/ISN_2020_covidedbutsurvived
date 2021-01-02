@@ -4,6 +4,6 @@ public class Shield extends Item{
 
 	public Shield() {
 		ItemTypeId=2;
-		this.source="img/items/mask.png";
+		this.source="img/Items/mask.png";
 	}
 }
