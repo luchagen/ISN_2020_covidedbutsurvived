@@ -278,7 +278,7 @@ public class PacmanGame implements Game {
 							break;
 					}
 					if(isItemAdded)
-						System.out.println("OH NOOOOOONNNN");
+						System.out.println("OH NOOOOOONNNNNN");
 						items.get(i).state=Cmd.ACTIVATED;
 				}
 			}
