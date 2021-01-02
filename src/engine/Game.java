@@ -73,4 +73,6 @@ public interface Game {
 	public void evolveBullets();
 	
 	public void bulletsKillMonsters();
+	public Boolean getIscooldownplayerhit();
+	public Boolean getIscooldownweapon();
 }

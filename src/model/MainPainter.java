@@ -80,7 +80,6 @@ public class MainPainter implements GamePainter{
 		bulletpainter=new BulletPainter(bullets);
 		controller = in_controller;
 		animationstage=0;
-
 	}
 
 	/** 
@@ -174,7 +173,13 @@ public class MainPainter implements GamePainter{
 		try {
 			for(int i=0;i<HP+shield;i++) {
 				if(i<HP)
-					img_heart = ImageIO.read(new File("img/userInterface/heart.png"));
+					if ((animationstage+1)/2==animationstage/2)
+						if (game.getIscooldownplayerhit())
+							img_heart = ImageIO.read(new File("img/userInterface/heartinvis.png")); // les coeurs clignotent quand on vient de se faire taper
+						else	
+							img_heart = ImageIO.read(new File("img/userInterface/heart.png"));
+					else
+						img_heart = ImageIO.read(new File("img/userInterface/heart.png"));
 				else 
 					img_heart = ImageIO.read(new File("img/userInterface/heart2.png"));
 				crayon.drawImage(img_heart, (int)((diffSizeHeartParameter+sizeHeartParameter*i)*TOP_INTERFACE_HEIGHT), (int)(diffSizeHeartParameter*TOP_INTERFACE_HEIGHT), (int)((diffSizeHeartParameter+sizeHeartParameter*(i+1))*TOP_INTERFACE_HEIGHT) , (int)((1-diffSizeHeartParameter)*TOP_INTERFACE_HEIGHT), 0, 0, img_heart.getWidth(null), img_heart.getWidth(null), null);	

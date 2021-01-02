@@ -28,6 +28,7 @@ public class PacmanGame implements Game {
 	private ArrayList<Bullet> bullets;
 	private ArrayList<Item> items;
 	private int cooldownleftonbullet=0;
+	private int playerhitcooldown=0;
 	private Inventory inventory;
 	int gamecounter=0;
 	private int elapsedTime;
@@ -59,6 +60,8 @@ public class PacmanGame implements Game {
 	private void coolDown() {
 		if (cooldownleftonbullet!=0)
 			cooldownleftonbullet-=1;
+		if (playerhitcooldown!=0)
+			playerhitcooldown-=1;
 	}
 	/**
 	 * faire evoluer le jeu suite a une commande
@@ -221,10 +224,12 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public void isBeingTouchedByAMonster(){
-		for(Monster monster:monstres) {
-			if((monster.personnagehitbox.isCollision(heros.personnagehitbox))) { //Changer ca en mettant une methode qui detecte si les persos partage la meme hitbox
-				heros.loseHP();
-				System.out.println("AIE J'AI PRIS UN COUP!");	
+		if (playerhitcooldown==0)
+			for(Monster monster:monstres) {
+				if((monster.personnagehitbox.isCollision(heros.personnagehitbox))) { //Changer ca en mettant une methode qui detecte si les persos partage la meme hitbox
+					heros.loseHP();
+					System.out.println("AIE J'AI PRIS UN COUP!");	
+					playerhitcooldown=20;
 			}
 		}
 	}
@@ -341,6 +346,16 @@ public class PacmanGame implements Game {
 	}
 	public void setInventory(Inventory newInventory) {
 		this.inventory=newInventory;
+	}
+	public Boolean getIscooldownweapon() {
+		if (cooldownleftonbullet!=0)
+			return true;
+		return false;
+	}
+	public Boolean getIscooldownplayerhit() {
+		if (playerhitcooldown!=0)
+			return true;
+		return false;
 	}
 	}
 	
