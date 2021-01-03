@@ -7,7 +7,10 @@ import java.util.ArrayList;
 
 import engine.Cmd;
 import engine.Game;
+import items.DistanceWeapon;
+import items.Heal;
 import items.Inventory;
+import items.Shield;
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
@@ -268,10 +271,26 @@ public class PacmanGame implements Game {
 	}
 	
 	public void getweapon() {
-		for(int i=0;i<items.size();i++) {
-			if((heros.X/Labyrinthe.Tile_length==items.get(i).Xmid)&&(heros.Y/Labyrinthe.Tile_length==items.get(i).Ymid))
-			{items.get(i).state=Cmd.ACTIVATED;
-			heros.haveweapon=true;
+		if(!this.inventory.isFull()) {
+			boolean isItemAdded=false;
+			for(int i=0;i<items.size();i++) {
+				if((heros.Xmid==items.get(i).Xmid)&&(heros.Ymid==items.get(i).Ymid)&&items.get(i).state!=Cmd.ACTIVATED){
+					switch(items.get(i).type) {
+						case "weapon":
+							isItemAdded=this.inventory.addItem(new DistanceWeapon());
+							heros.haveweapon=true;
+							break;
+						case "potion":
+							isItemAdded=this.inventory.addItem(new Heal());
+							break;
+						case "shield":
+							isItemAdded=this.inventory.addItem(new Shield());
+							break;
+					}
+					if(isItemAdded)
+						System.out.println("OH NOOOOOONNNNNN");
+						items.get(i).state=Cmd.ACTIVATED;
+				}
 			}
 		}
 	}

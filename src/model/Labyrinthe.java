@@ -109,7 +109,7 @@ public class Labyrinthe {
 						this.cases[j][i]=new Trap(liste_param[j]);
 						break;
 					case 7:
-						this.cases[j][i]=new Spawn(liste_param[j]);
+						this.cases[j][i]=new ItemSpawn(liste_param[j]);
 						break;
 					default:
 						cases[j][i]=new Wall(liste_param[j]);
@@ -126,7 +126,7 @@ public class Labyrinthe {
 					typeMonsters.add(type);
 				}
 				else if (nat==7) {
-					int[] spawn2 = {j,i};
+					int[] spawn2 = {j,i,Integer.parseInt(liste_param[j])};
 					spawnItems.add(spawn2);
 				}
 				}

@@ -6,3 +6,11 @@ img/7/0/0.png
 #start
 #loop
 img/7/0/0.png
+%IDLE701
+#start
+#loop
+img/7/0/0.png
+%IDLE702
+#start
+#loop
+img/7/0/0.png

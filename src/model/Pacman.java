@@ -21,7 +21,6 @@ public class Pacman  extends Personnage{
 		// implementation du spritesystem : on remplace la mention directe a un sprite par l'utilisation d un fichier qui indique quels sprites utiliser dans quelles situations
 		this.skin= "img/hero.txt";
 		this.HP=5;
-		this.shield=2;
 		this.lastMove='R';
 		inventory=in_inventory;
 		
@@ -57,6 +56,12 @@ public class Pacman  extends Personnage{
 				System.out.println("Bouclier deja plein !");
 		}
 		else
-			System.out.println("Aucun vaccin present dans l'inventaire !");
+			System.out.println("Aucun masquesd present dans l'inventaire !");
+	}
+	public boolean getArmedStatus() {
+		return this.haveweapon;
+	}
+	public void setArmedStatus(boolean value) {
+		this.haveweapon=value;
 	}
 }

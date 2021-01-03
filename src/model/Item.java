@@ -17,8 +17,17 @@ public class Item {
 			Ymid=spawn[1];
 			state = Cmd.IDLE;
 			skin="img/Items/items.txt";
-			type="weapon";
-			
+			switch(spawn[2]) {
+				case 700:
+					type="weapon";
+					break;
+				case 701:
+					type="potion";
+					break;
+				case 702:
+					type="shield";
+					break;
+			}
 		}
 		
 	}
