@@ -9,8 +9,6 @@ import engine.Cmd;
 public class Monster extends Personnage {
 	private int longueurdaction=5;
 	private int actionencours=0;
-	
-	
 	public Monster(int[] spawn,int in_type) {
 		super(spawn);
 		this.skin= "img/monster.txt";
@@ -28,6 +26,13 @@ public class Monster extends Personnage {
 			this.length= 19;
 			this.height=28;
 			break;
+		case 3:
+			this.type="pq";
+			this.HP=1;
+			this.length= 20;
+			this.height=20;
+			this.lastMove='L';
+			break;
 		default:
 			this.type="covid";
 			this.HP=1;
@@ -38,7 +43,6 @@ public class Monster extends Personnage {
 		
 		// TODO Auto-generated constructor stub
 	}
-	
 	public void monsterMove(Boolean canmoveleft , Boolean canmoveright, Boolean canmoveup, Boolean canmovedown) {
 		personnagehitbox.updateHitbox(X, Y,length,height);
 		if (this.type.equals("covid")) {
@@ -129,9 +133,21 @@ public class Monster extends Personnage {
 				moveRIGHT();
 			}
 			else this.State=Cmd.IDLE;
-		}	
+		}
+		else if(this.type.contentEquals("pq")) {
+			if(this.lastMove=='L' && canmoveleft==true)
+				moveLEFT();
+			else if	(this.lastMove=='R' && canmoveright==true)
+				moveRIGHT();
+			else if (this.lastMove=='L' && canmoveleft==false)
+				this.lastMove='R';
+			else if	(this.lastMove=='R' && canmoveright==false)
+				this.lastMove='L';
+		}
 	personnagehitbox.updateHitbox(X, Y,length,height);
 	}
-	
 
+	public void setState(Cmd state) {
+		this.State=state;
+	}
 }

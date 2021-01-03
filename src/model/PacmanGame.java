@@ -30,8 +30,11 @@ public class PacmanGame implements Game {
 	public ArrayList<Monster> monstres;
 	private ArrayList<Bullet> bullets;
 	private ArrayList<Item> items;
+	
+	
 	private int cooldownleftonbullet=0;
 	private int playerhitcooldown=0;
+	
 	private Inventory inventory;
 	int gamecounter=0;
 	private int elapsedTime;
@@ -200,6 +203,8 @@ public class PacmanGame implements Game {
 	
 	@Override
 	public void evolveMonsters() {
+		ArrayList<Monster> monstresaajouter = new ArrayList<Monster>();
+		ArrayList<Monster> monstresatuer = new ArrayList<Monster>();
 		for(Monster monster:monstres) {
 			Boolean canmoveright=false;
 			Boolean canmoveleft=false;
@@ -212,9 +217,11 @@ public class PacmanGame implements Game {
 			int tilelength= Labyrinthe.Tile_length;
 			if (((Xe+game_speed)<(Labyrinthe.nb_largeur*tilelength))&& (donjon.cases[(Xe+game_speed)/tilelength][Yn/tilelength].canWalkOn) && (donjon.cases[(Xe+game_speed)/tilelength][Ys/tilelength].canWalkOn) )
 					if(monster.type.equals("covid"))canmoveright=true; //le pacman peut bouger si il ny a pas dobstacle
+					else if(monster.type.equals("pq"))canmoveright=true;
 					else if(monster.type.equals("police"))if(monster.Y/tilelength==heros.Y/tilelength && monster.X<heros.X)canmoveright=true; //la police bouge si elle voit le heros
 			if(((Xw-game_speed)>0)&& (donjon.cases[(Xw-game_speed)/tilelength][Yn/tilelength].canWalkOn) && (donjon.cases[(Xw-game_speed)/tilelength][Ys/tilelength].canWalkOn) )
 					if(monster.type.equals("covid"))canmoveleft=true;
+					else if(monster.type.equals("pq"))canmoveleft=true;
 					else if(monster.type.equals("police"))if(monster.Y/tilelength==heros.Y/tilelength && monster.X>heros.X)canmoveleft=true;
 			if(((Yn-game_speed)>0)&& (donjon.cases[Xw/tilelength][(Yn-game_speed)/tilelength].canWalkOn) && (donjon.cases[Xe/tilelength][(Yn-game_speed)/tilelength].canWalkOn))
 					if(monster.type.equals("covid"))canmoveup=true;
@@ -223,8 +230,8 @@ public class PacmanGame implements Game {
 					if(monster.type.equals("covid"))canmovedown=true;
 					else if(monster.type.equals("police"))if(monster.X/tilelength==heros.X/tilelength && monster.Y<heros.Y)canmovedown=true;
 			monster.monsterMove(canmoveleft,canmoveright,canmoveup,canmovedown);
-			
-		}	
+		}
+
 	}
 	
 	/*

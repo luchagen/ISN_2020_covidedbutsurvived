@@ -10,3 +10,11 @@ img/4/0/1.png
 #start
 #loop
 img/4/0/2.png
+%IDLE403
+#start
+#loop
+img/4/0/2.png
+%IDLE404
+#start
+#loop
+img/4/0/2.png
