@@ -274,7 +274,7 @@ public class PacmanGame implements Game {
 		if(!this.inventory.isFull()) {
 			boolean isItemAdded=false;
 			for(int i=0;i<items.size();i++) {
-				if((heros.Xmid==items.get(i).Xmid)&&(heros.Ymid==items.get(i).Ymid)&&items.get(i).state!=Cmd.ACTIVATED){
+				if((heros.X/Labyrinthe.Tile_length==items.get(i).Xmid)&&(heros.Y/Labyrinthe.Tile_length==items.get(i).Ymid)&&items.get(i).state!=Cmd.ACTIVATED){
 					switch(items.get(i).type) {
 						case "weapon":
 							isItemAdded=this.inventory.addItem(new DistanceWeapon());
