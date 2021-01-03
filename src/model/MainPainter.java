@@ -110,6 +110,7 @@ public class MainPainter implements GamePainter{
 		this.drawUserInterface(crayon_int);
 		donjonPainter.draw(crayon_lab, TOP_INTERFACE_HEIGHT,  animationStage());
 		herosPainter.draw(crayon_pac , animationStage(),controller, TOP_INTERFACE_HEIGHT);
+		monsterPainter.actualizepainter();
 		monsterPainter.draw(crayon_evl,animationStage(), TOP_INTERFACE_HEIGHT);
 		bulletpainter.draw(crayon_bul, TOP_INTERFACE_HEIGHT);
 		inventoryPainter.draw(crayon_evl);

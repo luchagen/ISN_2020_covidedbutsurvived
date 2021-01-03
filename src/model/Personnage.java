@@ -141,4 +141,7 @@ public class Personnage {
 		X=in_x;
 		Y=in_y;
 	}
+	public String getType() {
+		return this.type;
+	}
 }

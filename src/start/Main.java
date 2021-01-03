@@ -26,7 +26,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
 		Root fenetre = new Root();
 		int j=0;
-		int nbLevels=5;
+		int nbLevels=6;
 		int maxInventoryNb=18;
 		int initialHP=5;
 		int initialShield=0;

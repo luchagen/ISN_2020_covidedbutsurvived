@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import engine.Cmd;
 import engine.Game;
@@ -182,11 +183,31 @@ public class PacmanGame implements Game {
 	public void bulletsKillMonsters() {
 		for (Bullet bullet:bullets) {
 			for (Monster monster:monstres) {
-				if((monster.X/Labyrinthe.Tile_length==bullet.Xtile)&&(monster.Y/Labyrinthe.Tile_length==bullet.Ytile)) { 
+				if(monster.personnagehitbox.isCollision(bullet.bullethitbox)) { 
 					monster.loseHP();
 					bullet.isTerminal=true;
 					if(monster.getHP()==0) {
 						monstres.remove(monster);
+						Random rnd= new Random();
+						float randomizedchance=rnd.nextFloat();
+						System.out.println(randomizedchance);
+						if (randomizedchance<0.5) {
+						int[] information= new int[3];
+							if (monster.getType().contentEquals("covid")) {
+								information[0]=monster.getX()/Labyrinthe.Tile_length;
+								information[1]=monster.getY()/Labyrinthe.Tile_length;
+								information[2]=701;		
+								Item droppeditem=new Item(information);
+								items.add(droppeditem);
+							}
+							else if (monster.getType().contentEquals("pq")) {
+								information[0]=monster.getX()/Labyrinthe.Tile_length;
+								information[1]=monster.getY()/Labyrinthe.Tile_length;
+								information[2]=702;		
+								Item droppeditem=new Item(information);
+								items.add(droppeditem);
+							}
+						}
 					}
 					break;
 				}

@@ -30,6 +30,25 @@ public class MonsterPainter {
 		}
 	}
 	
+	public void actualizepainter() {
+		if (monstres.size()!=monstersprites.size()) {
+			monstersprites = new ArrayList<SpriteGroup>();
+			for(Monster monster:monstres) {
+				SpriteGroup sprite = new SpriteGroup(monster.skin);
+				monstersprites.add(sprite);
+			}
+		}
+		if (items.size()!=itemsprites.size()) {
+			for(Item item:items) {
+				if(items.indexOf(item)>=itemsprites.size()) {
+					SpriteGroup sprite = new SpriteGroup(item.skin);
+					itemsprites.add(sprite);
+				}
+			}
+		}
+			
+	}
+	
 public void draw(Graphics2D crayon_pac, int animationstage, int HEIGHT_INTERFACE) {
 	Image img;
 	for(int i=0; i<monstres.size(); i++) {
