@@ -128,4 +128,9 @@ public class Personnage {
 	public int getY() {
 		return Y;
 	}
+	
+	public void setcoordonées(int in_x,int in_y) {
+		X=in_x;
+		Y=in_y;
+	}
 }

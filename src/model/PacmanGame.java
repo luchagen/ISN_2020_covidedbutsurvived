@@ -27,7 +27,7 @@ public class PacmanGame implements Game {
 	protected static final int game_speed=(int) (Labyrinthe.Tile_length/4);
 	private Pacman heros;
 	private Labyrinthe donjon;
-	private ArrayList<Monster> monstres;
+	public ArrayList<Monster> monstres;
 	private ArrayList<Bullet> bullets;
 	private ArrayList<Item> items;
 	private int cooldownleftonbullet=0;
@@ -38,9 +38,10 @@ public class PacmanGame implements Game {
 	private boolean isTimeElapsed;
 	private boolean isLastLevel;
 	
-	public PacmanGame(Pacman in_heros,Labyrinthe in_donjon) {
+	public PacmanGame(Pacman in_heros,Labyrinthe in_donjon,ArrayList<Monster> in_monstres) {
 		heros=in_heros;
 		donjon=in_donjon;
+		monstres=in_monstres;
 	}
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres, ArrayList<Item> in_items) { 
@@ -231,7 +232,7 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public void isBeingTouchedByAMonster(){
-		if (playerhitcooldown==0)
+		//if (playerhitcooldown==0)
 			for(Monster monster:monstres) {
 				if((monster.personnagehitbox.isCollision(heros.personnagehitbox))) { //Changer ca en mettant une methode qui detecte si les persos partage la meme hitbox
 					heros.loseHP();

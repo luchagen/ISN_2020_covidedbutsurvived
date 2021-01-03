@@ -2,6 +2,8 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,31 +12,50 @@ import org.junit.jupiter.api.Test;
 
 import engine.Cmd;
 import model.Labyrinthe;
+import model.Monster;
 import model.Pacman;
 import model.PacmanGame;
+import model.Personnage;
 
 class TestPacmanGame {
 	Labyrinthe donjon;
 	Pacman heros;
 	PacmanGame game;
-
+	ArrayList<Monster> monstres;
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
+		
 	}
+	
 
 	@BeforeEach
 	void setUp() throws Exception {
-		donjon=new Labyrinthe("levels/0.txt");
+		donjon=new Labyrinthe("levels/testfile.txt");
 		heros=new Pacman(donjon.spawn);
-		game=new PacmanGame(heros,donjon);
+		monstres = new ArrayList<Monster>();
+		for(int i=0;i<donjon.spawnMonsters.size();i++) {
+			monstres.add(new Monster(donjon.spawnMonsters.get(i),donjon.typeMonsters.get(i)));
+		}
+		game=new PacmanGame(heros,donjon,monstres);
+		monstres = new ArrayList<Monster>();
+		
+		for(int i=0;i<donjon.spawnMonsters.size();i++) {
+			monstres.add(new Monster(donjon.spawnMonsters.get(i),donjon.typeMonsters.get(i)));
+		}
+		
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
+		
+		System.out.println("size= "+ (monstres.size()));
+		System.out.println("hp= "+ heros.getHP());
+		System.out.println("x "+ heros.getX()+"y ="+heros.getY());
+		
 	}
 
 	@Test
@@ -125,4 +146,16 @@ class TestPacmanGame {
 		assertTrue(heros.getY()==yold);
 	}
 
+	@Test
+	   void testMonsterDamage() throws Exception{
+		//tester si l heros perd du hp en touchant le monstre
+		int HPold=heros.getHP();
+		heros.setHitbox(2, 2);
+		game.monstres.get(0).setHitbox(2, 2);
+		game.isBeingTouchedByAMonster();
+		assertTrue(heros.getHP()!=HPold);
+		
+	}
+	
+		
 }
