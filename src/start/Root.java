@@ -1,6 +1,7 @@
 package start;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.FlowLayout;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
@@ -33,25 +34,44 @@ import model.PacmanGame;
 
 public class Root extends JFrame implements ActionListener{
 	private boolean gameStarted;
+	private boolean helpDisplayed;
+	private JButton StartButton;
+	private JButton HelpButton;
 	public Root() throws IOException, InterruptedException {
 		this.gameStarted=false;
 	    this.setTitle("CovidedButSurvived");
-	    this.setSize(320,320);
+	    this.setSize(300,300);
 	    this.setLocationRelativeTo(null);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 	    Image icon= ImageIO.read(new File("img/icon.png"));
 		this.setIconImage(icon);
+		this.setResizable(false);
 		
-		JPanel panneau = new JPanel();
+		JPanel panneau = new RootPanel();
 		
+		panneau.setLayout(new BoxLayout(panneau, BoxLayout.PAGE_AXIS));
 		BufferedImage logo = ImageIO.read(new File("img/logo.png"));
 		BufferedImage resizedLogo=Root.scale(logo, 0.2);
 		JLabel picLabel = new JLabel(new ImageIcon(resizedLogo));
-		panneau.add(picLabel);
+		JPanel a1 = new JPanel();
+		a1.setLayout(new BoxLayout(a1, BoxLayout.LINE_AXIS));
+		a1.add(picLabel);
 		
-		JButton StartButton = new JButton("Start");
-		panneau.add(StartButton);
-		StartButton.addActionListener(this);
+		this.StartButton = new JButton("Start");
+		JPanel a2 = new JPanel();
+		a2.setLayout(new BoxLayout(a2, BoxLayout.LINE_AXIS));
+		a2.add(StartButton);
+		this.StartButton.addActionListener(this);
+		
+		this.HelpButton = new JButton("Guide");
+		this.HelpButton.addActionListener(this);
+		JPanel a3 = new JPanel();
+		a3.setLayout(new BoxLayout(a3, BoxLayout.LINE_AXIS));
+		a3.add(HelpButton);
+		
+		panneau.add(a1);
+		panneau.add(a2);
+		panneau.add(a3);
 		this.getContentPane().add(panneau);
 	    this.setVisible(true);
 	    this.run();
@@ -71,8 +91,19 @@ public class Root extends JFrame implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.gameStarted=true;
-		this.dispose();
+		HelpFrame helpFrame;
+		if(e.getSource()==StartButton) {
+			this.gameStarted=true;
+			this.dispose();
+		}
+		if(e.getSource()==HelpButton) {
+			try {
+				helpFrame= new HelpFrame();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 	public void run() throws InterruptedException {
 		while(gameStarted==false) {
