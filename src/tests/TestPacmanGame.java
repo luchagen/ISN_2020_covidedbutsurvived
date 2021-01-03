@@ -1,3 +1,6 @@
+
+
+
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -51,10 +54,6 @@ class TestPacmanGame {
 
 	@AfterEach
 	void tearDown() throws Exception {
-		
-		System.out.println("size= "+ (monstres.size()));
-		System.out.println("hp= "+ heros.getHP());
-		System.out.println("x "+ heros.getX()+"y ="+heros.getY());
 		
 	}
 
