@@ -90,6 +90,10 @@ public class Personnage {
 		return HP;
 	}
 	public int getShield() {
+		if(this.shield!=0)
+			this.type="maskfull";
+		else
+			this.type="maskless";
 		return shield;
 	}
 	public void setHP(int value) {
@@ -97,6 +101,10 @@ public class Personnage {
 	}
 	public void setShield(int value) {
 		this.shield=value;
+		if(this.shield!=0)
+			this.type="maskfull";
+		else
+			this.type="maskless";
 	}
 	
 	public void setXright(int Xright) {
