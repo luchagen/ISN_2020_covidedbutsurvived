@@ -23,7 +23,7 @@
  
  	 <target name="compile">
  		<mkdir dir="${class.dir}"/>
- 		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${class.dir}"/>
+ 		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${class.dir}" excludes="tests/**"/>
  	 </target>
  	
  </project>
