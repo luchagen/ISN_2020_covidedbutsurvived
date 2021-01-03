@@ -232,7 +232,7 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public void isBeingTouchedByAMonster(){
-		//if (playerhitcooldown==0)
+		if (playerhitcooldown==0)
 			for(Monster monster:monstres) {
 				if((monster.personnagehitbox.isCollision(heros.personnagehitbox))) { //Changer ca en mettant une methode qui detecte si les persos partage la meme hitbox
 					heros.loseHP();
