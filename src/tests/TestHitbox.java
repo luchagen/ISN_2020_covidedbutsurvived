@@ -18,13 +18,10 @@ class TestHitbox {
 	@BeforeEach
 	void setUp() {
 		
-		
-		
-		
 	}
 	
 	@Test
-	void testIsCollision() {
+	void testIsCollision() throws Exception{
 		hitbox1 = new Hitbox(0,0,10,10);
 		for (int i=0; i<100; i++) {
 			Integer n = (int) rnd.nextInt(20);
@@ -40,10 +37,9 @@ class TestHitbox {
 	}
 	
 	@Test
-	void testIsCollision2() {
+	void testIsNotCollision() throws Exception{
 		hitbox1 = new Hitbox(0,0,10,10);
-		
+		hitbox3	= new Hitbox(11,11,10,10);
 		assertFalse(hitbox1.isCollision(hitbox3));
 	}
-	
 }

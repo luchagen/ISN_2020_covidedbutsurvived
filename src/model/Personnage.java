@@ -41,12 +41,6 @@ public class Personnage {
 	
 
 	// mise a jour de la position des points qui definissent la hitbox du pacman, a mettre a jour apres chaque deplacement 
-
-	
-	
-		
-		
-		
 			
 	public void moveUP() {
 		if (canMove) {
@@ -103,5 +97,35 @@ public class Personnage {
 	}
 	public void setShield(int value) {
 		this.shield=value;
+	}
+	
+	public void setXright(int Xright) {
+		X=Xright-length/2;
+		this.personnagehitbox.updateHitbox(X, Y,length,height);
+	}
+	public void setXleft(int Xleft) {
+		X=Xleft+length/2;
+		this.personnagehitbox.updateHitbox(X, Y,length,height);
+	}
+	public void setYup(int Yup) {
+		Y=Yup+height/2;
+		this.personnagehitbox.updateHitbox(X,Y,length,height);
+	}
+	public void setYdown(int Ydown) {
+		Y=Ydown-height/2;
+		this.personnagehitbox.updateHitbox(X,Y,length,height);
+	}
+	
+	public void setHitbox(int Xcase,int Ycase) {
+		X=Xcase*Labyrinthe.Tile_length+Labyrinthe.Tile_length/2;
+		Y=Ycase*Labyrinthe.Tile_length+Labyrinthe.Tile_length/2;
+		this.personnagehitbox.updateHitbox(X, Y,length, height);
+	}
+
+	public int getX() {
+		return X;
+	}
+	public int getY() {
+		return Y;
 	}
 }

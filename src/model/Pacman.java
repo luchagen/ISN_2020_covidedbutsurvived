@@ -7,6 +7,13 @@ public class Pacman  extends Personnage{
 	
 	public boolean haveweapon;
 	Inventory inventory;
+	
+	public Pacman(int[] spawn) {
+		super(spawn);
+		this.length=19;
+		this.height=28;
+	}
+	
 	public Pacman(int[] spawn, Inventory in_inventory) {
 		super(spawn);
 		this.length= 19;

@@ -35,6 +35,10 @@ public class PacmanGame implements Game {
 	private boolean isTimeElapsed;
 	private boolean isLastLevel;
 	
+	public PacmanGame(Pacman in_heros,Labyrinthe in_donjon) {
+		heros=in_heros;
+		donjon=in_donjon;
+	}
 	
 	public PacmanGame(String source, Pacman in_heros, Labyrinthe in_donjon, ArrayList<Monster> in_monstres, ArrayList<Item> in_items) { 
 		BufferedReader helpReader;
