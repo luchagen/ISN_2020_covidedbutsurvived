@@ -1,7 +1,7 @@
 package items;
 
-public class DefaultItem extends Item{
+public class DefaultItem extends Item {
 	public DefaultItem() {
-		this.ItemTypeId=0;
+		this.ItemTypeId = 0;
 	}
 }

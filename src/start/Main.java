@@ -1,12 +1,10 @@
 package start;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import engine.Game;
 import engine.GameEngineGraphical;
 import engine.GraphicalInterface;
-import items.DistanceWeapon;
 import items.Heal;
 import items.Inventory;
 import items.Shield;
@@ -25,13 +23,14 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		Root fenetre = new Root();
-		int j=0;
-		int nbLevels=6;
-		int maxInventoryNb=18;
-		int initialHP=5;
-		int initialShield=0;
-		Inventory initialInventory = new Inventory(maxInventoryNb);	int currentHP=initialHP;
-		int currentShield=initialShield;
+		int j = 0;
+		int nbLevels = 5;
+		int maxInventoryNb = 18;
+		int initialHP = 5;
+		int initialShield = 2;
+		Inventory initialInventory = new Inventory(maxInventoryNb);
+		int currentHP = initialHP;
+		int currentShield = initialShield;
 		Inventory currentInventory = initialInventory;
 		boolean repeat;
 		Labyrinthe donjon;
@@ -41,65 +40,56 @@ public class Main {
 		MainPainter painter;
 		GameEngineGraphical engine;
 		ArrayList<Item> items;
-		int indexOfWeaponItem;
-		//Bullet bullet;
+		// Bullet bullet;
 		// creation du jeu particulier et de son afficheur
 		do {
 			String source = "levels/";
-			source+=j;
-			source+=".txt";
+			source += j;
+			source += ".txt";
+
 			donjon = new Labyrinthe(source);
-			indexOfWeaponItem=currentInventory.findTypeOfItem(3);
-			if(indexOfWeaponItem!=-1) {
-				currentInventory.delItem(indexOfWeaponItem);
-			}
 			heros = new Pacman(donjon.spawn, currentInventory);
-			items=new ArrayList<Item>();
-			for(int i=0;i<donjon.spawnItems.size();i++) {
+			items = new ArrayList<Item>();
+			for (int i = 0; i < donjon.spawnItems.size(); i++) {
 				items.add(new Item(donjon.spawnItems.get(i)));
 			}
 			heros = new Pacman(donjon.spawn, currentInventory);
 			monstres = new ArrayList<Monster>();
-			for(int i=0;i<donjon.spawnMonsters.size();i++) {
-				monstres.add(new Monster(donjon.spawnMonsters.get(i),donjon.typeMonsters.get(i)));
+			for (int i = 0; i < donjon.spawnMonsters.size(); i++) {
+				monstres.add(new Monster(donjon.spawnMonsters.get(i), donjon.typeMonsters.get(i)));
 			}
-			game = new PacmanGame("helpFilePacman.txt",heros,donjon,monstres, items);
+			game = new PacmanGame("helpFilePacman.txt", heros, donjon, monstres, items);
 			heros.setHP(currentHP);
 			heros.setShield(currentShield);
 			game.setInventory(currentInventory);
-			if(j==nbLevels-1)
+			if (j == nbLevels - 1)
 				game.setIsLastLevel(true);
 			else
 				game.setIsLastLevel(false);
 			PacmanController controller = new PacmanController();
-			
-			painter = new MainPainter(controller,game);
+
+			painter = new MainPainter(controller, game);
 			// creation de l'interface graphique
 			engine = new GameEngineGraphical(game, painter, controller);
-			
+
 			engine.run();
-			if (game.nextlevel()==true) {
-				currentShield=heros.getShield();
-				currentInventory=game.getInventory();
-				repeat=true;
-				if(j!=nbLevels-1)
+			if (game.nextlevel() == true) {
+				currentHP = heros.getHP();
+				currentShield = heros.getShield();
+				currentInventory = game.getInventory();
+				repeat = true;
+				if (j != nbLevels - 1)
 					engine.disposeGUI();
 			}
-			
+
 			else
-				repeat=false;
+				repeat = false;
 			j++;
-		}while(repeat && j<nbLevels);
-		if((j==nbLevels)&&repeat) {
+		} while (repeat && j < nbLevels);
+		if ((j == nbLevels) && repeat) {
 			System.out.print("Felicitations vous avez gagne :JEU TERMINE !");
 		}
 
-		}
-		
+	}
 
-		}
-
-
-	
-
-
+}
