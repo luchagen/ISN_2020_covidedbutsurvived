@@ -43,5 +43,14 @@ public class Bullet {
 		this.bullethitbox.updateHitbox(this.X, this.Y);
 			
 	}
+	public int getX() {
+		return X;
+	}
+	public int getY() {
+		return Y;
+	}
+	public String getSkin() {
+		return skin;
+	}
 
 }

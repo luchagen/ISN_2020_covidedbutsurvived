@@ -1,4 +1,4 @@
-package model;
+package painters;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import Labyrinthe.Labyrinthe;
+import model.SpriteGroup;
 
 public class LabyrinthePainter {
 	Labyrinthe donjon;

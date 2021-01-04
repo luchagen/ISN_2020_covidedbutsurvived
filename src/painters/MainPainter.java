@@ -1,4 +1,4 @@
-package model;
+package painters;
 
 
 
@@ -16,6 +16,11 @@ import javax.imageio.ImageIO;
 import Labyrinthe.Labyrinthe;
 import engine.Game;
 import engine.GamePainter;
+import model.Bullet;
+import model.Item;
+import model.Monster;
+import model.Pacman;
+import model.PacmanController;
 
 public class MainPainter implements GamePainter{
 	/**

@@ -30,7 +30,21 @@ public class Item {
 					break;
 			}
 		}
-		
+	public String getSkin() {
+		return skin;
+	}
+	public String getType() {
+		return type;
+	}
+	public Cmd getState() {
+		return state;
+	}
+	public int getX() {
+		return X;
+	}
+	public int getY() {
+		return Y;
+	}
 	}
 	
 	

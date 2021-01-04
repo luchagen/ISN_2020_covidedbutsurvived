@@ -1,4 +1,4 @@
-package model;
+package painters;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -10,6 +10,9 @@ import javax.imageio.ImageIO;
 
 import Labyrinthe.Labyrinthe;
 import engine.Cmd;
+import model.Item;
+import model.Monster;
+import model.SpriteGroup;
 
 public class MonsterPainter {
 	ArrayList<Monster> monstres;
@@ -22,11 +25,11 @@ public class MonsterPainter {
 		monstres=in_monstres;
 		items=in_items;
 		for(Monster monster:monstres) {
-			SpriteGroup sprite = new SpriteGroup(monster.skin);
+			SpriteGroup sprite = new SpriteGroup(monster.getSkin());
 			monstersprites.add(sprite);
 		}
 		for(Item item:items) {
-			SpriteGroup sprite = new SpriteGroup(item.skin);
+			SpriteGroup sprite = new SpriteGroup(item.getSkin());
 			itemsprites.add(sprite);
 		}
 	}
@@ -35,14 +38,14 @@ public class MonsterPainter {
 		if (monstres.size()!=monstersprites.size()) {
 			monstersprites = new ArrayList<SpriteGroup>();
 			for(Monster monster:monstres) {
-				SpriteGroup sprite = new SpriteGroup(monster.skin);
+				SpriteGroup sprite = new SpriteGroup(monster.getSkin());
 				monstersprites.add(sprite);
 			}
 		}
 		if (items.size()!=itemsprites.size()) {
 			for(Item item:items) {
 				if(items.indexOf(item)>=itemsprites.size()) {
-					SpriteGroup sprite = new SpriteGroup(item.skin);
+					SpriteGroup sprite = new SpriteGroup(item.getSkin());
 					itemsprites.add(sprite);
 				}
 			}
@@ -54,8 +57,8 @@ public void draw(Graphics2D crayon_pac, int animationstage, int HEIGHT_INTERFACE
 	Image img;
 	for(int i=0; i<monstres.size(); i++) {
 		try {
-			img = ImageIO.read(new File(monstersprites.get(i).currentSpriteGet(animationstage,monstres.get(i).State,monstres.get(i).type)));
-			crayon_pac.drawImage(img, monstres.get(i).X-Labyrinthe.Tile_length/2, monstres.get(i).Y-Labyrinthe.Tile_length/2+HEIGHT_INTERFACE, monstres.get(i).X+Labyrinthe.Tile_length/2 , monstres.get(i).Y+Labyrinthe.Tile_length/2+HEIGHT_INTERFACE, 0, 0, img.getWidth(null), img.getWidth(null), null);
+			img = ImageIO.read(new File(monstersprites.get(i).currentSpriteGet(animationstage,monstres.get(i).getState(),monstres.get(i).getType())));
+			crayon_pac.drawImage(img, monstres.get(i).getX()-Labyrinthe.Tile_length/2, monstres.get(i).getY()-Labyrinthe.Tile_length/2+HEIGHT_INTERFACE, monstres.get(i).getX()+Labyrinthe.Tile_length/2 , monstres.get(i).getY()+Labyrinthe.Tile_length/2+HEIGHT_INTERFACE, 0, 0, img.getWidth(null), img.getWidth(null), null);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 	e.printStackTrace();
@@ -63,8 +66,8 @@ public void draw(Graphics2D crayon_pac, int animationstage, int HEIGHT_INTERFACE
 	}
 	for(int i=0; i<items.size(); i++) {
 		try {
-			img = ImageIO.read(new File(itemsprites.get(i).currentSpriteGet(animationstage,items.get(i).state,items.get(i).type)));
-			crayon_pac.drawImage(img, items.get(i).X, items.get(i).Y+HEIGHT_INTERFACE, items.get(i).X+Labyrinthe.Tile_length , items.get(i).Y+Labyrinthe.Tile_length+HEIGHT_INTERFACE, 0, 0, img.getWidth(null), img.getWidth(null), null);
+			img = ImageIO.read(new File(itemsprites.get(i).currentSpriteGet(animationstage,items.get(i).getState(),items.get(i).getType())));
+			crayon_pac.drawImage(img, items.get(i).getX(), items.get(i).getY()+HEIGHT_INTERFACE, items.get(i).getX()+Labyrinthe.Tile_length , items.get(i).getY()+Labyrinthe.Tile_length+HEIGHT_INTERFACE, 0, 0, img.getWidth(null), img.getWidth(null), null);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 	e.printStackTrace();

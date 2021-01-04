@@ -26,11 +26,11 @@ import Labyrinthe.Labyrinthe;
 import engine.Game;
 import engine.GameEngineGraphical;
 import engine.GraphicalInterface;
-import model.MainPainter;
 import model.Monster;
 import model.Pacman;
 import model.PacmanController;
 import model.PacmanGame;
+import painters.MainPainter;
 
 public class Root extends JFrame implements ActionListener {
 	private boolean gameStarted;

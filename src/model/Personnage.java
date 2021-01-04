@@ -145,4 +145,11 @@ public class Personnage {
 	public String getType() {
 		return this.type;
 	}
+	public String getSkin() {
+		return skin;
+	}
+	public Cmd getState() {
+		return State;
+	}
+
 }

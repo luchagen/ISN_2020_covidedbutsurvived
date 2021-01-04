@@ -12,7 +12,7 @@ import items.Inventory;
 import items.Shield;
 import model.PacmanController;
 import model.PacmanGame;
-import model.MainPainter;
+import painters.MainPainter;
 import model.Monster;
 import model.Pacman;
 import model.Item;
