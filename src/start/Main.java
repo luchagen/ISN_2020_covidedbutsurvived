@@ -2,6 +2,8 @@ package start;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import Labyrinthe.Labyrinthe;
 import engine.Game;
 import engine.GameEngineGraphical;
 import engine.GraphicalInterface;
@@ -10,7 +12,6 @@ import items.Inventory;
 import items.Shield;
 import model.PacmanController;
 import model.PacmanGame;
-import model.Labyrinthe;
 import model.MainPainter;
 import model.Monster;
 import model.Pacman;
@@ -24,7 +25,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException, IOException {
 		Root fenetre = new Root();
 		int j = 0;
-		int nbLevels = 5;
+		int nbLevels = 6;
 		int maxInventoryNb = 18;
 		int initialHP = 5;
 		int initialShield = 2;

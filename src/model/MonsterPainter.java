@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import Labyrinthe.Labyrinthe;
 import engine.Cmd;
 
 public class MonsterPainter {

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import Labyrinthe.Labyrinthe;
 import engine.Game;
 import engine.GamePainter;
 

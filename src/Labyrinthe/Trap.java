@@ -1,4 +1,4 @@
-package model;
+package Labyrinthe;
 
 import engine.Cmd;
 
@@ -12,6 +12,7 @@ public class Trap extends Tile {
 		this.trapSkin = in_source;
 		this.state = Cmd.IDLE;
 		this.type = in_source;
+		this.isAnimated=true;
 
 		switch (in_source.charAt(1)) {
 		case '0':

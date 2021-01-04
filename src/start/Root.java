@@ -22,10 +22,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Labyrinthe.Labyrinthe;
 import engine.Game;
 import engine.GameEngineGraphical;
 import engine.GraphicalInterface;
-import model.Labyrinthe;
 import model.MainPainter;
 import model.Monster;
 import model.Pacman;

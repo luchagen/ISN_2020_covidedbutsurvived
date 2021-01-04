@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Labyrinthe.Labyrinthe;
+import Labyrinthe.Tile;
 import engine.Cmd;
 import engine.Game;
 import items.DistanceWeapon;
@@ -93,19 +95,19 @@ public class PacmanGame implements Game {
 		switch (commande) {
 		
 		case RIGHT:
-			if (((Xe+game_speed)<(Labyrinthe.nb_largeur*tilelength))&& (donjon.cases[(Xe+game_speed)/tilelength][Yn/tilelength].canWalkOn) && (donjon.cases[(Xe+game_speed)/tilelength][Ys/tilelength].canWalkOn) )
+			if (((Xe+game_speed)<(Labyrinthe.nb_largeur*tilelength))&& (donjon.cases[(Xe+game_speed)/tilelength][Yn/tilelength].isCanWalkOn()) && (donjon.cases[(Xe+game_speed)/tilelength][Ys/tilelength].isCanWalkOn()) )
 				heros.moveRIGHT();
 			break;
 		case LEFT:
-			if(((Xw-game_speed)>0)&& (donjon.cases[(Xw-game_speed)/tilelength][Yn/tilelength].canWalkOn) && (donjon.cases[(Xw-game_speed)/tilelength][Ys/tilelength].canWalkOn) )
+			if(((Xw-game_speed)>0)&& (donjon.cases[(Xw-game_speed)/tilelength][Yn/tilelength].isCanWalkOn()) && (donjon.cases[(Xw-game_speed)/tilelength][Ys/tilelength].isCanWalkOn()) )
 				heros.moveLEFT();
 			break;
 		case UP:
-			if(((Yn-game_speed)>0)&& (donjon.cases[Xw/tilelength][(Yn-game_speed)/tilelength].canWalkOn) && (donjon.cases[Xe/tilelength][(Yn-game_speed)/tilelength].canWalkOn))
+			if(((Yn-game_speed)>0)&& (donjon.cases[Xw/tilelength][(Yn-game_speed)/tilelength].isCanWalkOn()) && (donjon.cases[Xe/tilelength][(Yn-game_speed)/tilelength].isCanWalkOn()))
 				heros.moveUP();
 			break;
 		case DOWN:
-			if(((Ys+2*game_speed)<(Labyrinthe.nb_hauteur*tilelength))&& (donjon.cases[Xw/tilelength][(Ys+game_speed)/tilelength].canWalkOn) && (donjon.cases[Xe/tilelength][(Ys+game_speed)/tilelength].canWalkOn))
+			if(((Ys+2*game_speed)<(Labyrinthe.nb_hauteur*tilelength))&& (donjon.cases[Xw/tilelength][(Ys+game_speed)/tilelength].isCanWalkOn()) && (donjon.cases[Xe/tilelength][(Ys+game_speed)/tilelength].isCanWalkOn()))
 				heros.moveDOWN();
 			break;
 		case STERILIZE:
@@ -133,25 +135,25 @@ public class PacmanGame implements Game {
 			for(Bullet bullet:bullets ) {
 				switch (bullet.direction) {
 				case 'R':
-					if((bullet.Xtile+1<Labyrinthe.nb_largeur) && (donjon.cases[bullet.Xtile+1][bullet.Ytile].canWalkOn))
+					if((bullet.Xtile+1<Labyrinthe.nb_largeur) && (donjon.cases[bullet.Xtile+1][bullet.Ytile].isCanWalkOn()))
 						bullet.evolveBullet();
 					else
 						bullet.isTerminal=true;;
 					break;
 				case 'L':
-					if((bullet.Xtile-1>=0) && (donjon.cases[bullet.Xtile-1][bullet.Ytile].canWalkOn))
+					if((bullet.Xtile-1>=0) && (donjon.cases[bullet.Xtile-1][bullet.Ytile].isCanWalkOn()))
 						bullet.evolveBullet();
 					else
 						bullet.isTerminal=true;;
 					break;
 				case 'U':
-					if((bullet.Ytile-1>=0) && (donjon.cases[bullet.Xtile][bullet.Ytile-1].canWalkOn))
+					if((bullet.Ytile-1>=0) && (donjon.cases[bullet.Xtile][bullet.Ytile-1].isCanWalkOn()))
 						bullet.evolveBullet();
 					else
 						bullet.isTerminal=true;;
 					break;
 				case 'D':
-					if((bullet.Ytile+1<Labyrinthe.nb_hauteur) && (donjon.cases[bullet.Xtile][bullet.Ytile+1].canWalkOn))
+					if((bullet.Ytile+1<Labyrinthe.nb_hauteur) && (donjon.cases[bullet.Xtile][bullet.Ytile+1].isCanWalkOn()))
 						bullet.evolveBullet();
 					else
 						bullet.isTerminal=true;;
@@ -236,18 +238,18 @@ public class PacmanGame implements Game {
 			int Yn = monster.personnagehitbox.getYup()+game_speed ;
 			int Ys = monster.personnagehitbox.getYdown()-game_speed ;
 			int tilelength= Labyrinthe.Tile_length;
-			if (((Xe+game_speed)<(Labyrinthe.nb_largeur*tilelength))&& (donjon.cases[(Xe+game_speed)/tilelength][Yn/tilelength].canWalkOn) && (donjon.cases[(Xe+game_speed)/tilelength][Ys/tilelength].canWalkOn) )
+			if (((Xe+game_speed)<(Labyrinthe.nb_largeur*tilelength))&& (donjon.cases[(Xe+game_speed)/tilelength][Yn/tilelength].isCanWalkOn()) && (donjon.cases[(Xe+game_speed)/tilelength][Ys/tilelength].isCanWalkOn()) )
 					if(monster.type.equals("covid"))canmoveright=true; //le pacman peut bouger si il ny a pas dobstacle
 					else if(monster.type.equals("pq"))canmoveright=true;
 					else if(monster.type.equals("police"))if(monster.Y/tilelength==heros.Y/tilelength && monster.X<heros.X)canmoveright=true; //la police bouge si elle voit le heros
-			if(((Xw-game_speed)>0)&& (donjon.cases[(Xw-game_speed)/tilelength][Yn/tilelength].canWalkOn) && (donjon.cases[(Xw-game_speed)/tilelength][Ys/tilelength].canWalkOn) )
+			if(((Xw-game_speed)>0)&& (donjon.cases[(Xw-game_speed)/tilelength][Yn/tilelength].isCanWalkOn()) && (donjon.cases[(Xw-game_speed)/tilelength][Ys/tilelength].isCanWalkOn()) )
 					if(monster.type.equals("covid"))canmoveleft=true;
 					else if(monster.type.equals("pq"))canmoveleft=true;
 					else if(monster.type.equals("police"))if(monster.Y/tilelength==heros.Y/tilelength && monster.X>heros.X)canmoveleft=true;
-			if(((Yn-game_speed)>0)&& (donjon.cases[Xw/tilelength][(Yn-game_speed)/tilelength].canWalkOn) && (donjon.cases[Xe/tilelength][(Yn-game_speed)/tilelength].canWalkOn))
+			if(((Yn-game_speed)>0)&& (donjon.cases[Xw/tilelength][(Yn-game_speed)/tilelength].isCanWalkOn()) && (donjon.cases[Xe/tilelength][(Yn-game_speed)/tilelength].isCanWalkOn()))
 					if(monster.type.equals("covid"))canmoveup=true;
 					else if(monster.type.equals("police"))if(monster.X/tilelength==heros.X/tilelength && monster.Y>heros.Y)canmoveup=true;
-			if(((Ys+2*game_speed)<(Labyrinthe.nb_hauteur*tilelength))&& (donjon.cases[Xw/tilelength][(Ys+game_speed)/tilelength].canWalkOn) && (donjon.cases[Xe/tilelength][(Ys+game_speed)/tilelength].canWalkOn))
+			if(((Ys+2*game_speed)<(Labyrinthe.nb_hauteur*tilelength))&& (donjon.cases[Xw/tilelength][(Ys+game_speed)/tilelength].isCanWalkOn()) && (donjon.cases[Xe/tilelength][(Ys+game_speed)/tilelength].isCanWalkOn()))
 					if(monster.type.equals("covid"))canmovedown=true;
 					else if(monster.type.equals("police"))if(monster.X/tilelength==heros.X/tilelength && monster.Y<heros.Y)canmovedown=true;
 			monster.monsterMove(canmoveleft,canmoveright,canmoveup,canmovedown);
@@ -275,11 +277,11 @@ public class PacmanGame implements Game {
 	public void applyTrapDamage() {
 		Tile currentTile=donjon.cases[heros.X/Labyrinthe.Tile_length][heros.Y/Labyrinthe.Tile_length];
 		
-		if((currentTile.nature==6) && (currentTile.state!=Cmd.ACTIVATED)) {
-			currentTile.skin=currentTile.findSource(currentTile.trapSkin);
-			currentTile.state=Cmd.ACTIVATED;
-			heros.takeDamage(currentTile.damage);
-			System.out.print("Oups! It's a "+currentTile.trapType+" trap!\n");
+		if((currentTile.getNature()==6) && (currentTile.getState()!=Cmd.ACTIVATED)) {
+			currentTile.setSkin(currentTile.findSource(currentTile.getTrapSkin()));
+			currentTile.setState(Cmd.ACTIVATED);
+			heros.takeDamage(currentTile.getDamage());
+			System.out.print("Oups! It's a "+currentTile.getTrapType()+" trap!\n");
 			System.out.print("HP remained: "+heros.getHP()+"\n");
 		}
 	}
@@ -288,7 +290,7 @@ public class PacmanGame implements Game {
 	 *verifier si on peut passer au prochain niveau
 	 */
 	public boolean nextlevel() {
-		return donjon.cases[heros.X/Labyrinthe.Tile_length][heros.Y/Labyrinthe.Tile_length].nextlevel;
+		return donjon.cases[heros.X/Labyrinthe.Tile_length][heros.Y/Labyrinthe.Tile_length].isNextlevel();
 	}
 
 	/**
@@ -296,7 +298,7 @@ public class PacmanGame implements Game {
 	 */
 	@Override
 	public boolean isFinished() {
-		return donjon.cases[heros.X/Labyrinthe.Tile_length][heros.Y/Labyrinthe.Tile_length].canFinishGame;		
+		return donjon.cases[heros.X/Labyrinthe.Tile_length][heros.Y/Labyrinthe.Tile_length].isCanFinishGame();		
 	}
 	
 	public void getweapon() {
@@ -326,7 +328,7 @@ public class PacmanGame implements Game {
 
 	@Override
 	public boolean isTimeOver(long elapsedtime) {
-		return (elapsedtime > donjon.Time_Limit);
+		return (elapsedtime > donjon.getTime_Limit());
 	}
 	
 	@Override

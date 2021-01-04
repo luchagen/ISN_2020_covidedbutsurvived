@@ -1,4 +1,4 @@
-package model;
+package Labyrinthe;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Labyrinthe {
-	protected static int nb_largeur; // Le nombre de case en largeur du labyrinthe
-	protected static int nb_hauteur; // Le nombre de case en hauteur du labyrinthe
+	public static int nb_largeur; // Le nombre de case en largeur du labyrinthe
+	public static int nb_hauteur; // Le nombre de case en hauteur du labyrinthe
 	protected static int nb_case;			// Le produit des deux attributs precedents
-	protected static int Tile_length; //La taille en pixel d'une case du labyrinthe
+	public static int Tile_length; //La taille en pixel d'une case du labyrinthe
 									//et donc que chacune des cases est un carre
 	protected int level;			// Le niveau attribue au labyrinthe
 	protected int Time_Limit;       // Le temps limite donne au joueur pour gagner

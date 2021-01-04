@@ -1,4 +1,4 @@
-package model;
+package Labyrinthe;
 
 import engine.Cmd;
 
@@ -11,5 +11,6 @@ public class Door extends Tile {
 		this.skin = "img/2/door.txt";
 		this.type = in_source;
 		this.state = Cmd.IDLE;
+		this.isAnimated=true;
 	}
 }

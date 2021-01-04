@@ -13,8 +13,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import Labyrinthe.Labyrinthe;
 import engine.Cmd;
-import model.Labyrinthe;
 import model.Monster;
 import model.Pacman;
 import model.PacmanGame;

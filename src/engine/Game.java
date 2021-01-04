@@ -1,8 +1,9 @@
 package engine;
 
 import java.util.ArrayList;
+
+import Labyrinthe.Labyrinthe;
 import items.Inventory;
-import model.Labyrinthe;
 import model.Monster;
 import model.Pacman;
 import model.Bullet;

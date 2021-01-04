@@ -1,5 +1,6 @@
 package model;
 
+import Labyrinthe.Labyrinthe;
 import engine.Cmd;
 
 public class Personnage {

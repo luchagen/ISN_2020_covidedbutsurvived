@@ -1,5 +1,7 @@
 package model;
 
+import Labyrinthe.Labyrinthe;
+
 public class Bullet {
 	protected int X,Y,Xtile,Ytile;
 	protected String skin;

@@ -1,4 +1,4 @@
-package model;
+package Labyrinthe;
 
 import engine.Cmd;
 
@@ -12,5 +12,6 @@ public class Spawn extends Tile {
 		this.skin = "img/3/spawner.txt";
 		this.type = in_source;
 		this.state = Cmd.IDLE;
+		this.isAnimated=true;
 	}
 }

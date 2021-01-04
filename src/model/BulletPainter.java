@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
+import Labyrinthe.Labyrinthe;
+
 public class BulletPainter {
 
 	ArrayList<Bullet> bullets;
