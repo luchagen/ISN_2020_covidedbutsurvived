@@ -226,8 +226,6 @@ public class PacmanGame implements Game {
 	
 	@Override
 	public void evolveMonsters() {
-		ArrayList<Monster> monstresaajouter = new ArrayList<Monster>();
-		ArrayList<Monster> monstresatuer = new ArrayList<Monster>();
 		for(Monster monster:monstres) {
 			Boolean canmoveright=false;
 			Boolean canmoveleft=false;
@@ -319,7 +317,6 @@ public class PacmanGame implements Game {
 							break;
 					}
 					if(isItemAdded)
-						System.out.println("OH NOOOOOONNNNNN");
 						items.get(i).state=Cmd.ACTIVATED;
 				}
 			}

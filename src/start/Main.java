@@ -43,6 +43,7 @@ public class Main {
 		MainPainter painter;
 		GameEngineGraphical engine;
 		ArrayList<Item> items;
+		Image donjonImage;
 		// Bullet bullet;
 		// creation du jeu particulier et de son afficheur
 		do {
@@ -73,7 +74,7 @@ public class Main {
 
 			painter = new MainPainter(controller, game);
 			CreateImageOfTheMap create = new CreateImageOfTheMap(donjon, MainPainter.WIDTH, MainPainter.HEIGHT);
-			Image donjonImage = create.createNew();
+			donjonImage = create.createNew();
 			// creation de l'interface graphique
 			engine = new GameEngineGraphical(game, painter, controller, donjonImage);
 

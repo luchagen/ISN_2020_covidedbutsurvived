@@ -57,7 +57,6 @@ public class CreateImageOfTheMap {
 			for (int j=0;j<Labyrinthe.nb_hauteur;j++) {
 				Image img;
 				try {
-					System.out.println((donjon.cases[i][j].findSource(donjon.cases[i][j].getType())));
 					img = ImageIO.read(new File(donjon.cases[i][j].findSource(donjon.cases[i][j].getType())));
 					
 					g2d.drawImage(img, origin_x+largeur_rect*i, origin_y+hauteur_rect*j, origin_x+largeur_rect*(i+1) , origin_y+hauteur_rect*(j+1), 0, 0, img.getWidth(null), img.getWidth(null), null);
@@ -68,9 +67,6 @@ public class CreateImageOfTheMap {
 			}
 		}
         g2d.dispose();
-        
-        File file = new File("myimage.png");
-        ImageIO.write(bufferedImage, "png", file);
         return bufferedImage;
  
     }
