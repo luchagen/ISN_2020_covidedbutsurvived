@@ -30,6 +30,10 @@ img/6/126.png
 #start
 #loop
 img/6/0/0.png
+%ACTIVATED601
+#start
+#loop
+img/6/0/127_0.png
 %ACTIVATED610
 #start
 #loop
