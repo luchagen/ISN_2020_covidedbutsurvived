@@ -85,7 +85,7 @@ public class GameEngineGraphical {
 			this.game.setElapsedTime((int) elapsedtime);
 			// ssSystem.out.println("elapsed time= "+elapsedtime+"sec ");
 			// met en attente
-			Thread.sleep(20);
+			Thread.sleep(40);
 		}
 
 		if (this.game.isFinished())
