@@ -29,7 +29,7 @@ public class GraphicalInterface {
 	 * @throws IOException
 	 * 
 	 */
-	public GraphicalInterface(GamePainter gamePainter, GameController gameController) throws IOException {
+	public GraphicalInterface(GamePainter gamePainter, GameController gameController, Image donjonImage) throws IOException {
 		f = new JFrame();
 		f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,7 +38,7 @@ public class GraphicalInterface {
 		Image icon = ImageIO.read(new File("img/icon.png"));
 		f.setIconImage(icon);
 		// attacher le panel contenant l afficheur du game
-		this.panel = new DrawingPanel(gamePainter);
+		this.panel = new DrawingPanel(gamePainter, donjonImage);
 		f.setContentPane(this.panel);
 
 		// attacher controller au panel du game

@@ -1,9 +1,11 @@
 package start;
 
+import java.awt.Image;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import Labyrinthe.Labyrinthe;
+import engine.CreateImageOfTheMap;
 import engine.Game;
 import engine.GameEngineGraphical;
 import engine.GraphicalInterface;
@@ -70,8 +72,10 @@ public class Main {
 			PacmanController controller = new PacmanController();
 
 			painter = new MainPainter(controller, game);
+			CreateImageOfTheMap create = new CreateImageOfTheMap(donjon, MainPainter.WIDTH, MainPainter.HEIGHT);
+			Image donjonImage = create.createNew();
 			// creation de l'interface graphique
-			engine = new GameEngineGraphical(game, painter, controller);
+			engine = new GameEngineGraphical(game, painter, controller, donjonImage);
 
 			engine.run();
 			if (game.nextlevel() == true) {
