@@ -21,10 +21,17 @@
  	</target>
  
  
- 	 <target name="compile">
+ 	 <target name="compile" depends="clean"> 
  		<mkdir dir="${class.dir}"/>
  		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${class.dir}" excludes="tests/**"/>
  	 </target>
+	
+	<target name="clean" depends="clean-jar"> 
+	 <delete dir="${build.dir}"/>
+	 </target>
+	<target name="clean-jar">
+	 <delete file="${jar.dir}/${ant.project.name}.jar" />
+	 </target>
  	
  </project>
  
