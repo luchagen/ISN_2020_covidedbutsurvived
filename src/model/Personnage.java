@@ -138,7 +138,7 @@ public class Personnage {
 		return Y;
 	}
 	
-	public void setcoordonées(int in_x,int in_y) {
+	public void setcoordonees(int in_x,int in_y) {
 		X=in_x;
 		Y=in_y;
 	}
