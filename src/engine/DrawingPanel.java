@@ -1,11 +1,13 @@
 package engine;
 
+import java.awt.Color;
 /**
  * @author Horatiu Cirstea, Vincent Thomas
  *
  */
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
@@ -36,6 +38,7 @@ public class DrawingPanel extends JPanel {
 	 * la taille des images
 	 */
 	private int width, height;
+	private Image donjonImage;
 
 	/**
 	 * constructeur Il construit les images pour doublebuffering ainsi que le Panel
@@ -45,16 +48,16 @@ public class DrawingPanel extends JPanel {
 	 * @param width  largeur de l'image
 	 * @param height hauteur de l'image
 	 */
-	public DrawingPanel(GamePainter painter) {
+	public DrawingPanel(GamePainter painter, Image donjonImage) {
 		super();
 		this.width = painter.getWidth();
 		this.height = painter.getHeight();
 		this.setPreferredSize(new Dimension(this.width, this.height));
 		this.painter = painter;
-
 		// cree l'image buffer et son graphics
 		this.nextImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		this.currentImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		this.donjonImage=donjonImage;
 	}
 
 	/**
@@ -71,7 +74,7 @@ public class DrawingPanel extends JPanel {
 		this.currentImage = this.nextImage;
 		// l'ancienne image est videe
 		this.nextImage = temp;
-		this.nextImage.getGraphics().fillRect(0, 0, this.width, this.height);
+		this.nextImage.getGraphics().drawImage(this.donjonImage, 0, 0, donjonImage.getWidth(null), donjonImage.getHeight(null), 0,0,donjonImage.getWidth(null),donjonImage.getHeight(null),null);
 		// met a jour l'image a afficher sur le panel
 		this.repaint();
 	}

@@ -1,5 +1,6 @@
 package engine;
 
+import java.awt.Image;
 import java.io.IOException;
 
 /**
@@ -29,6 +30,8 @@ public class GameEngineGraphical {
 	 * l'interface graphique
 	 */
 	private GraphicalInterface gui;
+	
+	private Image donjonImage;
 
 	/**
 	 * construit un moteur
@@ -38,11 +41,12 @@ public class GameEngineGraphical {
 	 * @param gameController controlleur a utiliser
 	 * 
 	 */
-	public GameEngineGraphical(Game game, GamePainter gamePainter, GameController gameController) {
+	public GameEngineGraphical(Game game, GamePainter gamePainter, GameController gameController, Image donjonImage) {
 		// creation du game
 		this.game = game;
 		this.gamePainter = gamePainter;
 		this.gameController = gameController;
+		this.donjonImage=donjonImage;
 
 	}
 
@@ -57,7 +61,7 @@ public class GameEngineGraphical {
 		long endtime = System.nanoTime();
 		long elapsedtime = (endtime - startTime) / 1000000;
 
-		this.gui = new GraphicalInterface(this.gamePainter, this.gameController);
+		this.gui = new GraphicalInterface(this.gamePainter, this.gameController, this.donjonImage);
 
 		// boucle de game
 

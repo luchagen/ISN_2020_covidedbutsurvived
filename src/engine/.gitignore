@@ -5,3 +5,5 @@
 /GameEngineGraphical.class
 /GamePainter.class
 /GraphicalInterface.class
+/CreateImageFileFromGraphicsObject.class
+/CreateImageOfTheMap.class
