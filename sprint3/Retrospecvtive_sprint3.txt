@@ -1,0 +1,10 @@
+retro sprint 3
+
+-Toutes les taches attribuées à chaque membre de l'équipe ont été faites avec succès .
+-La communication était fluide pendant ce sprint comme d’habitude.
+-Malgré que la quantité de travail était très importante nous avons pu nous organiser et accélérer le rythme pour 
+pouvoir atteindre les objectifs du sprint.
+-On a pas crée 8 levels comme prévu dans le backlog  parce que c'est pas  idéal pour la simulation du jeu
+ et on s'est mis d'accord que 4 levels bien faits est largement suffisant.
+
+
