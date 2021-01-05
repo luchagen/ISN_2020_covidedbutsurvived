@@ -82,6 +82,8 @@ public class Main {
 				currentHP = heros.getHP();
 				currentShield = heros.getShield();
 				currentInventory = game.getInventory();
+				if (currentInventory.findTypeOfItem(3)!=-1)
+					currentInventory.delItem(currentInventory.findTypeOfItem(3));
 				repeat = true;
 				if (j != nbLevels - 1)
 					engine.disposeGUI();
