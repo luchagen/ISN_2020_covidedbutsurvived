@@ -39,13 +39,13 @@ public class LabyrinthePainter {
 			for (int j = 0; j < nb_hauteur; j++) {
 				Image img;
 				try {
-
+					if (donjon.cases[i][j].isAnimated()) {
 					img = ImageIO.read(new File(sprites.get(i * nb_hauteur + j).currentSpriteGet(animationstage,
 							donjon.cases[i][j].getState(), donjon.cases[i][j].getType())));
 					crayon_lab.drawImage(img, largeur_rect * i, hauteur_rect * j + HEIGHT_INTERFACE,
 							largeur_rect * (i + 1), hauteur_rect * (j + 1) + HEIGHT_INTERFACE, 0, 0, img.getWidth(null),
 							img.getWidth(null), null);
-
+					}
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

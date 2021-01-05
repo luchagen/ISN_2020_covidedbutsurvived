@@ -114,7 +114,7 @@ public class MainPainter implements GamePainter{
 		Graphics2D crayon_bul = (Graphics2D) im.getGraphics();
 		
 		this.drawUserInterface(crayon_int);
-		//donjonPainter.draw(crayon_lab, TOP_INTERFACE_HEIGHT,  animationStage());
+		donjonPainter.draw(crayon_lab, TOP_INTERFACE_HEIGHT,  animationStage());
 		herosPainter.draw(crayon_pac , animationStage(),controller, TOP_INTERFACE_HEIGHT);
 		monsterPainter.actualizepainter();
 		monsterPainter.draw(crayon_evl,animationStage(), TOP_INTERFACE_HEIGHT);
