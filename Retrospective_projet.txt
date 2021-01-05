@@ -1,15 +1,13 @@
-retro sur tout le travail.
+Retrospective sur le projet ACL
 
--Pendant tous les sprints , le travail était bien partagé entre les membres de l'équipe.
--Le rythme et l'avancement sur le projet était en fonction des objectifs fixés pour le sprint.
--la communication était bien fluide pendant tout le projet 
-( des réunions  pour faire les mises au points et vérifier l'avancement du travail ).
-Apres chaque sprint nous avons fait des reunions pour ameliorer certains points
-( comme dans le sprint2 ou nous avons pas  pu accomplir toutes les taches vu la quantité de travaillé
- qu'on s'est atribué et cette mise au point nous a permis d'accomplir toutes les taches dans le temps pour le spint 3).  
--chaque membre de l'équipe a respecté les deadline fixés pour les taches attribués.
- -En résumé nous avons atteint l'objectif fixé au départ qui est consiste à réaliser 
-un jeu qui ressemble a pacman mais qui est en relation avec  le contexte actuel ( Covid19) 
-avec des innovations personnelles et une touche de  créativité.
+-Pendant tous les sprints , le travail a globalement bien été partagé entre les membres de l'équipe.
+-La communication tout au long du projet s'est faite de manière régulière grâce à de multiples moyens (Messenger et Teams notamment)
+-Des réunions faites sur Teams ont été tenues régulièrement afin de suivre l'avancé de chacun
+-Chacune de ces réunions a permis de corriger les problèmes soulevés durant le sprint précédent, notamment les problèmes liés à la charge de travail global (soulevé au sprint 2) ce qui nous a permis d'accomplir toutes les tâches du sprint 3 dans le temps imparti.
+-Chaque membre de l'équipe a en fin de compte respecté les deadlines fixés 
+-Certains conflits en terme de différence de conception (gestion des items notamment) ont posé problème mais ont été corrigés suite à des discussions appronfondies
+-En résumé, nous avons atteint l'objectif fixé au départ qui consistait à réaliser un jeu vidéo dont le thème est inspiré de la crise sanitaire actuelle.
+-Chaque membre de l'équipe a pu faire part de créativité, que ce soit dans la programmation ou bien le design du jeu, etc.
+
 
 
